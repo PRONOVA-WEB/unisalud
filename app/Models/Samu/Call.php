@@ -10,6 +10,7 @@ use App\Models\Samu\Shift;
 use App\Models\Samu\Event;
 use App\Models\Samu\Ot;
 use App\Models\User;
+use App\Models\Commune;
 
 
 class Call extends Model implements Auditable
@@ -28,15 +29,22 @@ class Call extends Model implements Auditable
     protected $fillable = [
         'shift_id',
         'call_id',
+        'commune_id',
         'classification',
-        'hour',
-        'receptor_id',
         'clasificator_id',
         'regulator_id',
+        'receptor_id',
+        'hour',
+        'reason',
+        'police_intervention',
         'information',
         'regulation',
+        'sex',
         'applicant',
+        'age',
         'address',
+        'latitude',
+        'longitude',
         'telephone',
     ];
 
@@ -58,6 +66,11 @@ class Call extends Model implements Auditable
     {
         return $this->belongsTo(Shift::class);
     }
+    
+    public function commune()
+    {
+        return $this->belongsTo(Commune::class);
+    }
 
     public function receptor()
     {
@@ -68,6 +81,37 @@ class Call extends Model implements Auditable
     {
         return $this->belongsTo(User::class,'regulator_id');
 
+    }
+
+    public function getSexAbbrAttribute()
+    {
+        switch($this->sex)
+        {
+            case 'MALE': return 'MASC'; break;
+            case 'FEMALE': return 'FEM'; break;
+            case 'UNKNOWN': return 'DESC'; break;
+            case 'OTHER': return 'OTRO'; break;
+        }
+    }
+
+    public function getAgeFormatAttribute()
+    {
+        if($this->age) {
+            list($integer, $decimal) = explode('.', $this->age);
+
+            $edad = '';
+
+            if($integer != '00')
+            {
+                $edad .= $integer == '01' ? (int)$integer . ' AÑO ': (int)$integer . ' AÑOS ';
+            }
+
+            if($decimal != '00')
+            {
+                $edad .= $decimal == '01' ? (int)$decimal . ' MES ': (int)$decimal . ' MESES ';
+            }
+            return $edad;
+        }
     }
 
     /* Una llamada puede hace referencia o tener relación con otra llamada  */
@@ -93,5 +137,10 @@ class Call extends Model implements Auditable
         self::creating(function (Call $call): void {
             $call->receptor()->associate(auth()->user());
         });
+    }
+
+    public function scopeWithClassification($query, $type)
+    {
+        return $query->whereIn('classification', $type);
     }
 }
