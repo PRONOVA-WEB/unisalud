@@ -67,6 +67,8 @@ class DatabaseSeeder extends Seeder
             SamuKeySeeder::class,
             SamuReceptionPlaceSeeder::class,
             SamuEstablishmentSeeder::class,
+            SettingSeeder::class,
+
 
 
         ]);

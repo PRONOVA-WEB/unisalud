@@ -12,7 +12,7 @@
 
     <div class="form-row">
 
-        <fieldset class="form-group col-md-2">
+        <fieldset class="form-group col-md-4">
             <label for="for_type"><b>Tipo de Turno*</b> </label>
             <select class="form-control" name="type" id="for_type" required>
                 <option value=""></option>
@@ -21,12 +21,12 @@
             </select>
         </fieldset>
 
-        <fieldset class="form-group col-md-2">
+        <fieldset class="form-group col-md-4">
             <label for="for_opening_at"><b>Apertura*</b> </label>
             <input type="datetime-local" class="form-control" name="opening_at" id="for_opening_at" required>
         </fieldset>
 
-        <fieldset class="form-group col-md-2">
+        <fieldset class="form-group col-md-4">
             <label for="for_closing_at"><b> Cierre (opcional aproximado)</b> </label>
             <input type="datetime-local" class="form-control" name="closing_at" id="for_closing_at">
         </fieldset>
@@ -34,7 +34,7 @@
     </div>
     <div class="form-row">
 
-        <fieldset class="form-group col-md-6">
+        <fieldset class="form-group col-md-12">
             <label for="for_observation"><b> Observación</b> </label>
             <textarea class="form-control" name="observation" id="for_observation" rows="6"></textarea>
         </fieldset>
@@ -50,4 +50,4 @@
 
 @section('custom_js')
 
-@endsection 
+@endsection

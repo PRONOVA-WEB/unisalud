@@ -3,12 +3,28 @@
 use App\Models\Some\ExternalIncomingSic;
 use \Carbon\Carbon;
 
-function active($route_name) { 
+if (!function_exists('settings')) {
+    function settings($key = null)
+    {
+        $setting = optional(\App\Models\Setting::where('key', $key)->first());
+        if ($setting->value) {
+            $valor = $setting->value;
+            if ($setting->type == 'image' && \Storage::disk('public')->exists($setting->value)) {
+                $valor = \Storage::disk('public')->url($setting->value);
+            }
+            return $valor;
+        } else {
+            return null;
+        }
+    }
+}
+
+function active($route_name) {
     echo request()->routeIs($route_name) ? 'active' : '';
 }
 
 function fdatetime($string) {
-    return Carbon::createFromFormat('Y-m-d\TH:i:sP', $string)->format('d-m-Y H:i'); 
+    return Carbon::createFromFormat('Y-m-d\TH:i:sP', $string)->format('d-m-Y H:i');
 }
 
 //Funciones para WS SOAP Rayen
@@ -22,7 +38,7 @@ function BuscarSic($request){
         return array(
             'VLmensaje' => 'Se encontro SIC numSicGes: ' . $externalIncomingSic->pciNumSicGes . ' codEstab: ' . $externalIncomingSic->pcsCodEstab,
         );
-    } 
+    }
     else {
         return array(
             'VLmensaje' => 'No se encontro SIC con numSicGes: ' . $request['pcsNumSicGes'] . ' codEstab:' . $request['pcsCodEstab'],

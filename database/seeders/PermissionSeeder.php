@@ -20,7 +20,7 @@ class PermissionSeeder extends Seeder
 
         Permission::create(['name' => 'Epi: Add Value','description'=>'Permite añadir datos a caso sospecha']);
         Permission::create(['name' => 'Epi: Create','description'=>'Permite crear casos sospecha']);
-        
+
         // Permission::create(['name'=>'Mp:  administrator','description'=>'Administrador del programador médico']);
         Permission::create(['name' => 'Mp: user', 'description' => 'Usuario del sistema programador']);
         Permission::create(['name' => 'Mp: administrador']);
@@ -32,6 +32,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Mp: reportes']);
         Permission::create(['name' => 'Mp: mantenedores']);
         Permission::create(['name' => 'Mp: user creator']);
+        Permission::create(['name' => 'Mp: Proposal - Jefe de CAE Médico']);
+        Permission::create(['name' => 'Mp: Proposal - Jefe de CAE No médico']);
+        Permission::create(['name' => 'Mp: Proposal - Subdirección Médica']);
+        Permission::create(['name' => 'Mp: Proposal - Subdirección DGCP']);
+        Permission::create(['name' => 'Mp: Proposal - Jefe de Servicio']);
 
         Permission::create(['name' => 'Fq: admin','description' => 'Administrador de Fq']);
         Permission::create(['name' => 'Fq: answer request dispensing','description' => 'Atención de requerimientos de medicamentos']);

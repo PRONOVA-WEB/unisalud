@@ -138,7 +138,7 @@ class UserSeeder extends Seeder
         $user->fathers_family = 'Zuñiga';
         $user->mothers_family = 'Codocedo';
         $user->claveunica = 1;
-        $user->birthday = now();        
+        $user->birthday = now();
         $user->gender = 'male';
         $user->nationality_id = 41;
         if(env('APP_ENV') == 'local') $user->password = bcrypt('admin');
@@ -201,8 +201,8 @@ class UserSeeder extends Seeder
         $identifier = new Identifier();
         $identifier->use = 'official';
         $identifier->cod_con_identifier_type_id = 1; // RUN
-        $identifier->value = 15287582;
-        $identifier->dv = 7;
+        $identifier->value = 12345678;
+        $identifier->dv = 9;
         $identifier->user_id = $user->id;
         $identifier->save();
 
@@ -264,7 +264,7 @@ class UserSeeder extends Seeder
         $address->save();
 
 
-        
+
 
 
         // usuarios programador

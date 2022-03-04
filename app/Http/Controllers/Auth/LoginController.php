@@ -77,13 +77,8 @@ class LoginController extends Controller
         auth()->logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        if(env('APP_ENV') == 'local'){
-            return redirect()->route('welcome');
-        }
-        else {
-            return redirect()->route('welcome');
-        }
-        
+        return redirect()->route('login');
+
     }
 
     /**

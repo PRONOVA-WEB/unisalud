@@ -58,6 +58,7 @@ use App\Http\Controllers\RayenController;
 use App\Http\Controllers\TestController;
 
 use App\Http\Controllers\RayenWs\SoapController;
+use App\Http\Controllers\SettingController;
 use Spatie\Permission\Contracts\Role;
 
 
@@ -81,8 +82,8 @@ use App\Http\Controllers\Epi\SuspectCaseController;
 // $url = $disk->put('FILE.txt',"hola");
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return redirect()->route('login');
+});
 
 //Auth::routes();
 
@@ -504,9 +505,9 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::view('/', 'samu.crew.index')->name('index');
 		Route::view('/create', 'samu.crew.create')->name('create');
 		Route::view('/edit', 'samu.crew.edit')->name('edit');
-		
+
     });
-	
+
 	Route::prefix('novelties')->name('noveltie.')
 	->middleware('permission:SAMU administrador|SAMU regulador|SAMU operador|SAMU despachador')
 	->group(function () {
@@ -515,8 +516,8 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::get('/edit/{noveltie}', [NoveltieController::class, 'edit'])->name('edit');
 		Route::put('/update/{noveltie}',[NoveltieController::class, 'update'])->name('update');
 	});
-	
-	
+
+
     Route::prefix('calls')->name('call.')
 	->middleware('permission:SAMU administrador|SAMU operador|SAMU regulador')
 	->group(function () {
@@ -543,7 +544,7 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::get('/{event}/report',[EventController::class, 'report'])
 		->middleware('permission:SAMU administrador')->name('report');
     });
-	
+
 	Route::prefix('keys')->name('key.')
 	->middleware('permission:SAMU administrador')
 	->group(function () {
@@ -554,7 +555,7 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::get('/edit/{key}',	[KeyController::class, 'edit'])->name('edit');
 		Route::delete('/{key}',		[KeyController::class, 'destroy'])->name('destroy');
 	});
-	
+
 	Route::prefix('mobiles')->name('mobile.')
 	->middleware('permission:SAMU administrador')
 	->group(function () {
@@ -565,15 +566,15 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::put('/{mobile}',		[MobileController::class, 'update'])->name('update');
 		Route::delete('/{mobile}', 	[MobileController::class, 'destroy'])->name('destroy');
 	});
-	
+
 	Route::prefix('establishments')->name('establishment.')
 	->middleware('permission:SAMU administrador')
 	->group(function () {
 		Route::get('/', 			[EstablishmentController::class, 'index'])->name('index');
 		Route::post('/', 			[EstablishmentController::class, 'store'])->name('store');
 	});
-	
-	
+
+
 });
 Route::get('/samu/mobiles-in-service/{mobileInService}/gps', [GpsController::class, 'index'])->name('samu.mobileinservice.gps');
 //fin rutas samu
@@ -601,9 +602,9 @@ Route::prefix('epi')->name('epi.')->group(function () {
 		Route::get('/{tray}', [SuspectCaseController::class, 'index'])->name('index');
 		Route::get('/{user}/create', [SuspectCaseController::class, 'create'])->name('create');
 		Route::post('/', [SuspectCaseController::class, 'store'])->name('store');
-		
+
 	});
-	
+
 
 
 
@@ -628,16 +629,25 @@ Route::prefix('vista')->name('vista.')->group(function () {
 	Route::view('/control', 'vista.control')->name('control');
 });
 
+//settings module
+Route::prefix('/settings')->as('settings.')->middleware(['auth','can:Administrator'])->group(function () {
+    Route::get('/', [SettingController::class, 'index'])->name('index');
+    Route::get('/create', [SettingController::class, 'create'])->name('create');
+    Route::post('/store', [SettingController::class, 'store'])->name('store');
+    Route::post('/store_values', [SettingController::class, 'storeValues'])->name('store.values');
+    Route::delete('/{setting}/destroy', [SettingController::class, 'destroy'])->name('destroy');
+});
+
 Route::get('/test/rayen' ,[RayenController::class, 'getUrgencyStatus'])->name('getUrgencyStatus');
 Route::get('/test/sendip',[TestController::class,'sendIp']);
 
 
 // Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
-// 	Route::get('/down', function() 
+// 	Route::get('/down', function()
 // 	{
 // 		Artisan::call('down --secret="pum"');
 // 	});
-// 	Route::get('/up', function() 
+// 	Route::get('/up', function()
 // 	{
 // 		Artisan::call('up');
 // 		return back();
