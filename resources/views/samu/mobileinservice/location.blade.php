@@ -20,12 +20,12 @@
 </h3>
 
 <div class="form-row mb-3">
-    
+
     <div class="col-3">
         <label for="latitude" class="form-label">Latitud</label>
         <input type="text" class="form-control" id="latitude">
     </div>
-    
+
     <div class="col-3">
         <label for="longitude" class="form-label">Longitud</label>
         <input type="text" class="form-control" id="longitude">
@@ -40,47 +40,47 @@
 
 @section('custom_js')
 <script>
-    
+
     var lat = document.getElementById("latitude");
     var lon = document.getElementById("longitude");
-    
+
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
+        } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-    
+
     function showPosition(position) {
         lat.value = position.coords.latitude;
         lon.value = position.coords.longitude;
     }
-    
+
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 14,
             center: {
-                lat: -20.244520315752016,
-                lng: -70.13443840906216,
+                lat: -33.45694,
+                lng: -70.64827,
             },
         });
 
-        const movil_2 = { lat: -20.21340, lng: -70.13764 };
-        new google.maps.Marker({
-            position: movil_2,
-            label: "2",
-            map,
-            title: "Hello World!",
-        });
+        // const movil_2 = { lat: -20.21340, lng: -70.13764 };
+        // new google.maps.Marker({
+        //     position: movil_2,
+        //     label: "2",
+        //     map,
+        //     title: "Hello World!",
+        // });
 
-        const movil_4 = { lat: -20.25089, lng: -70.12808 };
-        new google.maps.Marker({
-            position: movil_4,
-            label: "4",
-            map,
-            title: "Hello World!",
-        });
+        // const movil_4 = { lat: -20.25089, lng: -70.12808 };
+        // new google.maps.Marker({
+        //     position: movil_4,
+        //     label: "4",
+        //     map,
+        //     title: "Hello World!",
+        // });
     }
 </script>
 
