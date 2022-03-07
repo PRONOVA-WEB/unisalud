@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         $user->mothers_family = 'Voight';
         $user->gender = 'female';
         $user->nationality_id = 41;
-        if(env('APP_ENV') == 'local') $user->password = bcrypt('admin');
+        $user->password = bcrypt('admin');
         $user->save();
 
         $user->givePermissionTo(Permission::all());

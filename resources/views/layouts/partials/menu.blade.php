@@ -124,34 +124,34 @@
         <div id="collapseMantenedor" class="collapse" aria-labelledby="headingMantenedor" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('parameter.organization.index','Todas las Organizaciones' ) }}">
-                    <i class="fas fa-user-circle"></i> Organizaciones
+                    <i class="fas fa-cog"></i> Organizaciones
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.rrhh.index') }}">
-                    <i class="fas fa-user-circle"></i>  RRHH
+                    <i class="fas fa-cog"></i>  RRHH
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.contracts.index') }}">
-                    <i class="fas fa-user-circle"></i>  Contratos
+                    <i class="fas fa-cog"></i>  Contratos
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.operating_rooms.index') }}">
-                    <i class="fas fa-user-circle"></i>  Pabellones
+                    <i class="fas fa-cog"></i>  Pabellones
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.mother_activities.index') }}">
-                    <i class="fas fa-user-circle"></i>  Actividades Madre
+                    <i class="fas fa-cog"></i>  Actividades Madre
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.activities.index') }}">
-                    <i class="fas fa-user-circle"></i>  Actividades
+                    <i class="fas fa-cog"></i>  Actividades
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.subactivities.index') }}">
-                    <i class="fas fa-user-circle"></i>  Sub-actividades
+                    <i class="fas fa-cog"></i>  Sub-actividades
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.services.index') }}">
-                    <i class="fas fa-user-circle"></i>  Servicios
+                    <i class="fas fa-cog"></i>  Servicios
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.specialties.index') }}">
-                    <i class="fas fa-user-circle"></i>  Especialidades
+                    <i class="fas fa-cog"></i>  Especialidades
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.professions.index') }}">
-                    <i class="fas fa-user-circle"></i>  Profesiones
+                    <i class="fas fa-cog"></i>  Profesiones
                 </a>
             </div>
         </div>
