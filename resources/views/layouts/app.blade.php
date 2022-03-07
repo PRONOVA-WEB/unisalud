@@ -85,44 +85,4 @@
 
 </body>
 
-<<<<<<< HEAD
-=======
-        @yield('custom_js')
-
-        @stack('scripts')
-        
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('form').submit(function(){
-                    $('input[type=submit]', this).attr('disabled', 'disabled');
-                    $('button[type=submit]', this).attr('disabled', 'disabled');
-                });
-
-                $(".collapse-menu").on("shown.bs.collapse", function () {
-                    localStorage.setItem("coll_" + this.id, true);
-                    $('#icon_'+this.id).replaceWith(feather.icons['minus-circle'].toSvg());
-                    console.log('SHOW ' + this.id);
-                });
-
-                $(".collapse-menu").on("hidden.bs.collapse", function () {
-                    localStorage.removeItem("coll_" + this.id);
-                    $('#icon_'+this.id).replaceWith(feather.icons['plus-circle'].toSvg());
-                    console.log('HIDE ' + this.id);
-                });
-
-                $(".collapse-menu").each(function () {
-                    console.log('EACH ' + this.id);
-                    if (localStorage.getItem("coll_" + this.id) === "true") {
-                        $(this).collapse("show");
-                    }
-                    else {
-                        $(this).collapse("hide");
-                    }
-                });
-            });
-
-        </script>
-
-    </body>
->>>>>>> 6b3deb47afa1a0e5bd84874ff8bff86c1b614a24
 </html>
