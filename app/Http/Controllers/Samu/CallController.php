@@ -33,7 +33,7 @@ class CallController extends Controller
                     ->skip(1)
                     ->with(['calls','calls.events','calls.receptor'])
                     ->first();
-                    
+
         return view ('samu.call.index' , compact('openShift','lastShift'));
     }
 
@@ -46,7 +46,7 @@ class CallController extends Controller
                     ->skip(1)
                     ->with(['calls','calls.events','calls.receptor'])
                     ->first();
-                    
+
         return view ('samu.call.ots' , compact('openShift','lastShift'));
     }
 
@@ -60,9 +60,9 @@ class CallController extends Controller
     {
         /* Obtener el turno actual */
         $shift = Shift::where('status',true)->first();
-        $communes = Commune::where('region_id', 1)->get(['id', 'name', 'latitude', 'longitude']);
+        $communes = Commune::where('region_id', 13)->get(['id', 'name', 'latitude', 'longitude']);
 
-        if(!$shift) 
+        if(!$shift)
         {
             session()->flash('danger', 'Debe abrir un turno primero');
             return redirect()->route('samu.welcome');
@@ -81,7 +81,7 @@ class CallController extends Controller
     {
         $shift = Shift::where('status',true)->first();
 
-        if($shift) 
+        if($shift)
         {
             $call = new Call($request->All());
             $call->hour = now();
@@ -91,9 +91,9 @@ class CallController extends Controller
             $request->session()->flash('success', 'Se ha guardado el nuevo llamado.');
             return redirect()->route('samu.call.create');
         }
-        else 
+        else
         {
-            $request->session()->flash('danger', 'No se puede guardar el llamado, 
+            $request->session()->flash('danger', 'No se puede guardar el llamado,
                 el turno se ha cerrado, solicite que abran un turno y luego intente guardar nuevamente.');
             return redirect()->back()->withInput();
         }
@@ -122,7 +122,7 @@ class CallController extends Controller
         $shift = Shift::where('status',true)->first();
         $communes = Commune::where('region_id', 1)->get(['id', 'name', 'latitude', 'longitude']);
 
-        if(!$shift) 
+        if(!$shift)
         {
             session()->flash('danger', 'Debe abrir un turno primero');
             return redirect()->route('samu.welcome');
@@ -152,7 +152,7 @@ class CallController extends Controller
         $request->session()->flash('success', 'Se han actualizado los datos la orientación telefónica.');
 
         switch($call->classification) {
-            case 'OT':                    
+            case 'OT':
                 return redirect()->route('samu.call.ots');
                 break;
             case 'T1':
@@ -173,7 +173,7 @@ class CallController extends Controller
         $request->session()->flash('success', 'Se han asignado los cometidos a la llamada.');
         return redirect()->route('samu.event.index');
     }
- 
+
     /**
      * Remove the specified resource from storage.
      *

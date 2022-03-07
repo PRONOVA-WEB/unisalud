@@ -15,6 +15,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        app()['cache']->forget('spatie.permission.cache');
+
         Permission::create(['name' => 'Administrator','description'=>'Administrador del sistema']);
         Permission::create(['name' => 'Developer','description'=>'Desarrollador']);
         Permission::create(['name' => 'be god','description'=>'GOD MODE']);

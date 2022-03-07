@@ -1,6 +1,6 @@
-const URL_COMMUNES = '/api/region/1/communes';
-const LATITUDE_MAP = -20.26945979;
-const LONGITUDE_MAP = -70.10122776;
+const URL_COMMUNES = '/api/region/13/communes';
+const LATITUDE_MAP = -33.45000000;
+const LONGITUDE_MAP = -70.66666670;
 const ZOOM = 15;
 let communes = [];
 let inputLatitude = document.getElementById("latitude");
@@ -18,7 +18,7 @@ let map = new L.map('map' , mapOptions);
 let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(layer);
 
-let marker = new L.Marker([latitude, longitude], { 
+let marker = new L.Marker([latitude, longitude], {
     draggable: true,
 });
 
@@ -44,7 +44,7 @@ marker.on('drag', (e) => {
 
     let valueLatitude = latLang.lat;
     let valueLongitude = latLang.lng;
-    
+
     inputLatitude.setAttribute('value', valueLatitude.toFixed(8));
     inputLongitude.setAttribute('value', valueLongitude.toFixed(8));
 
@@ -65,7 +65,7 @@ inputCommune.addEventListener('change', (event) => {
 
     marker.setLatLng([newLatitude, newLongitude]);
     map.setView([newLatitude, newLongitude], ZOOM);
-    
+
     inputLatitude.setAttribute('value', newLatitude);
     inputLongitude.setAttribute('value', newLongitude);
 });

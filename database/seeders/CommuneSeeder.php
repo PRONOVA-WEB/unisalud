@@ -19,50 +19,50 @@ class CommuneSeeder extends Seeder
         Commune::Create(['name' => 'General Lagos', 'code_deis' => '15202', 'region_id' => 15]);
         Commune::Create(['name' => 'Camarones', 'code_deis' => '15102', 'region_id' => 15]);
         Commune::Create([
-            'name' => 'Iquique', 
-            'code_deis' => '1101', 
+            'name' => 'Iquique',
+            'code_deis' => '1101',
             'region_id' => 1,
             'latitude' => -20.2159772,
             'longitude' => -70.1468313
         ]);
         Commune::Create([
-            'name' => 'Pica', 
-            'code_deis' => '1405', 
+            'name' => 'Pica',
+            'code_deis' => '1405',
             'region_id' => 1,
             'latitude' => -20.49124158,
             'longitude' => -69.32915497
         ]);
         Commune::Create([
-            'name' => 'Alto Hospicio', 
-            'code_deis' => '1107', 
+            'name' => 'Alto Hospicio',
+            'code_deis' => '1107',
             'region_id' => 1,
             'latitude' => -20.26970134,
             'longitude' => -70.10069561
         ]);
         Commune::Create([
-            'name' => 'Pozo Almonte', 
-            'code_deis' => '1401', 
+            'name' => 'Pozo Almonte',
+            'code_deis' => '1401',
             'region_id' => 1,
             'latitude' => -20.25708500,
             'longitude' => -69.78465900
         ]);
         Commune::Create([
-            'name' => 'Huara', 
-            'code_deis' => '1404', 
+            'name' => 'Huara',
+            'code_deis' => '1404',
             'region_id' => 1,
             'latitude' => -19.99531200,
             'longitude' => -69.77021200
         ]);
         Commune::Create([
-            'name' => 'Camiña', 
-            'code_deis' => '1402', 
+            'name' => 'Camiña',
+            'code_deis' => '1402',
             'region_id' => 1,
             'latitude' => -19.31340126,
             'longitude' => -69.42567576
         ]);
         Commune::Create([
-            'name' => 'Colchane', 
-            'code_deis' => '1403', 
+            'name' => 'Colchane',
+            'code_deis' => '1403',
             'region_id' => 1,
             'latitude' => -19.27617732,
             'longitude' => -68.63824369
@@ -137,59 +137,111 @@ class CommuneSeeder extends Seeder
         Commune::Create(['name' => 'Calle Larga', 'code_deis' => '5302', 'region_id' => 5]);
         Commune::Create(['name' => 'Santa Maria', 'code_deis' => '5706', 'region_id' => 5]);
         Commune::Create(['name' => 'Panquehue', 'code_deis' => '5704', 'region_id' => 5]);
-        Commune::Create(['name' => 'Independencia', 'code_deis' => '13108', 'region_id' => 13]);
-        Commune::Create(['name' => 'Tiltil', 'code_deis' => '13303', 'region_id' => 13]);
-        Commune::Create(['name' => 'Recoleta', 'code_deis' => '13127', 'region_id' => 13]);
-        Commune::Create(['name' => 'Huechuraba', 'code_deis' => '13107', 'region_id' => 13]);
-        Commune::Create(['name' => 'Quilicura', 'code_deis' => '13125', 'region_id' => 13]);
-        Commune::Create(['name' => 'Colina', 'code_deis' => '13301', 'region_id' => 13]);
-        Commune::Create(['name' => 'Conchalí', 'code_deis' => '13104', 'region_id' => 13]);
-        Commune::Create(['name' => 'Lampa', 'code_deis' => '13302', 'region_id' => 13]);
-        Commune::Create(['name' => 'Santiago', 'code_deis' => '13101', 'region_id' => 13]);
-        Commune::Create(['name' => 'Curacaví', 'code_deis' => '13503', 'region_id' => 13]);
-        Commune::Create(['name' => 'Quinta Normal', 'code_deis' => '13126', 'region_id' => 13]);
-        Commune::Create(['name' => 'Talagante', 'code_deis' => '13601', 'region_id' => 13]);
-        Commune::Create(['name' => 'Peñaflor', 'code_deis' => '13605', 'region_id' => 13]);
-        Commune::Create(['name' => 'Melipilla', 'code_deis' => '13501', 'region_id' => 13]);
-        Commune::Create(['name' => 'Pudahuel', 'code_deis' => '13124', 'region_id' => 13]);
-        Commune::Create(['name' => 'Lo Prado', 'code_deis' => '13117', 'region_id' => 13]);
-        Commune::Create(['name' => 'Cerro Navia', 'code_deis' => '13103', 'region_id' => 13]);
-        Commune::Create(['name' => 'Renca', 'code_deis' => '13128', 'region_id' => 13]);
-        Commune::Create(['name' => 'Padre Hurtado', 'code_deis' => '13604', 'region_id' => 13]);
-        Commune::Create(['name' => 'El Monte', 'code_deis' => '13602', 'region_id' => 13]);
-        Commune::Create(['name' => 'Isla de Maipo', 'code_deis' => '13603', 'region_id' => 13]);
-        Commune::Create(['name' => 'Maria Pinto', 'code_deis' => '13504', 'region_id' => 13]);
-        Commune::Create(['name' => 'San Pedro', 'code_deis' => '13505', 'region_id' => 13]);
-        Commune::Create(['name' => 'Alhué', 'code_deis' => '13502', 'region_id' => 13]);
-        Commune::Create(['name' => 'Maipú', 'code_deis' => '13119', 'region_id' => 13]);
-        Commune::Create(['name' => 'Estación Central', 'code_deis' => '13106', 'region_id' => 13]);
-        Commune::Create(['name' => 'Cerrillos', 'code_deis' => '13102', 'region_id' => 13]);
-        Commune::Create(['name' => 'Pedro Aguirre Cerda', 'code_deis' => '13121', 'region_id' => 13]);
-        Commune::Create(['name' => 'Providencia', 'code_deis' => '13123', 'region_id' => 13]);
-        Commune::Create(['name' => 'Peñalolén', 'code_deis' => '13122', 'region_id' => 13]);
+        Commune::Create(['name' => 'Independencia', 'code_deis' => '13108', 'region_id' => 13, 'latitude' => -33.4219880,
+        'longitude' => -70.6549320]);
+        Commune::Create(['name' => 'Tiltil', 'code_deis' => '13303', 'region_id' => 13, 'latitude' => -33.0833333,
+        'longitude' => -70.9333333]);
+        Commune::Create(['name' => 'Recoleta', 'code_deis' => '13127', 'region_id' => 13, 'latitude' => -70.6391920,
+        'longitude' => -33.4081480]);
+        Commune::Create(['name' => 'Huechuraba', 'code_deis' => '13107', 'region_id' => 13, 'latitude' => -33.3500000,
+        'longitude' => -70.6666667]);
+        Commune::Create(['name' => 'Quilicura', 'code_deis' => '13125', 'region_id' => 13, 'latitude' => -33.3666667,
+        'longitude' => -70.7500000]);
+        Commune::Create(['name' => 'Colina', 'code_deis' => '13301', 'region_id' => 13, 'latitude' => -33.2000000,
+        'longitude' => -70.6833333]);
+        Commune::Create(['name' => 'Conchalí', 'code_deis' => '13104', 'region_id' => 13, 'latitude' => -33.3500000,
+        'longitude' => -70.6166667]);
+        Commune::Create(['name' => 'Lampa', 'code_deis' => '13302', 'region_id' => 13, 'latitude' => -33.2833333,
+        'longitude' => -70.9000000]);
+        Commune::Create(['name' => 'Santiago', 'code_deis' => '13101', 'region_id' => 13, 'latitude' => -33.4500000,
+        'longitude' => -70.6666667]);
+        Commune::Create(['name' => 'Curacaví', 'code_deis' => '13503', 'region_id' => 13, 'latitude' => -33.4000000,
+        'longitude' => -71.1500000]);
+        Commune::Create(['name' => 'Quinta Normal', 'code_deis' => '13126', 'region_id' => 13, 'latitude' => -70.7000000,
+        'longitude' => -33.4500000]);
+        Commune::Create(['name' => 'Talagante', 'code_deis' => '13601', 'region_id' => 13, 'latitude' => -33.6666667,
+        'longitude' => -70.9333333]);
+        Commune::Create(['name' => 'Peñaflor', 'code_deis' => '13605', 'region_id' => 13, 'latitude' => -33.616666,
+        'longitude' => -70.9166667]);
+        Commune::Create(['name' => 'Melipilla', 'code_deis' => '13501', 'region_id' => 13, 'latitude' => -33.7000000,
+        'longitude' => -71.2166667]);
+        Commune::Create(['name' => 'Pudahuel', 'code_deis' => '13124', 'region_id' => 13, 'latitude' => -33.4333333,
+        'longitude' => -70.7166667]);
+        Commune::Create(['name' => 'Lo Prado', 'code_deis' => '13117', 'region_id' => 13, 'latitude' => -33.4333333,
+        'longitude' => -70.7166667]);
+        Commune::Create(['name' => 'Cerro Navia', 'code_deis' => '13103', 'region_id' => 13, 'latitude' => -33.4166667,
+        'longitude' => -70.7166667]);
+        Commune::Create(['name' => 'Renca', 'code_deis' => '13128', 'region_id' => 13, 'latitude' => -33.4000000,
+        'longitude' => -70.7333333]);
+        Commune::Create(['name' => 'Padre Hurtado', 'code_deis' => '13604', 'region_id' => 13, 'latitude' => -33.5666667,
+        'longitude' => -70.8333333]);
+        Commune::Create(['name' => 'El Monte', 'code_deis' => '13602', 'region_id' => 13, 'latitude' => -33.6833333,
+        'longitude' => -71.0166667]);
+        Commune::Create(['name' => 'Isla de Maipo', 'code_deis' => '13603', 'region_id' => 13, 'latitude' => -33.7500000,
+        'longitude' => -70.9000000]);
+        Commune::Create(['name' => 'Maria Pinto', 'code_deis' => '13504', 'region_id' => 13, 'latitude' => -33.5333333,
+        'longitude' => -71.1333333]);
+        Commune::Create(['name' => 'San Pedro', 'code_deis' => '13505', 'region_id' => 13, 'latitude' => -33.9000000,
+        'longitude' => -71.4666667]);
+        Commune::Create(['name' => 'Alhué', 'code_deis' => '13502', 'region_id' => 13, 'latitude' => -34.06,
+        'longitude' => -71.15]);
+        Commune::Create(['name' => 'Maipú', 'code_deis' => '13119', 'region_id' => 13, 'latitude' => -33.5166667,
+        'longitude' => -70.7666667]);
+        Commune::Create(['name' => 'Estación Central', 'code_deis' => '13106', 'region_id' => 13, 'latitude' => -33.4633150,
+        'longitude' => -70.7029760]);
+        Commune::Create(['name' => 'Cerrillos', 'code_deis' => '13102', 'region_id' => 13, 'latitude' => -33.4833333,
+        'longitude' => -70.7000000]);
+        Commune::Create(['name' => 'Pedro Aguirre Cerda', 'code_deis' => '13121', 'region_id' => 13, 'latitude' => -33.4924550,
+        'longitude' => -70.6780860]);
+        Commune::Create(['name' => 'Providencia', 'code_deis' => '13123', 'region_id' => 13, 'latitude' => -33.4333333,
+        'longitude' => -70.6166667]);
+        Commune::Create(['name' => 'Peñalolén', 'code_deis' => '13122', 'region_id' => 13, 'latitude' => -33.4833333,
+        'longitude' => -70.5333333]);
         Commune::Create(['name' => 'Isla de Pascua', 'code_deis' => '5201', 'region_id' => 5]);
-        Commune::Create(['name' => 'Vitacura', 'code_deis' => '13132', 'region_id' => 13]);
-        Commune::Create(['name' => 'Las Condes', 'code_deis' => '13114', 'region_id' => 13]);
-        Commune::Create(['name' => 'Macul', 'code_deis' => '13118', 'region_id' => 13]);
-        Commune::Create(['name' => 'Ñuñoa', 'code_deis' => '13120', 'region_id' => 13]);
-        Commune::Create(['name' => 'La Reina', 'code_deis' => '13113', 'region_id' => 13]);
-        Commune::Create(['name' => 'Lo Barnechea', 'code_deis' => '13115', 'region_id' => 13]);
-        Commune::Create(['name' => 'San Miguel', 'code_deis' => '13130', 'region_id' => 13]);
-        Commune::Create(['name' => 'Buin', 'code_deis' => '13402', 'region_id' => 13]);
-        Commune::Create(['name' => 'Puente Alto', 'code_deis' => '13201', 'region_id' => 13]);
-        Commune::Create(['name' => 'San Bernardo', 'code_deis' => '13401', 'region_id' => 13]);
-        Commune::Create(['name' => 'Lo Espejo', 'code_deis' => '13116', 'region_id' => 13]);
-        Commune::Create(['name' => 'San Joaquín', 'code_deis' => '13129', 'region_id' => 13]);
-        Commune::Create(['name' => 'Paine', 'code_deis' => '13404', 'region_id' => 13]);
-        Commune::Create(['name' => 'El Bosque', 'code_deis' => '13105', 'region_id' => 13]);
-        Commune::Create(['name' => 'La Cisterna', 'code_deis' => '13109', 'region_id' => 13]);
-        Commune::Create(['name' => 'La Granja', 'code_deis' => '13111', 'region_id' => 13]);
-        Commune::Create(['name' => 'Calera de Tango', 'code_deis' => '13403', 'region_id' => 13]);
-        Commune::Create(['name' => 'San José de Maipo', 'code_deis' => '13203', 'region_id' => 13]);
-        Commune::Create(['name' => 'San Ramón', 'code_deis' => '13131', 'region_id' => 13]);
-        Commune::Create(['name' => 'La Florida', 'code_deis' => '13110', 'region_id' => 13]);
-        Commune::Create(['name' => 'La Pintana', 'code_deis' => '13112', 'region_id' => 13]);
-        Commune::Create(['name' => 'Pirque', 'code_deis' => '13202', 'region_id' => 13]);
+        Commune::Create(['name' => 'Vitacura', 'code_deis' => '13132', 'region_id' => 13, 'latitude' => -33.4000000,
+        'longitude' => -70.6000000]);
+        Commune::Create(['name' => 'Las Condes', 'code_deis' => '13114', 'region_id' => 13, 'latitude' => -33.4166667,
+        'longitude' => -70.5833333]);
+        Commune::Create(['name' => 'Macul', 'code_deis' => '13118', 'region_id' => 13, 'latitude' => -33.5000000,
+        'longitude' => -70.5666667]);
+        Commune::Create(['name' => 'Ñuñoa', 'code_deis' => '13120', 'region_id' => 13, 'latitude' => -33.4666667,
+        'longitude' => -70.6000000]);
+        Commune::Create(['name' => 'La Reina', 'code_deis' => '13113', 'region_id' => 13, 'latitude' => -33.4500000,
+        'longitude' => -70.5500000]);
+        Commune::Create(['name' => 'Lo Barnechea', 'code_deis' => '13115', 'region_id' => 13, 'latitude' => -33.3500000,
+        'longitude' => -70.5166667]);
+        Commune::Create(['name' => 'San Miguel', 'code_deis' => '13130', 'region_id' => 13, 'latitude' => -33.5000000,
+        'longitude' => -70.6666667]);
+        Commune::Create(['name' => 'Buin', 'code_deis' => '13402', 'region_id' => 13, 'latitude' => -33.7333333,
+        'longitude' => -70.7500000]);
+        Commune::Create(['name' => 'Puente Alto', 'code_deis' => '13201', 'region_id' => 13, 'latitude' => -33.6166667,
+        'longitude' => -70.5833333]);
+        Commune::Create(['name' => 'San Bernardo', 'code_deis' => '13401', 'region_id' => 13, 'latitude' => -33.6000000,
+        'longitude' => -70.7166667]);
+        Commune::Create(['name' => 'Lo Espejo', 'code_deis' => '13116', 'region_id' => 13, 'latitude' => -33.5333333,
+        'longitude' => -70.7166667]);
+        Commune::Create(['name' => 'San Joaquín', 'code_deis' => '13129', 'region_id' => 13, 'latitude' => -33.5000000,
+        'longitude' => -70.6166667]);
+        Commune::Create(['name' => 'Paine', 'code_deis' => '13404', 'region_id' => 13, 'latitude' => -33.8166667,
+        'longitude' => -70.7500000]);
+        Commune::Create(['name' => 'El Bosque', 'code_deis' => '13105', 'region_id' => 13, 'latitude' => -33.5666667,
+        'longitude' => -70.7000000]);
+        Commune::Create(['name' => 'La Cisterna', 'code_deis' => '13109', 'region_id' => 13, 'latitude' => -33.5500000,
+        'longitude' => -70.6833333]);
+        Commune::Create(['name' => 'La Granja', 'code_deis' => '13111', 'region_id' => 13, 'latitude' => -33.5833333,
+        'longitude' => -70.5833333]);
+        Commune::Create(['name' => 'Calera de Tango', 'code_deis' => '13403', 'region_id' => 13, 'latitude' => -33.6500000,
+        'longitude' => -70.8166667]);
+        Commune::Create(['name' => 'San José de Maipo', 'code_deis' => '13203', 'region_id' =>  13, 'latitude' => -33.6333333,
+        'longitude' => -70.3666667]);
+        Commune::Create(['name' => 'San Ramón', 'code_deis' => '13131', 'region_id' => 13, 'latitude' => -33.4500000,
+        'longitude' => -70.5000000]);
+        Commune::Create(['name' => 'La Florida', 'code_deis' => '13110', 'region_id' => 13, 'latitude' => -33.5500000,
+        'longitude' => -70.5666667]);
+        Commune::Create(['name' => 'La Pintana', 'code_deis' => '13112', 'region_id' => 13, 'latitude' => -33.5833333,
+        'longitude' => -70.6166667]);
+        Commune::Create(['name' => 'Pirque', 'code_deis' => '13202', 'region_id' => 13, 'latitude' => -33.6333333,
+        'longitude' => -70.5500000]);
         Commune::Create(['name' => 'Rancagua', 'code_deis' => '6101', 'region_id' => 6]);
         Commune::Create(['name' => 'Graneros', 'code_deis' => '6106', 'region_id' => 6]);
         Commune::Create(['name' => 'Coinco', 'code_deis' => '6103', 'region_id' => 6]);
