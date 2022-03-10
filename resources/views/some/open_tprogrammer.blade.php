@@ -38,16 +38,16 @@
       <table class="table table-responsive">
         <tr>
           <td>
-            <span data-feather="square" style="color:#85C1E9"></span> No aperturados
+            <span class="badge" style="background-color:#85C1E9"> No aperturados </span>
           </td>
           <td>
-            <span data-feather="square" style="color:#58E995"></span> Aperturados
+            <span class="badge" style="background-color:#58E995"> Aperturados </span>
           </td>
           <td>
-            <span data-feather="square" style="color:#F5B7B1"></span> Ausentismos
+            <span class="badge" style="background-color:#F5B7B1"> Ausentismos </span>
           </td>
           <td>
-            <span data-feather="square" style="color:#EAEBAB"></span> Sin rendimiento
+            <span class="badge" style="background-color:#EAEBAB"> Sin rendimiento </span>
           </td>
 
         </tr>

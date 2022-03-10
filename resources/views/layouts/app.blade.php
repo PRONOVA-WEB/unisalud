@@ -56,7 +56,7 @@
                             </div>
                         @endif
                     @endforeach
-                    @yield('content')
+                    @yield('content') @if( isset($slot) ) {{ $slot }} @endif
                 </div>
             </div>
             <footer class="sticky-footer bg-white d-print-none">

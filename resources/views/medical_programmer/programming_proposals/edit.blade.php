@@ -114,13 +114,13 @@
       <table class="table table-responsive">
         <tr>
           <td>
-            <span data-feather="square" style="color:#3757E9"></span> Propuesto
+            <span class="badge" style="background-color: #3757E9"> Propuesto </span>
           </td>
           <td>
-            <span data-feather="square" style="color:#85C1E9"></span> Anterior
+            <span class="badge" style="background-color: #85C1E9"> Anterior </span>
           </td>
           <td>
-            <span data-feather="square" style="color:#F8CDC4"></span> Otros contratos
+            <span class="badge" style="background-color: #F8CDC4"> Otros contratos </span>
           </td>
         </tr>
       </table>

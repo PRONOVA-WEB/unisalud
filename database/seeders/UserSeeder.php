@@ -26,9 +26,9 @@ class UserSeeder extends Seeder
         $user->active = 1;
         $user->claveunica = 1;
         $user->birthday = now();
-        $user->given = 'Angelina';
-        $user->fathers_family = 'Jolie';
-        $user->mothers_family = 'Voight';
+        $user->given = 'Administrador';
+        $user->fathers_family = 'Pronova';
+        $user->mothers_family = 'Pronova';
         $user->gender = 'female';
         $user->nationality_id = 41;
         $user->password = bcrypt('admin');
@@ -38,9 +38,9 @@ class UserSeeder extends Seeder
 
         $humanName = new HumanName();
         $humanName->use = 'official';
-        $humanName->given = 'Angelina';
-        $humanName->fathers_family = 'Jolie';
-        $humanName->mothers_family = 'Voight';
+        $humanName->given = 'Administrador';
+        $humanName->fathers_family = 'Pronova';
+        $humanName->mothers_family = 'Pronova';
         $humanName->user_id = $user->id;
         $humanName->save();
 
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         $identifier->use = 'official';
         $identifier->cod_con_identifier_type_id = 1; // RUN
         $identifier->value = 12345678;
-        $identifier->dv = 5;
+        $identifier->dv = 9;
         $identifier->user_id = $user->id;
         $identifier->save();
 
@@ -173,9 +173,6 @@ class UserSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-
-
-
         $user = new User();
         $user->active = 1;
         $user->given = 'Álvaro Raymundo Edgardo';
@@ -185,7 +182,7 @@ class UserSeeder extends Seeder
         $user->birthday = now();
         $user->gender = 'male';
         $user->nationality_id = 41;
-        if(env('APP_ENV') == 'local') $user->password = bcrypt('admin');
+        $user->password = bcrypt('admin');
         $user->save();
 
         $user->givePermissionTo(Permission::all());
@@ -201,7 +198,7 @@ class UserSeeder extends Seeder
         $identifier = new Identifier();
         $identifier->use = 'official';
         $identifier->cod_con_identifier_type_id = 1; // RUN
-        $identifier->value = 12345678;
+        $identifier->value = 15151515;
         $identifier->dv = 9;
         $identifier->user_id = $user->id;
         $identifier->save();
@@ -216,11 +213,6 @@ class UserSeeder extends Seeder
         $address->region_id = 1;
         $address->country_id = 42;
         $address->save();
-
-
-
-
-
 
         $user = new User();
         $user->active = 1;
@@ -262,9 +254,6 @@ class UserSeeder extends Seeder
         $address->region_id = 1;
         $address->country_id = 42;
         $address->save();
-
-
-
 
 
         // usuarios programador

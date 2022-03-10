@@ -69,8 +69,24 @@ class DatabaseSeeder extends Seeder
             SamuEstablishmentSeeder::class,
             SettingSeeder::class,
 
-
-
         ]);
+
+        if (\App::environment(['local', 'testing'])) {
+            $this->call([
+                MpMotherActivitiesTableSeeder::class,
+                MpActivityTypesTableSeeder::class,
+                MpActivitiesTableSeeder::class,
+                MpOperatingRoomsTableSeeder::class,
+                MpProfessionsTableSeeder::class,
+                MpProfessionActivitiesTableSeeder::class,
+                MpServicesTableSeeder::class,
+                MpSpecialtiesTableSeeder::class,
+                MpSpecialtyActivitiesTableSeeder::class,
+                MpSubActivitiesTableSeeder::class,
+                MpUserSpecialtiesTableSeeder::class,
+                MpUserProfessionsTableSeeder::class,
+                UsersTestSeeder::class,
+            ]);
+        }
     }
 }
