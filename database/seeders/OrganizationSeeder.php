@@ -16,15 +16,15 @@ class OrganizationSeeder extends Seeder
      */
     public function run()
     {
-        //Organization::Create(['name'=>'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de Iquique)','alias'=>'Servicio de Salud Iquique','type'=>'Dirección Servicio de Salud','old_code_deis' => '02-010','new_code_deis' => '102010','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        //Organization::Create(['name'=>'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de General)','alias'=>'Servicio de Salud General','type'=>'Dirección Servicio de Salud','old_code_deis' => '02-010','new_code_deis' => '102010','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         //////////////////////////////////////////////////////////REGIÓN DE TARAPACÁ//////////////////////////////////////////////
         $Organization = new Organization();
         $Organization->active = 1;
-        $Organization->name = 'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de Iquique)';
-        $Organization->alias = 'Servicio de Salud Iquique';
+        $Organization->name = 'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de General)';
+        $Organization->alias = 'Servicio de Salud General';
         $Organization->type = 1; //1 Dirección Servicio de Salud
         $Organization->code_deis = 102010;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -39,14 +39,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'PRAIS (S.S. Iquique)','alias'=>'PRAIS (S.S. Iquique)','type'=>'Centro PRAIS','old_code_deis' => '02-011','new_code_deis' => '102011','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        //Organization::Create(['name'=>'PRAIS (S.S. General)','alias'=>'PRAIS (S.S. General)','type'=>'Centro PRAIS','old_code_deis' => '02-011','new_code_deis' => '102011','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 2;
-        $Organization->name = 'PRAIS (S.S. Iquique)';
-        $Organization->alias = 'PRAIS (S.S. Iquique)';
+        $Organization->name = 'PRAIS (S.S. General)';
+        $Organization->alias = 'PRAIS (S.S. General)';
         $Organization->type = 2; //2 Centro PRAIS
         $Organization->code_deis = 102011;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -61,14 +61,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        // Organization::Create(['name'=>'Clínica Dental Móvil Simple. Pat. RW6740 (Iquique)','alias'=>'Clínica Dental Móvil Simple. Pat. RW6740 (Iquique)','type'=>'Clínica Dental Móvil','old_code_deis' => '02-012','new_code_deis' => '102012','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        // Organization::Create(['name'=>'Clínica Dental Móvil Simple. Pat. RW6740 (General)','alias'=>'Clínica Dental Móvil Simple. Pat. RW6740 (General)','type'=>'Clínica Dental Móvil','old_code_deis' => '02-012','new_code_deis' => '102012','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 3;
-        $Organization->name = 'Clínica Dental Móvil Simple. Pat. RW6740 (Iquique)';
+        $Organization->name = 'Clínica Dental Móvil Simple. Pat. RW6740 (General)';
         $Organization->alias = 'Clínica Dental Móvil';
         $Organization->type = 3; //3 Clínica Dental Móvil
         $Organization->code_deis = 102012;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -83,14 +83,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        // Organization::Create(['name'=>'Hospital Dr. Ernesto Torres Galdames (Iquique)','alias'=>'Hospital Dr. Ernesto Torres Galdames (Iquique)','type'=>'Hospital (Alta Complejidad)','old_code_deis' => '02-100','new_code_deis' => '102100','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        // Organization::Create(['name'=>'Hospital Dr. Ernesto Torres Galdames (General)','alias'=>'Hospital Dr. Ernesto Torres Galdames (General)','type'=>'Hospital (Alta Complejidad)','old_code_deis' => '02-100','new_code_deis' => '102100','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 4;
-        $Organization->name = 'Hospital Dr. Ernesto Torres Galdames (Iquique)';
-        $Organization->alias = 'Hospital Dr. Ernesto Torres Galdames (Iquique)';
+        $Organization->name = 'Hospital General';
+        $Organization->alias = 'Hospital General';
         $Organization->type = 5; //5 Hospital (Alta Complejidad)
         $Organization->code_deis = 102100;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -105,11 +105,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Clínica Iquique','alias'=>'Clínica Iquique','type'=>'Clínica','old_code_deis' => '02-200','new_code_deis' => '102200','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Clínica General','alias'=>'Clínica General','type'=>'Clínica','old_code_deis' => '02-200','new_code_deis' => '102200','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 5;
-        $Organization->name = 'Clínica Iquique';
-        $Organization->alias = 'Clínica Iquique';
+        $Organization->name = 'Clínica General';
+        $Organization->alias = 'Clínica General';
         $Organization->type = 6; //6 Clínica
         $Organization->code_deis = 102200;
         $Organization->service = 4; //3 = SEREMI de Tarapacá
@@ -149,11 +149,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro Clínico Militar Iquique','alias'=>'Centro Clínico Militar Iquique','type'=>'Centro de Salud','old_code_deis' => '02-209','new_code_deis' => '102209','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro Clínico Militar General','alias'=>'Centro Clínico Militar General','type'=>'Centro de Salud','old_code_deis' => '02-209','new_code_deis' => '102209','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 7;
-        $Organization->name = 'Centro Clínico Militar Iquique';
-        $Organization->alias = 'Centro Clínico Militar Iquique';
+        $Organization->name = 'Centro Clínico Militar General';
+        $Organization->alias = 'Centro Clínico Militar General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102209;
         $Organization->service = 4; //3 = SEREMI de Tarapacá
@@ -171,11 +171,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro Médico y Dental Megasalud Iquique','alias'=>'Centro Médico y Dental Megasalud Iquique','type'=>'Centro Médico y Dental','old_code_deis' => '02-213','new_code_deis' => '102213','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro Médico y Dental Megasalud General','alias'=>'Centro Médico y Dental Megasalud General','type'=>'Centro Médico y Dental','old_code_deis' => '02-213','new_code_deis' => '102213','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 8;
-        $Organization->name = 'Centro Médico y Dental Megasalud Iquique';
-        $Organization->alias = 'Centro Médico y Dental Megasalud Iquique';
+        $Organization->name = 'Centro Médico y Dental Megasalud General';
+        $Organization->alias = 'Centro Médico y Dental Megasalud General';
         $Organization->type = 17; //17 Centro Médico y Dental
         $Organization->code_deis = 102213;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -193,11 +193,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro de Salud Mutual CChC Iquique','alias'=>'Centro de Salud Mutual CChC Iquique','type'=>'Centro de Salud','old_code_deis' => '02-216','new_code_deis' => '102216','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Salud Mutual CChC General','alias'=>'Centro de Salud Mutual CChC General','type'=>'Centro de Salud','old_code_deis' => '02-216','new_code_deis' => '102216','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 9;
-        $Organization->name = 'Centro de Salud Mutual CChC Iquique';
-        $Organization->alias = 'Centro de Salud Mutual CChC Iquique';
+        $Organization->name = 'Centro de Salud Mutual CChC General';
+        $Organization->alias = 'Centro de Salud Mutual CChC General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102216;
         $Organization->service = 4; //3 = SEREMI de Tarapacá
@@ -215,11 +215,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Policlínico Naval de Iquique','alias'=>'Policlínico Naval de Iquique','type'=>'Centro de Salud','old_code_deis' => '02-217','new_code_deis' => '102217','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
+        //Organization::Create(['name'=>'Policlínico Naval de General','alias'=>'Policlínico Naval de General','type'=>'Centro de Salud','old_code_deis' => '02-217','new_code_deis' => '102217','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 10;
-        $Organization->name = 'Policlínico Naval de Iquique';
-        $Organization->alias = 'Policlínico Naval de Iquique';
+        $Organization->name = 'Policlínico Naval de General';
+        $Organization->alias = 'Policlínico Naval de General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102217;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -237,11 +237,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        // Organization::Create(['name'=>'Policlínico FACH de Iquique','alias'=>'Policlínico FACH de Iquique','type'=>'Centro de Salud','old_code_deis' => '02-218','new_code_deis' => '102218','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
+        // Organization::Create(['name'=>'Policlínico FACH de General','alias'=>'Policlínico FACH de General','type'=>'Centro de Salud','old_code_deis' => '02-218','new_code_deis' => '102218','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 11;
-        $Organization->name = 'Policlínico FACH de Iquique';
-        $Organization->alias = 'Policlínico FACH de Iquique';
+        $Organization->name = 'Policlínico FACH de General';
+        $Organization->alias = 'Policlínico FACH de General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102218;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -259,11 +259,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Policlínico Carabineros de Iquique','alias'=>'Policlínico Carabineros de Iquique','type'=>'Centro de Salud','old_code_deis' => '02-219','new_code_deis' => '102219','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
+        //Organization::Create(['name'=>'Policlínico Carabineros de General','alias'=>'Policlínico Carabineros de General','type'=>'Centro de Salud','old_code_deis' => '02-219','new_code_deis' => '102219','service'=>'SEREMI De Tarapacá','dependency'=>'Público No perteneciente al SNSS','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 12;
-        $Organization->name = 'Policlínico Carabineros de Iquique';
-        $Organization->alias = 'Policlínico Carabineros de Iquique';
+        $Organization->name = 'Policlínico Carabineros de General';
+        $Organization->alias = 'Policlínico Carabineros de General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102219;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -281,11 +281,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro de Atención Instituto de Seguridad del Trabajador Iquique','alias'=>'Centro de Atención Instituto de Seguridad del Trabajador Iquique','type'=>'Centro de Salud','old_code_deis' => '02-222','new_code_deis' => '102222','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Atención Instituto de Seguridad del Trabajador General','alias'=>'Centro de Atención Instituto de Seguridad del Trabajador General','type'=>'Centro de Salud','old_code_deis' => '02-222','new_code_deis' => '102222','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 13;
-        $Organization->name = 'Centro de Atención Instituto de Seguridad del Trabajador Iquique';
-        $Organization->alias = 'Centro de Atención Instituto de Seguridad del Trabajador Iquique';
+        $Organization->name = 'Centro de Atención Instituto de Seguridad del Trabajador General';
+        $Organization->alias = 'Centro de Atención Instituto de Seguridad del Trabajador General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102222;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -303,11 +303,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Policlínico del Trabajador AChS Iquique','alias'=>'Policlínico del Trabajador AChS Iquique','type'=>'Centro de Salud','old_code_deis' => '02-223','new_code_deis' => '102223','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Policlínico del Trabajador AChS General','alias'=>'Policlínico del Trabajador AChS General','type'=>'Centro de Salud','old_code_deis' => '02-223','new_code_deis' => '102223','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 14;
-        $Organization->name = 'Policlínico del Trabajador AChS Iquique';
-        $Organization->alias = 'Policlínico del Trabajador AChS Iquique';
+        $Organization->name = 'Policlínico del Trabajador AChS General';
+        $Organization->alias = 'Policlínico del Trabajador AChS General';
         $Organization->type = 8; //8 Centro de Salud
         $Organization->code_deis = 102223;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -391,11 +391,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Laboratorio Clínico Bionet S.A. - Iquique','alias'=>'Laboratorio Clínico Bionet S.A. - Iquique','type'=>'Laboratorio Clínico o Dental','old_code_deis' => '02-228','new_code_deis' => '102228','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Laboratorio Clínico Bionet S.A. - General','alias'=>'Laboratorio Clínico Bionet S.A. - General','type'=>'Laboratorio Clínico o Dental','old_code_deis' => '02-228','new_code_deis' => '102228','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 18;
-        $Organization->name = 'Laboratorio Clínico Bionet S.A. - Iquique';
-        $Organization->alias = 'Laboratorio Clínico Bionet S.A. - Iquique';
+        $Organization->name = 'Laboratorio Clínico Bionet S.A. - General';
+        $Organization->alias = 'Laboratorio Clínico Bionet S.A. - General';
         $Organization->type = 10; //10 Laboratorio Clínico o Dental
         $Organization->code_deis = 102228;
         $Organization->service = 4; //4 = SEREMI de Tarapacá
@@ -498,11 +498,11 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
         //}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
-        //Organization::Create(['name'=>'Centro de Diálisis Iquique','alias'=>'Centro de Diálisis Iquique','type'=>'Centro de Diálisis','old_code_deis' => '02-233','new_code_deis' => '102233','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Diálisis General','alias'=>'Centro de Diálisis General','type'=>'Centro de Diálisis','old_code_deis' => '02-233','new_code_deis' => '102233','service'=>'SEREMI De Tarapacá','dependency'=>'Privado','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 23;
-        $Organization->name = 'Centro de Diálisis Iquique';
-        $Organization->alias = 'Centro de Diálisis Iquique';
+        $Organization->name = 'Centro de Diálisis General';
+        $Organization->alias = 'Centro de Diálisis General';
         $Organization->code_deis = 102233;
         $Organization->save();
 
@@ -648,14 +648,14 @@ class OrganizationSeeder extends Seeder
         $address->region_id = 1;
         $address->country_id = 42;
         $address->save();
-        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Aguirre','alias'=>'Centro de Salud Familiar Cirujano Aguirre','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-300','new_code_deis' => '102300','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Aguirre','alias'=>'Centro de Salud Familiar Cirujano Aguirre','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-300','new_code_deis' => '102300','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 31;
         $Organization->name = 'Centro de Salud Familiar Cirujano Aguirre';
         $Organization->alias = 'CESFAM Cirujano Aguirre';
         $Organization->type = 11; //11 Consultorio General Urbano (CGU)
         $Organization->code_deis = 102300;
-        $Organization->service = 3; // 3 Servicio de Salud Iquique
+        $Organization->service = 3; // 3 Servicio de Salud General
         $Organization->dependency = 6; //6 Municipal
         $Organization->save();
 
@@ -670,14 +670,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Videla','alias'=>'Centro de Salud Familiar Cirujano Videla','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-301','new_code_deis' => '102301','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Videla','alias'=>'Centro de Salud Familiar Cirujano Videla','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-301','new_code_deis' => '102301','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 32;
         $Organization->name = 'Centro de Salud Familiar Cirujano Videla';
         $Organization->alias = 'CESFAM Cirujano Videla';
         $Organization->type = 11; //11 Consultorio General Urbano (CGU)
         $Organization->code_deis = 102301;
-        $Organization->service = 3; // 3 Servicio de Salud Iquique
+        $Organization->service = 3; // 3 Servicio de Salud General
         $Organization->dependency = 6; //6 Municipal
         $Organization->save();
 
@@ -692,14 +692,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Guzmán','alias'=>'Centro de Salud Familiar Cirujano Guzmán','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-302','new_code_deis' => '102302','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Salud Familiar Cirujano Guzmán','alias'=>'Centro de Salud Familiar Cirujano Guzmán','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-302','new_code_deis' => '102302','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 33;
         $Organization->name = 'Centro de Salud Familiar Cirujano Guzmán';
         $Organization->alias = 'CESFAM Guzmán';
         $Organization->type = 11; //11 Consultorio General Urbano (CGU)
         $Organization->code_deis = 102302;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -714,14 +714,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro de Salud Familiar Sur de Iquique','alias'=>'Centro de Salud Familiar Sur de Iquique','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-306','new_code_deis' => '102306','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro de Salud Familiar Sur de General','alias'=>'Centro de Salud Familiar Sur de General','type'=>'Consultorio General Urbano (CGU)','old_code_deis' => '02-306','new_code_deis' => '102306','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 34;
-        $Organization->name = 'Centro de Salud Familiar Sur de Iquique';
-        $Organization->alias = 'CESFAM Sur Iquique';
+        $Organization->name = 'Centro de Salud Familiar Sur de General';
+        $Organization->alias = 'CESFAM Sur General';
         $Organization->type = 11; //11 Consultorio General Urbano (CGU)
         $Organization->code_deis = 102306;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -736,14 +736,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Posta de Salud Rural Chanavayita','alias'=>'Posta de Salud Rural Chanavayita','type'=>'Posta de Salud Rural (PSR)','old_code_deis' => '02-412','new_code_deis' => '102412','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Posta de Salud Rural Chanavayita','alias'=>'Posta de Salud Rural Chanavayita','type'=>'Posta de Salud Rural (PSR)','old_code_deis' => '02-412','new_code_deis' => '102412','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 35;
         $Organization->name = 'Posta de Salud Rural Chanavayita';
         $Organization->alias = 'Posta Rural Chanavayita';
         $Organization->type = 13; //Posta de Salud Rural (PSR)
         $Organization->code_deis = 102412;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -758,14 +758,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Posta de Salud Rural San Marcos','alias'=>'Posta de Salud Rural San Marcos','type'=>'Posta de Salud Rural (PSR)','old_code_deis' => '02-413','new_code_deis' => '102413','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Posta de Salud Rural San Marcos','alias'=>'Posta de Salud Rural San Marcos','type'=>'Posta de Salud Rural (PSR)','old_code_deis' => '02-413','new_code_deis' => '102413','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 36;
         $Organization->name = 'Posta de Salud Rural San Marcos';
         $Organization->alias = 'Posta Rural San Marcos';
         $Organization->type = 13; //Posta de Salud Rural (PSR)
         $Organization->code_deis = 102413;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -780,14 +780,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'COSAM Dr. Jorge Seguel Cáceres','alias'=>'COSAM Dr. Jorge Seguel Cáceres','type'=>'Centro Comunitario de Salud Mental  (COSAM)','old_code_deis' => '02-600','new_code_deis' => '102600','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        //Organization::Create(['name'=>'COSAM Dr. Jorge Seguel Cáceres','alias'=>'COSAM Dr. Jorge Seguel Cáceres','type'=>'Centro Comunitario de Salud Mental  (COSAM)','old_code_deis' => '02-600','new_code_deis' => '102600','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 37;
         $Organization->name = 'COSAM Dr. Jorge Seguel Cáceres';
         $Organization->alias = 'COSAM Dr. Jorge Seguel Cáceres';
         $Organization->type = 14; //Centro Comunitario de Salud Mental  (COSAM)
         $Organization->code_deis = 102600;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -802,14 +802,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'COSAM Salvador Allende','alias'=>'COSAM Salvador Allende','type'=>'Centro Comunitario de Salud Mental  (COSAM)','old_code_deis' => '02-601','new_code_deis' => '102601','service'=>'Servicio de Salud Iquique','dependency'=>'Servicio de Salud','commune_id'=>5]);
+        //Organization::Create(['name'=>'COSAM Salvador Allende','alias'=>'COSAM Salvador Allende','type'=>'Centro Comunitario de Salud Mental  (COSAM)','old_code_deis' => '02-601','new_code_deis' => '102601','service'=>'Servicio de Salud General','dependency'=>'Servicio de Salud','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 38;
         $Organization->name = 'COSAM Salvador Allende';
         $Organization->alias = 'COSAM Salvador Allende';
         $Organization->type = 14; //Centro Comunitario de Salud Mental  (COSAM)
         $Organization->code_deis = 102601;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 1; //1 = Servicio de Salud
         $Organization->save();
 
@@ -824,15 +824,15 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'Centro Comunitario de Salud Familiar Cerro Esmeralda','alias'=>'Centro Comunitario de Salud Familiar Cerro Esmeralda','type'=>'Centro Comunitario de Salud Familiar (CECOSF)','old_code_deis' => '02-701','new_code_deis' => '102701','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'Centro Comunitario de Salud Familiar Cerro Esmeralda','alias'=>'Centro Comunitario de Salud Familiar Cerro Esmeralda','type'=>'Centro Comunitario de Salud Familiar (CECOSF)','old_code_deis' => '02-701','new_code_deis' => '102701','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 39;
         $Organization->name = 'Centro Comunitario de Salud Familiar Cerro Esmeralda';
         $Organization->alias = 'CECOSF Cerro Esmeralda';
         $Organization->type = 16; //Centro Comunitario de Salud Familiar (CECOSF)
         $Organization->code_deis = 102701;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
-        $Organization->dependency = 6; //6 = municipal        
+        $Organization->service = 3; //3 = Servicio de Salud General
+        $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
         $address = new Address();
@@ -846,14 +846,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'SAPU Cirujano Aguirre','alias'=>'SAPU Cirujano Aguirre','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-800','new_code_deis' => '102800','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'SAPU Cirujano Aguirre','alias'=>'SAPU Cirujano Aguirre','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-800','new_code_deis' => '102800','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 40;
         $Organization->name = 'SAPU Cirujano Aguirre';
         $Organization->alias = 'SAPU Cirujano Aguirre';
         $Organization->type = 20; //Servicio de Urgencia de APS
         $Organization->code_deis = 102800;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -868,14 +868,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'SAPU Cirujano Videla','alias'=>'SAPU Cirujano Videla','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-801','new_code_deis' => '102801','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'SAPU Cirujano Videla','alias'=>'SAPU Cirujano Videla','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-801','new_code_deis' => '102801','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 41;
         $Organization->name = 'SAPU Cirujano Videla';
         $Organization->alias = 'SAPU Cirujano Videla';
         $Organization->type = 20; //Servicio de Urgencia de APS
         $Organization->code_deis = 102801;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -890,14 +890,14 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'SAPU Cirujano Guzmán','alias'=>'SAPU Cirujano Guzmán','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-802','new_code_deis' => '102802','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'SAPU Cirujano Guzmán','alias'=>'SAPU Cirujano Guzmán','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-802','new_code_deis' => '102802','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 42;
         $Organization->name = 'SAPU Cirujano Guzmán';
         $Organization->alias = 'SAPU Cirujano Guzmán';
         $Organization->type = 20; //Servicio de Urgencia de APS
         $Organization->code_deis = 102802;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
+        $Organization->service = 3; //3 = Servicio de Salud General
         $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
@@ -912,15 +912,15 @@ class OrganizationSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-        //Organization::Create(['name'=>'SAR Sur de Iquique','alias'=>'SAR Sur de Iquique','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-806','new_code_deis' => '102806','service'=>'Servicio de Salud Iquique','dependency'=>'Municipal','commune_id'=>5]);
+        //Organization::Create(['name'=>'SAR Sur de General','alias'=>'SAR Sur de General','type'=>'Servicio de Urgencia de APS','old_code_deis' => '02-806','new_code_deis' => '102806','service'=>'Servicio de Salud General','dependency'=>'Municipal','commune_id'=>5]);
         $Organization = new Organization();
         $Organization->active = 43;
-        $Organization->name = 'SAR Sur de Iquique';
-        $Organization->alias = 'SAR Sur de Iquique';
+        $Organization->name = 'SAR Sur de General';
+        $Organization->alias = 'SAR Sur de General';
         $Organization->type = 20; //Servicio de Urgencia de APS
         $Organization->code_deis = 102806;
-        $Organization->service = 3; //3 = Servicio de Salud Iquique
-        $Organization->dependency = 6; //6 = municipal        
+        $Organization->service = 3; //3 = Servicio de Salud General
+        $Organization->dependency = 6; //6 = municipal
         $Organization->save();
 
         $address = new Address();
@@ -2369,11 +2369,11 @@ class OrganizationSeeder extends Seeder
         $address->commune_id = 1; //Arica
         $address->region_id = 15; //15 Arica y Parinacota
         $address->country_id = 42;
-        $address->save();    
+        $address->save();
 
-       
+
         //desde el excel
-        
+
 
         Organization::Create(['name' => 'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de Antofagasta)','alias'=>'Actividades gestionadas por la Dirección del Servicio para apoyo de la Red (S.S de Antofagasta)','type'=>1,'code_deis' =>103010,'service' =>5,'dependency' =>1]);
 Organization::Create(['name' => 'PRAIS (S.S Antofagasta)','alias'=>'PRAIS (S.S Antofagasta)','type'=>2,'code_deis' =>103011,'service' =>5,'dependency' =>1]);
@@ -5627,7 +5627,7 @@ Organization::Create(['name' => 'Centro de Salud Familiar El Carmen','alias'=>'C
 Organization::Create(['name' => 'Centro Médico Fermín Roca','alias'=>'Centro Médico Fermín Roca','type'=>18,'code_deis' =>200187,'service' =>42,'dependency' =>3]);
 Organization::Create(['name' => 'Centro de Especialidades Odontológicas Leng','alias'=>'Centro de Especialidades Odontológicas Leng','type'=>12,'code_deis' =>200188,'service' =>20,'dependency' =>6]);
 Organization::Create(['name' => 'SAR Enfermera Sofía Pincheira','alias'=>'SAR Enfermera Sofía Pincheira','type'=>20,'code_deis' =>200189,'service' =>18,'dependency' =>1]);
-Organization::Create(['name' => 'Policlínico Centro de Cumplimiento Penitenciario Iquique','alias'=>'Policlínico Centro de Cumplimiento Penitenciario Iquique','type'=>8,'code_deis' =>200190,'service' =>4,'dependency' =>4]);
+Organization::Create(['name' => 'Policlínico Centro de Cumplimiento Penitenciario General','alias'=>'Policlínico Centro de Cumplimiento Penitenciario General','type'=>8,'code_deis' =>200190,'service' =>4,'dependency' =>4]);
 Organization::Create(['name' => 'Policlínico de Atención Primaria del Centro de Detención Preventiva de Pozo Almonte','alias'=>'Policlínico de Atención Primaria del Centro de Detención Preventiva de Pozo Almonte','type'=>8,'code_deis' =>200191,'service' =>4,'dependency' =>4]);
 Organization::Create(['name' => 'Centro de Diálisis Hemosur (Osorno)','alias'=>'Centro de Diálisis Hemosur (Osorno)','type'=>19,'code_deis' =>200192,'service' =>37,'dependency' =>3]);
 Organization::Create(['name' => 'Clínica WLK','alias'=>'Clínica WLK','type'=>6,'code_deis' =>200193,'service' =>16,'dependency' =>3]);
@@ -5675,7 +5675,7 @@ Organization::Create(['name' => 'Centro Comunitario de Salud Familiar Guacamayo'
 Organization::Create(['name' => 'Centro Comunitario de Salud Familiar Villa Olímpica','alias'=>'Centro Comunitario de Salud Familiar Villa Olímpica','type'=>16,'code_deis' =>200236,'service' =>20,'dependency' =>6]);
 Organization::Create(['name' => 'Centro Clínico San Bernardo','alias'=>'Centro Clínico San Bernardo','type'=>8,'code_deis' =>200237,'service' =>16,'dependency' =>3]);
 Organization::Create(['name' => 'Laboratorio Clínico de Nueva Clínica Tarapacá','alias'=>'Laboratorio Clínico de Nueva Clínica Tarapacá','type'=>10,'code_deis' =>200238,'service' =>4,'dependency' =>3]);
-Organization::Create(['name' => 'Instituto Teletón Iquique','alias'=>'Instituto Teletón Iquique','type'=>8,'code_deis' =>200239,'service' =>4,'dependency' =>3]);
+Organization::Create(['name' => 'Instituto Teletón General','alias'=>'Instituto Teletón General','type'=>8,'code_deis' =>200239,'service' =>4,'dependency' =>3]);
 Organization::Create(['name' => 'Centro de Imagenología Médica Imagensalud','alias'=>'Centro de Imagenología Médica Imagensalud','type'=>8,'code_deis' =>200240,'service' =>23,'dependency' =>3]);
 Organization::Create(['name' => 'Centro Comunitario de Salud Familiar Oasis','alias'=>'Centro Comunitario de Salud Familiar Oasis','type'=>16,'code_deis' =>200241,'service' =>5,'dependency' =>6]);
 Organization::Create(['name' => 'Centro de Diálisis Nephrocare Padre Las Casas','alias'=>'Centro de Diálisis Nephrocare Padre Las Casas','type'=>19,'code_deis' =>200242,'service' =>33,'dependency' =>3]);
@@ -5974,7 +5974,7 @@ Organization::Create(['name' => 'Centro de Especialidades Odontológicas','alias
 Organization::Create(['name' => 'Centro de Diagnóstico San Felipe','alias'=>'Centro de Diagnóstico San Felipe','type'=>10,'code_deis' =>200537,'service' =>12,'dependency' =>3]);
 Organization::Create(['name' => 'Centro de Salud Familiar San Isidro Calingasta','alias'=>'Centro de Salud Familiar San Isidro Calingasta','type'=>12,'code_deis' =>200538,'service' =>9,'dependency' =>6]);
 Organization::Create(['name' => 'Centro Referencia Diagnóstico Médico Osorno','alias'=>'Centro Referencia Diagnóstico Médico Osorno','type'=>12,'code_deis' =>200539,'service' =>36,'dependency' =>6]);
-Organization::Create(['name' => 'Centro Odontológico Uno Salud Dental Iquique','alias'=>'Centro Odontológico Uno Salud Dental Iquique','type'=>9,'code_deis' =>200540,'service' =>4,'dependency' =>3]);
+Organization::Create(['name' => 'Centro Odontológico Uno Salud Dental General','alias'=>'Centro Odontológico Uno Salud Dental General','type'=>9,'code_deis' =>200540,'service' =>4,'dependency' =>3]);
 Organization::Create(['name' => 'Clínica IMET','alias'=>'Clínica IMET','type'=>8,'code_deis' =>200541,'service' =>42,'dependency' =>3]);
 Organization::Create(['name' => 'Laboratorio Magallanes','alias'=>'Laboratorio Magallanes','type'=>10,'code_deis' =>200542,'service' =>42,'dependency' =>3]);
 Organization::Create(['name' => 'Centro Odontológico Uno Dental Osorno','alias'=>'Centro Odontológico Uno Dental Osorno','type'=>9,'code_deis' =>200543,'service' =>37,'dependency' =>3]);
@@ -6091,7 +6091,7 @@ Organization::Create(['name' => 'Vacunatorio Clínica El Bosque','alias'=>'Vacun
 Organization::Create(['name' => 'Centro Metropolitano de Atención Prehospitalaria','alias'=>'Centro Metropolitano de Atención Prehospitalaria','type'=>32,'code_deis' =>200655,'service' =>18,'dependency' =>1]);
 Organization::Create(['name' => 'Clínica de Dolor Facial y Trastornos del Sueño CDS','alias'=>'Clínica de Dolor Facial y Trastornos del Sueño CDS','type'=>9,'code_deis' =>200656,'service' =>35,'dependency' =>3]);
 Organization::Create(['name' => 'Servicio Médico Legal Arica','alias'=>'Servicio Médico Legal Arica','type'=>33,'code_deis' =>200657,'service' =>46,'dependency' =>9]);
-Organization::Create(['name' => 'Servicio Médico Legal Iquique','alias'=>'Servicio Médico Legal Iquique','type'=>33,'code_deis' =>200658,'service' =>46,'dependency' =>9]);
+Organization::Create(['name' => 'Servicio Médico Legal General','alias'=>'Servicio Médico Legal General','type'=>33,'code_deis' =>200658,'service' =>46,'dependency' =>9]);
 Organization::Create(['name' => 'Servicio Médico Legal Antofagasta','alias'=>'Servicio Médico Legal Antofagasta','type'=>33,'code_deis' =>200659,'service' =>46,'dependency' =>9]);
 Organization::Create(['name' => 'Servicio Médico Legal Calama','alias'=>'Servicio Médico Legal Calama','type'=>33,'code_deis' =>200660,'service' =>46,'dependency' =>9]);
 Organization::Create(['name' => 'Servicio Médico Legal Copiapó','alias'=>'Servicio Médico Legal Copiapó','type'=>33,'code_deis' =>200661,'service' =>46,'dependency' =>9]);
@@ -6135,7 +6135,7 @@ Organization::Create(['name' => 'Centro Médico Lira Red de Salud UC CHRISTUS','
 Organization::Create(['name' => 'Centro de Cáncer Red de Salud UC CHRISTUS','alias'=>'Centro de Cáncer Red de Salud UC CHRISTUS','type'=>8,'code_deis' =>200699,'service' =>16,'dependency' =>4]);
 Organization::Create(['name' => 'Megasalud Magallanes','alias'=>'Megasalud Magallanes','type'=>8,'code_deis' =>200700,'service' =>42,'dependency' =>4]);
 Organization::Create(['name' => 'PAME Hospital  Juan Noe Cervani ','alias'=>'PAME Hospital  Juan Noe Cervani ','type'=>34,'code_deis' =>200701,'service' =>1,'dependency' =>8]);
-Organization::Create(['name' => 'PAME Hospital de Iquique ','alias'=>'PAME Hospital de Iquique ','type'=>34,'code_deis' =>200702,'service' =>3,'dependency' =>8]);
+Organization::Create(['name' => 'PAME Hospital de General ','alias'=>'PAME Hospital de General ','type'=>34,'code_deis' =>200702,'service' =>3,'dependency' =>8]);
 Organization::Create(['name' => 'Hospital modular de Campaña Hospital San José Antiguo ','alias'=>'Hospital modular de Campaña Hospital San José Antiguo ','type'=>28,'code_deis' =>200703,'service' =>15,'dependency' =>8]);
 Organization::Create(['name' => 'Carpas Estacionamiento Urgencia Hospital San José','alias'=>'Carpas Estacionamiento Urgencia Hospital San José','type'=>28,'code_deis' =>200704,'service' =>15,'dependency' =>8]);
 Organization::Create(['name' => 'Estadio Municipal de Chillán Nelson Oyarzún Arenas','alias'=>'Estadio Municipal de Chillán Nelson Oyarzún Arenas','type'=>28,'code_deis' =>200705,'service' =>26,'dependency' =>8]);

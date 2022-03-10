@@ -48,7 +48,7 @@
           <td>{{$programmingProposal->id}}</td>
           <td>{{$programmingProposal->request_date->format('d-m-Y')}}</td>
           <td>{{$programmingProposal->type}}</td>
-          <td>{{$programmingProposal->user->OfficialFullName}}</td>
+          <td>{{$programmingProposal->user->OfficialFullName ?? 'Administrador'}}</td>
           <td>{{$programmingProposal->contract->law}} - {{$programmingProposal->contract->weekly_hours}}hrs</td>
           <td>
             @if($programmingProposal->specialty){{$programmingProposal->specialty->specialty_name}}@endif
