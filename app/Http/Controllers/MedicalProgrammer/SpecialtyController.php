@@ -5,6 +5,8 @@ namespace App\Http\Controllers\MedicalProgrammer;
 use App\Models\MedicalProgrammer\Specialty;
 use App\Models\MedicalProgrammer\SpecialtyActivity;
 use App\Models\MedicalProgrammer\Activity;
+use App\Models\Location;
+use App\Models\CodConPhysicalType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -126,5 +128,34 @@ class SpecialtyController extends Controller
         $specialty->delete();
         session()->flash('success', 'La especialidad ha sido eliminada');
         return redirect()->route('medical_programmer.specialties.index');
+    }
+
+    public function locations()
+    {
+        $specialties = Specialty::all();
+
+        return view('medical_programmer.specialties.locations', compact('specialties'));
+
+    }
+
+    public function asign_location(Specialty $specialty)
+    {
+        $locations_groupby_types = Location::query()
+                        ->where('status','active')
+                        ->whereNotNull('cod_con_physical_type_id')
+                        ->get()
+                        ->groupBy(function ($type) {
+                            return CodConPhysicalType::find($type->cod_con_physical_type_id)->text;
+                        });
+        //dd($locations_groupby_types);
+        return view('medical_programmer.specialties.locationsSpecialty', compact('specialty','locations_groupby_types'));
+    }
+
+    public function asign_location_store(Specialty $specialty, Request $request)
+    {
+        //dd($specialty, $request->all());
+        $specialty->locations()->sync($request->locations);
+        session()->flash('success', 'La(s) locaciones han sido asignadas exitosamente');
+        return redirect()->route('medical_programmer.specialties.locations');
     }
 }

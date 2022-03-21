@@ -2,6 +2,7 @@
 
 namespace App\Models\MedicalProgrammer;
 
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -57,6 +58,16 @@ class Specialty extends Model implements Auditable
         return $this->belongsToMany('App\Models\MedicalProgrammer\OperatingRoom','mp_operating_room_specialties')
                     ->wherePivot('deleted_at', null);
                     // ->withPivot('performance');
+    }
+
+    public function locations()
+    {
+        return $this->belongsToMany(Location::class, 'location_specialty','specialty_id','location_id');
+    }
+
+    public function programming_proposals()
+    {
+        return $this->hasMany(ProgrammingProposal::class);
     }
 
     use SoftDeletes;

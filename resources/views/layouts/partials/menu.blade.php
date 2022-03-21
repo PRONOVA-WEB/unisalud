@@ -73,9 +73,6 @@
                 <a class="collapse-item" href="{{ route('some.openPending') }}">
                     <i class="fas fa-check-circle"></i> Pendiente apertura
                 </a>
-                <a class="collapse-item" href="{{ route('some.locations.index') }}">
-                    <i class="fas fa-check-circle"></i> Locaciones
-                </a>
                 <a class="collapse-item" href="{{ route('some.observations.index') }}">
                     <i class="fas fa-check-circle"></i> Observaciones
                 </a>
@@ -97,12 +94,20 @@
                     <i class="fas fa-cube"></i> Propuestas<br> de programación
                 </a>
                 @endcanany
+                <a class="collapse-item" href="{{ route('medical_programmer.contracts.index') }}">
+                    <i class="fas fa-cube"></i>  Contratos
+                </a>
+                @canany(['Mp: reportes'])
                 <a class="collapse-item" href="{{ route('medical_programmer.programming_proposal.consolidated_programmings') }}">
-                    <i class="fas fa-cube"></i> Programaciones
+                    <i class="fas fa-doc"></i> Consolidado <br>de programaciones
+                </a>
+                <a class="collapse-item" href="{{ route('medical_programmer.reports.avaliableySpecialtyLocations') }}">
+                    <i class="fas fa-cube"></i> Reporte <br>Locaciones / Especialidad
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.reports.pendingPractitionersReport') }}">
                     <i class="fas fa-cube"></i>  Reporte 1
                 </a>
+                @endcan
             </div>
         </div>
     </li>
@@ -115,7 +120,7 @@
     </li>
     @endcanany
     @canany(['Mp: mantenedores'])
-    <li class="nav-item {{ active(['parameter.*']) }}">
+    <li class="nav-item {{ active(['parameter.*','medical_programmer.*']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMantenedor"
             aria-expanded="true" aria-controls="collapseMantenedor">
             <i class="fas fa-cogs"></i>
@@ -126,15 +131,18 @@
                 <a class="collapse-item" href="{{ route('parameter.organization.index','Todas las Organizaciones' ) }}">
                     <i class="fas fa-cog"></i> Organizaciones
                 </a>
+                <a class="collapse-item" href="{{ route('medical_programmer.locations.index') }}">
+                    <i class="fas fa-cog"></i> Locaciones
+                </a>
+                <a class="collapse-item" href="{{ route('medical_programmer.specialties.locations') }}">
+                    <i class="fas fa-cog"></i> Locaciones <br> por especialidades
+                </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.rrhh.index') }}">
                     <i class="fas fa-cog"></i>  RRHH
                 </a>
-                <a class="collapse-item" href="{{ route('medical_programmer.contracts.index') }}">
-                    <i class="fas fa-cog"></i>  Contratos
-                </a>
-                <a class="collapse-item" href="{{ route('medical_programmer.operating_rooms.index') }}">
+                {{-- <a class="collapse-item" href="{{ route('medical_programmer.operating_rooms.index') }}">
                     <i class="fas fa-cog"></i>  Pabellones
-                </a>
+                </a> --}}
                 <a class="collapse-item" href="{{ route('medical_programmer.mother_activities.index') }}">
                     <i class="fas fa-cog"></i>  Actividades Madre
                 </a>
@@ -148,7 +156,7 @@
                     <i class="fas fa-cog"></i>  Servicios
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.specialties.index') }}">
-                    <i class="fas fa-cog"></i>  Especialidades
+                    <i class="fas fa-cog"></i>  Especialidades <br> por funcionario
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.professions.index') }}">
                     <i class="fas fa-cog"></i>  Profesiones

@@ -15,8 +15,7 @@ class Location extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id', 'status', 'name', 'alias', 'description', 'organization_id'
-        //, 'user_id'
+        'id', 'status', 'name', 'alias', 'description', 'organization_id','cod_con_physical_type_id'
     ];
 
     public function appointments()
@@ -24,12 +23,36 @@ class Location extends Model
         return $this->morphToMany(Appointment::class, 'appointable');
     }
 
-    public function organization(){
+    public function organization()
+    {
         return $this->belongsTo('App\Models\Organization', 'organization_id');
     }
 
-    protected $table = 'locations';
-    
-    
+    public function hours_of_operation()
+    {
+        return $this->belongsToMany(HourOfOperation::class, 'location_hour_of_operation', 'location_id', 'hours_of_operation_id');
+    }
 
+    public function cod_con_physical_types()
+    {
+        return $this->belongsTo(CodConPhysicalType::class, 'cod_con_physical_type_id');
+    }
+
+    public function getEstatusAttribute()
+    {
+        switch ($this->status) {
+            case 'active':
+                $estatus = 'Activo';
+                break;
+            case 'suspended':
+                $estatus = 'Suspendido';
+                break;
+            case 'inactive':
+                $estatus = 'Inactivo';
+                break;
+        }
+        return $estatus;
+    }
+
+    protected $table = 'locations';
 }

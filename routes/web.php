@@ -20,7 +20,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Fq\CysticFibrosisRequest;
 use App\Http\Controllers\Fq\ContactUserController;
 use App\Http\Controllers\Fq\FqRequestController;
-use App\Http\Controllers\Some\LocationController;
+use App\Http\Controllers\MedicalProgrammer\LocationController as MpLocationController;
 use App\Http\Controllers\Surveys\TeleconsultationSurveyController;
 
 use App\Http\Controllers\MedicalProgrammer\OperatingRoomProgrammingController;
@@ -42,7 +42,6 @@ use App\Http\Controllers\MedicalProgrammer\ReportController;
 use App\Http\Controllers\MedicalProgrammer\ProgrammingProposalController;
 use App\Http\Controllers\MedicalProgrammer\ProgrammingProposalDetailController;
 use App\Http\Controllers\MedicalProgrammer\ProgrammingProposalSignatureFlowController;
-
 
 use App\Http\Controllers\MedicalLicenceController;
 use App\Http\Livewire\Some\AsignAppointment;
@@ -163,17 +162,6 @@ Route::prefix('some')->name('some.')->middleware('auth')->group(function(){
     Route::get('/appointed_available', AppointedAvailable::class)->name('appointedAvailable');
     Route::get('/open_pending', OpenPending::class)->name('openPending');
 
-
-    Route::prefix('locations')->name('locations.')->group(function(){
-		Route::get('/', [LocationController::class, 'index'])->name('index');
-		Route::post('/', [LocationController::class, 'store'])->name('store');
-		Route::get('/create', [LocationController::class, 'create'])->name('create');
-		Route::get('/{location}', [LocationController::class, 'show'])->name('show');
-		Route::put('/{location}', [LocationController::class, 'update'])->name('update');
-		Route::delete('/{location}', [LocationController::class, 'destroy'])->name('destroy');
-		Route::get('/{location}/edit', [LocationController::class, 'edit'])->name('edit');
-    });
-
     Route::prefix('observations')->name('observations.')->group(function(){
 		Route::get('/', [ObservationController::class, 'index'])->name('index');
 		Route::post('/', [ObservationController::class, 'store'])->name('store');
@@ -220,6 +208,15 @@ Route::prefix('surveys')->as('surveys.')->middleware('auth')->group(function(){
 
 Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('auth')->group(function(){
 
+    Route::prefix('locations')->name('locations.')->group(function(){
+		Route::get('/', [MpLocationController::class, 'index'])->name('index');
+		Route::post('/', [MpLocationController::class, 'store'])->name('store');
+		Route::get('/create', [MpLocationController::class, 'create'])->name('create');
+		Route::get('/{location}', [MpLocationController::class, 'show'])->name('show');
+		Route::put('/{location}', [MpLocationController::class, 'update'])->name('update');
+		Route::delete('/{location}', [MpLocationController::class, 'destroy'])->name('destroy');
+		Route::get('/{location}/edit', [MpLocationController::class, 'edit'])->name('edit');
+    });
 	Route::prefix('operating_room_programming')->name('operating_room_programming.')->group(function(){
 		Route::post('saveMyEvent', [OperatingRoomProgrammingController::class, 'saveMyEvent'])->name('saveMyEvent');
 		Route::post('updateMyEvent', [OperatingRoomProgrammingController::class, 'updateMyEvent'])->name('updateMyEvent');
@@ -358,6 +355,9 @@ Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('au
 	});
 
 	Route::prefix('specialties')->name('specialties.')->group(function(){
+        Route::get('/locations', [SpecialtyController::class, 'locations'])->name('locations');
+        Route::get('/locations/{specialty}/asign', [SpecialtyController::class, 'asign_location'])->name('asign_location');
+        Route::post('/locations/{specialty}/asign', [SpecialtyController::class, 'asign_location_store'])->name('asign_location_store');
 		Route::get('/', [SpecialtyController::class, 'index'])->name('index');
 		Route::post('/', [SpecialtyController::class, 'store'])->name('store');
 		Route::get('/create', [SpecialtyController::class, 'create'])->name('create');
@@ -401,7 +401,8 @@ Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('au
 	});
 
 	Route::prefix('reports')->name('reports.')->group(function(){
-		Route::get('specialty', [OperatingRoomController::class, 'reportSpecialty'])->name('specialty');
+        Route::get('avaliabley_specialty_locations', [ReportController::class, 'avaliableySpecialtyLocations'])->name('avaliableySpecialtyLocations');
+		Route::get('specialty', [ReportController::class, 'reportSpecialty'])->name('specialty');
 		Route::get('by_profesional', [OperatingRoomController::class, 'reportByProfesional'])->name('by_profesional');
 		Route::get('weekly', [OperatingRoomController::class, 'reportWeekly'])->name('weekly');
 		Route::get('diary', [OperatingRoomController::class, 'reportDiary'])->name('diary');
@@ -432,10 +433,8 @@ Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('au
 		Route::post('/', [ProgrammingProposalDetailController::class, 'store'])->name('store');
 		Route::delete('/{programmingProposalDetail}', [ProgrammingProposalDetailController::class, 'destroy'])->name('destroy');
 	});
+
 });
-
-
-
 
 });
 
