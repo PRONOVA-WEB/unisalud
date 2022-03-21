@@ -99,7 +99,7 @@
                 </a>
                 @canany(['Mp: reportes'])
                 <a class="collapse-item" href="{{ route('medical_programmer.programming_proposal.consolidated_programmings') }}">
-                    <i class="fas fa-doc"></i> Consolidado <br>de programaciones
+                    <i class="fas fa-cube"></i> Consolidado <br>de programaciones
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.reports.avaliableySpecialtyLocations') }}">
                     <i class="fas fa-cube"></i> Reporte <br>Locaciones / Especialidad

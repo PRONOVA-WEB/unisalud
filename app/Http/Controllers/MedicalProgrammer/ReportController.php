@@ -125,10 +125,15 @@ class ReportController extends Controller
             foreach ($specialty->programming_proposals as $proposals) {
                 // dd($proposals);
                 foreach ($proposals->details as $proposal_detail) {
-                    $start  = new \Carbon\Carbon($proposal_detail->start_hour);
-                    $end    = new \Carbon\Carbon($proposal_detail->end_hour);
-                    $hours_for_proposal_detail =  $start->diffInHours($end);
-                    $total_hours_for_proposal_specialty = $total_hours_for_proposal_specialty + $hours_for_proposal_detail; //total horas de todas las propuestas de la especialidad
+                    //dd($proposal_detail->subactivity);
+                    if (!is_null($proposal_detail->subactivity->performance)) //subactividades con performance definido
+                    {
+                        $start  = new \Carbon\Carbon($proposal_detail->start_hour);
+                        $end    = new \Carbon\Carbon($proposal_detail->end_hour);
+                        $hours_for_proposal_detail =  $start->diffInHours($end);
+                        $total_hours_for_proposal_specialty = $total_hours_for_proposal_specialty + $hours_for_proposal_detail; //total horas de todas las propuestas de la especialidad
+                    }
+
                 }
             }
 

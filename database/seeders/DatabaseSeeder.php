@@ -90,6 +90,12 @@ class DatabaseSeeder extends Seeder
                 MpUserSpecialtiesTableSeeder::class,
                 MpUserProfessionsTableSeeder::class,
                 UsersTestSeeder::class,
+                MpContractsTableSeeder::class,
+                MpProgrammingProposalsTableSeeder::class,
+                MpProgrammingProposalsSignatureFlowTableSeeder::class,
+                MpProgrammingProposalsDetailTableSeeder::class,
+                AppointmentsTableSeeder::class,
+                AppointablesTableSeeder::class,
             ]);
         }
     }
