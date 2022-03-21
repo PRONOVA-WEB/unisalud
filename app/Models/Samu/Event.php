@@ -16,7 +16,6 @@ use App\Models\Commune;
 use App\Models\CodConIdentifierType;
 use App\Models\Organization;
 
-
 class Event extends Model implements Auditable
 {   
     use \OwenIt\Auditing\Auditable;
@@ -30,6 +29,7 @@ class Event extends Model implements Auditable
         'date',
         
         'shift_id',
+        'call_id',
         'key_id',
         'return_key_id',
         'mobile_in_service_id',
@@ -113,6 +113,11 @@ class Event extends Model implements Auditable
         return $this->belongsToMany(Call::class,'samu_call_event');
     }
 
+    public function call()
+    {
+        return $this->belongsTo(Call::class);
+    }
+
     public function key()
     {
        return $this->belongsTo(Key::class);
@@ -161,7 +166,6 @@ class Event extends Model implements Auditable
     public function users()
     {
         return $this->belongsToMany(User::class,'samu_event_user','event_id')
-
                     ->using(EventUser::class)
                     ->withPivot('id','job_type_id')
                     ->withTimestamps();
@@ -174,23 +178,5 @@ class Event extends Model implements Auditable
         if($this->return_base_at)           $color = 'info';
         if($this->on_base_at)               $color = 'success';
         return $color;
-    }
-
-    /**
-     * Perform any actions required after the model boots.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        self::creating(function (Event $event): void {
-            /* Asigna el creador */
-            $event->creator()->associate(auth()->user());
-
-            $counter          = EventCounter::useNext();
-            $event->counter   = $counter->counter;
-            $event->date      = $counter->date;
-        });
-
     }
 }

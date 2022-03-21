@@ -98,9 +98,6 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('authentic
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
 
-Route::get('/miubicacion', [CoordinateController::class, 'create'])->name('coordinate.create');
-
-
 
 /** Ejempo con livewire */
 //Route::get('/home', Home::class)->middleware('auth')->name('home');
@@ -133,6 +130,7 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function(){
     Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
     Route::put('/{user}', [UserController::class, 'update'])->name('update');
     Route::get('/search_by_name', [UserController::class, 'searchByName'])->name('search_by_name');
+	Route::get('{user}/switch', [UserController::class, 'switch'])->name('switch');
 });
 Route::prefix('patient')->name('patient.')->middleware('auth')->group(function(){
     Route::get('/', [PatientController::class, 'index'])->name('index');
@@ -462,8 +460,8 @@ Route::prefix('soap')->name('soap.')->group(function(){
     Route::any('rayen', [SoapController::class, 'server'])->name('rayen');
 });
 
-//rutas samu
 
+/* Rutas SAMU */
 use App\Http\Controllers\Samu\ShiftController;
 use App\Http\Controllers\Samu\MobileInServiceController;
 use App\Http\Controllers\Samu\ShiftMobileController;
@@ -474,6 +472,7 @@ use App\Http\Controllers\Samu\CallController;
 use App\Http\Controllers\Samu\NoveltieController;
 use App\Http\Controllers\Samu\EstablishmentController;
 use App\Http\Controllers\Samu\GpsController;
+use App\Http\Controllers\Samu\CommuneController;
 use App\Http\Livewire\Samu\FindEvent;
 use App\Http\Livewire\Samu\MobileSelector;
 use App\Http\Livewire\Samu\TimestampsAndLocation;
@@ -483,7 +482,7 @@ use App\Http\Livewire\Samu\SearchCalls;
 Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 
     Route::view('/', 'samu.welcome')->name('welcome');
-	Route::get('/map', [CallController::class, 'maps'])->name('samu.maps');
+	Route::get('/map', [CallController::class, 'maps'])->name('map');
 
 	Route::prefix('shifts')->name('shift.')
 	->middleware('permission:SAMU administrador|SAMU regulador|SAMU despachador')
@@ -547,8 +546,10 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 	->middleware('permission:SAMU administrador|SAMU despachador')
 	->group(function () {
 		Route::get('/', 			[EventController::class, 'index'])->name('index');
-		Route::get('/create',		[EventController::class, 'create'])->name('create');
-		Route::post('/store',		[EventController::class, 'store'])->name('store');
+		Route::get('/{event}/duplicate', [EventController::class, 'create'])->name('duplicate');
+		Route::get('/create/{call?}', [EventController::class, 'create'])->name('create');
+		Route::post('/store/{call?}', [EventController::class, 'store'])->name('store');
+		Route::post('/store/{event?}/duplicate', [EventController::class, 'store'])->name('store.duplicate');
 		Route::get('/edit/{event}', [EventController::class, 'edit'])->name('edit');
 		Route::put('/update/{event}',[EventController::class, 'update'])->name('update');
 		Route::delete('/{event}', 	[EventController::class, 'destroy'])->name('destroy');
@@ -594,6 +595,13 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::post('/', 			[EstablishmentController::class, 'store'])->name('store');
 	});
 
+	Route::prefix('communes')->name('commune.')
+	->middleware('permission:SAMU administrador')
+	->group(function () {
+		Route::get('/', 			[CommuneController::class, 'index'])->name('index');
+		Route::post('/', 			[CommuneController::class, 'store'])->name('store');
+	});
+
 	Route::prefix('coordinates')->name('coordinate.')
 	->group(function () {
 		Route::get('/', [CoordinateController::class, 'index'])->name('index');
@@ -601,6 +609,9 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::post('/', [CoordinateController::class, 'store'])->name('store');
 	});
 });
+
+Route::get('/miubicacion', [CoordinateController::class, 'create'])->name('coordinate.create');
+Route::post('/miubicacion', [CoordinateController::class, 'store'])->name('coordinate.store');
 
 //fin rutas samu
 

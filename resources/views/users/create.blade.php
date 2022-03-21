@@ -20,12 +20,12 @@
 
                 <fieldset class="form-group col-md-1">
                     <label for="for_given">Run*</label>
-                    <input type="text" class="form-control" name="run" id="for_run" required value="{{ old('run')}}"
+                    <input type="number" class="form-control" name="run" id="for_run" required value="{{ old('run')}}"
                 >
                 </fieldset>
                 <fieldset class="form-group col-md-1">
                     <label for="for_given">DV*</label>
-                    <input type="text" class="form-control" name="dv" id="for_dv" required value="{{ old('dv')}}"
+                    <input type="text" class="form-control" name="dv" id="for_dv" readonly required value="{{ old('dv')}}"
                 >
                 </fieldset>
 
@@ -51,14 +51,14 @@
 
                 <fieldset class="form-group col-md-3">
                     <label for="for_social_name">Email laboral</label>
-                    <input type="text" class="form-control" name="email" id="for_email"
+                    <input type="email" class="form-control" name="email" id="for_email"
                         value="{{old('email')}}"
                 >
                 </fieldset>
 
                 <fieldset class="form-group col-md-2">
                     <label for="for_social_name">Teléfono laboral</label>
-                    <input type="text" class="form-control" name="phone" id="for_phone"
+                    <input type="number" class="form-control" name="phone" id="for_phone"
                         value="{{old('phone')}}"
                 >
                 </fieldset>

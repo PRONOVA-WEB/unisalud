@@ -4,7 +4,7 @@
 
 <h3 class="mb-3"><i class="fas fa-globe"></i> Mi ubicación</h3>
 
-<form action="{{route('samu.coordinate.store')}}" method="post" autocomplete="off">
+<form action="{{route('coordinate.store')}}" method="post" autocomplete="off">
     @csrf
     @method('POST')
 
@@ -22,16 +22,16 @@
         </fieldset>
         <fieldset class="form-group col-12 col-md-4">
             <label for="for_name_mobile_plate">Latitud </label>
-            <input type="text" class="form-control" readonly id="for_latitude" name="latitude" value="" required>
+            <input type="text" class="form-control readonly" id="for_latitude" name="latitude" value="" required style="background-color: #e9ecef;">
         </fieldset>
         <fieldset class="form-group col-12 col-md-4">
             <label for="for_name_mobile_type">Longitud </label>
-            <input type="text" class="form-control" readonly id="for_longitude" name="longitude" value="" required>
+            <input type="text" class="form-control readonly" id="for_longitude" name="longitude" value="" required style="background-color: #e9ecef;">
         </fieldset>
     
     </div>
 
-    <button type="submit" class="btn btn-primary"> <i class="fa fa-send"></i> Enviar mi ubicación</button>
+    <button type="submit" class="btn btn-primary"> <i class="fa fa-paper-plane"></i> Enviar mi ubicación</button>
 
 </form>
 @endsection
@@ -59,5 +59,10 @@
         document.getElementById("warning_msg").removeAttribute("hidden");
         document.getElementById("warning_msg").innerHTML = err.message;
     }
+    
+    $(".readonly").on('keydown paste focus mousedown', function(e){
+        if(e.keyCode != 9) // ignore tab
+            e.preventDefault();
+    });
 </script> 
 @endsection

@@ -26,7 +26,8 @@ class StoreCallRequest extends FormRequest
     {
         return [
             'applicant'         => 'nullable|string|min:0|max:255',
-            'age'               => 'nullable|numeric|min:0',
+            'year'              => 'nullable|integer|min:0|max:150',
+            'month'             => 'nullable|integer|min:0|max:12',
             'telephone'         => 'nullable|string',
             'reason'            => 'nullable|string|min:0|max:255',
             'police_intervention'=> 'nullable|boolean',
