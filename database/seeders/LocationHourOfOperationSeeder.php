@@ -27,12 +27,6 @@ class LocationHourOfOperationSeeder extends Seeder
                 'hours_of_operation_id' => 1,
                 'location_id' => 4
             ),
-            2 =>
-            array(
-                'id' => 3,
-                'hours_of_operation_id' => 1,
-                'location_id' => 5
-            ),
             array(
                 'id' => 4,
                 'hours_of_operation_id' => 2,
