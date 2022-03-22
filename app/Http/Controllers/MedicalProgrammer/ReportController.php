@@ -147,4 +147,5 @@ class ReportController extends Controller
        // dd($array_specialties_alarm);
         return view('medical_programmer.management.reports.avaliabley_specialty_locations', compact('array_specialties_alarm'));
     }
+
 }

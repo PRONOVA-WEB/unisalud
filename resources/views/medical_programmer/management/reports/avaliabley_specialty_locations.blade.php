@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Reporte locaciones / especialidad')
+@section('title', 'Reporte box / especialidad')
 
 @push('css')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css">
@@ -8,8 +8,8 @@
 @endpush
 
 @section('content')
-    <h3 class="mb-3">Reporte locaciones / especialidad</h3>
-
+    <h3 class="mb-3">Reporte box / especialidad</h3>
+    <hr/>
     <table class="table table-sm table-bordered datatable">
         <thead>
             <tr>

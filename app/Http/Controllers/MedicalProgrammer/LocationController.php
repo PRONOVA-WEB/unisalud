@@ -51,23 +51,52 @@ class LocationController extends Controller
         //dd($request->hours_of_operation);
         $location = new Location($request->All());
         $location->save();
-        if(!empty($request->hours_of_operation))
-        {
+        if (!empty($request->hours_of_operation)) {
+            session()->flash('info', 'La locación ia sido creada.');
             foreach ($request->hours_of_operation as $list) {
                 foreach (json_decode($list) as $hours) {
-                    $hour_of_operation = HourOfOperation::create(
-                        [
-                            'daysOfWeek'  => $hours->daysOfWeek,
-                            'openingTime' => $hours->openingTime,
-                            'closingTime' => $hours->closingTime,
-                        ]
-                    );
-                    $location->hours_of_operation()->attach($hour_of_operation->id);
+                    if ($hours->daysOfWeek == 'MonToFri') { //verfico si es de lunes a viernes
+                        $location->hours_of_operation()->detach();
+                        $days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+                        foreach ($days as $day) {
+                            $hour_of_operation = HourOfOperation::create(
+                                [
+                                    'daysOfWeek'  => $day,
+                                    'openingTime' => $hours->openingTime,
+                                    'closingTime' => $hours->closingTime,
+                                ]
+                            );
+                            $location->hours_of_operation()->attach($hour_of_operation->id);
+                        }
+                        return redirect()->route('medical_programmer.locations.index');
+                    } elseif ($hours->daysOfWeek == 'allDays') //toda la semana
+                    {
+                        $location->hours_of_operation()->detach();
+                        $days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                        foreach ($days as $day) {
+                            $hour_of_operation = HourOfOperation::create(
+                                [
+                                    'daysOfWeek'  => $day,
+                                    'openingTime' => $hours->openingTime,
+                                    'closingTime' => $hours->closingTime,
+                                ]
+                            );
+                            $location->hours_of_operation()->attach($hour_of_operation->id);
+                        }
+                        return redirect()->route('medical_programmer.locations.index');
+                    } else {
+                        $hour_of_operation = HourOfOperation::create(
+                            [
+                                'daysOfWeek'  => $hours->daysOfWeek,
+                                'openingTime' => $hours->openingTime,
+                                'closingTime' => $hours->closingTime,
+                            ]
+                        );
+                        $location->hours_of_operation()->attach($hour_of_operation->id);
+                    }
                 }
             }
         }
-
-        session()->flash('info', 'La locación ia sido creada.');
         return redirect()->route('medical_programmer.locations.index');
     }
 
@@ -92,7 +121,7 @@ class LocationController extends Controller
     {
         $organization = Organization::all();
         $cod_con_physical_types = CodConPhysicalType::all();
-        return view('medical_programmer.locations.edit', compact('organization', 'location','cod_con_physical_types'));
+        return view('medical_programmer.locations.edit', compact('organization', 'location', 'cod_con_physical_types'));
     }
 
     /**
@@ -106,21 +135,52 @@ class LocationController extends Controller
     {
         $location->fill($request->all());
         $location->save();
-        if(!empty($request->hours_of_operation))
-        {
+        if (!empty($request->hours_of_operation)) {
             $hourSToDestroy = $location->hours_of_operation;
             $location->hours_of_operation()->detach();
             HourOfOperation::destroy($hourSToDestroy);
+            session()->flash('info', 'La locación ia sido creada.');
             foreach ($request->hours_of_operation as $list) {
                 foreach (json_decode($list) as $hours) {
-                    $hour_of_operation = HourOfOperation::create(
-                        [
-                            'daysOfWeek'  => $hours->daysOfWeek,
-                            'openingTime' => $hours->openingTime,
-                            'closingTime' => $hours->closingTime,
-                        ]
-                    );
-                    $location->hours_of_operation()->attach($hour_of_operation->id);
+                    if ($hours->daysOfWeek == 'MonToFri') { //verfico si es de lunes a viernes
+                        $location->hours_of_operation()->detach();
+                        $days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+                        foreach ($days as $day) {
+                            $hour_of_operation = HourOfOperation::create(
+                                [
+                                    'daysOfWeek'  => $day,
+                                    'openingTime' => $hours->openingTime,
+                                    'closingTime' => $hours->closingTime,
+                                ]
+                            );
+                            $location->hours_of_operation()->attach($hour_of_operation->id);
+                        }
+                        return redirect()->route('medical_programmer.locations.index');
+                    } elseif ($hours->daysOfWeek == 'allDays') //toda la semana
+                    {
+                        $location->hours_of_operation()->detach();
+                        $days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                        foreach ($days as $day) {
+                            $hour_of_operation = HourOfOperation::create(
+                                [
+                                    'daysOfWeek'  => $day,
+                                    'openingTime' => $hours->openingTime,
+                                    'closingTime' => $hours->closingTime,
+                                ]
+                            );
+                            $location->hours_of_operation()->attach($hour_of_operation->id);
+                        }
+                        return redirect()->route('medical_programmer.locations.index');
+                    } else {
+                        $hour_of_operation = HourOfOperation::create(
+                            [
+                                'daysOfWeek'  => $hours->daysOfWeek,
+                                'openingTime' => $hours->openingTime,
+                                'closingTime' => $hours->closingTime,
+                            ]
+                        );
+                        $location->hours_of_operation()->attach($hour_of_operation->id);
+                    }
                 }
             }
         }

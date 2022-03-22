@@ -28,6 +28,12 @@ class HourOfOperation extends Model
             case 'fri':
                 $day = 'Viernes';
                 break;
+            // case 'MonToFri':
+            //     $day = 'Lunes a Viernes';
+            //     break;
+            // case 'allDays':
+            //     $day = 'Toda la semana';
+            //     break;
         }
         return $day;
     }

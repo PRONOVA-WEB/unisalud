@@ -83,6 +83,10 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/hours_by_specialty', function () {
+    return view('charts');
+});
+
 //Auth::routes();
 
 

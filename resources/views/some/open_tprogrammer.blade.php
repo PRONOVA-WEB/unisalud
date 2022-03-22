@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'agenda')
+@section('title', 'Agenda')
 
 @section('content')
 
-
+<h3 class="mb-3">Agenda</h3>
+<hr/>
 <form method="POST" class="form-horizontal" action="{{ route('some.open_tprogrammer') }}">
 @csrf
 @method('POST')

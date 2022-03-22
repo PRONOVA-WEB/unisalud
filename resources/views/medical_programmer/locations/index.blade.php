@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h3 class="mb-3">Listado de Locaciones</h3>
-
+<h3 class="mb-3">Listado de box</h3>
+<hr/>
 <a class="btn btn-primary mb-3" href="{{ route('medical_programmer.locations.create') }}">
     <i class="fas fa-plus"></i> Agregar nueva Locación
 </a>

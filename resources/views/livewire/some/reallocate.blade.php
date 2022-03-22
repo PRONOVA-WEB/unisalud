@@ -1,5 +1,7 @@
+@section('title', 'Reasignar cita')
 <div>
-{{--    @include('layouts.partials.flash_message')--}}
+    <h3 class="mb-3">Reasignar cita</h3>
+    <hr/>
     <div class="form-row mt-1">
 
         <div class="form-group col-6 col-md-3">
@@ -121,7 +123,7 @@
                         <td>
                             <label class="label"
                                    for="for_selected_appointments_from[{{$key}}]">{{$appointment->users->first()->officialFullName}}</label>
-                        
+
                         </td>
 
                         <td>{{$appointment->programmingProposalDetail->activity->activity_name}}</td>

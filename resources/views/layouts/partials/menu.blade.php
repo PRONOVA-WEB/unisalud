@@ -102,7 +102,7 @@
                     <i class="fas fa-cube"></i> Consolidado <br>de programaciones
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.reports.avaliableySpecialtyLocations') }}">
-                    <i class="fas fa-cube"></i> Reporte <br>Locaciones / Especialidad
+                    <i class="fas fa-cube"></i> Reporte <br>box / especialidad
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.reports.pendingPractitionersReport') }}">
                     <i class="fas fa-cube"></i>  Reporte 1
@@ -132,10 +132,10 @@
                     <i class="fas fa-cog"></i> Organizaciones
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.locations.index') }}">
-                    <i class="fas fa-cog"></i> Locaciones
+                    <i class="fas fa-cog"></i> Box
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.specialties.locations') }}">
-                    <i class="fas fa-cog"></i> Locaciones <br> por especialidades
+                    <i class="fas fa-cog"></i> Box <br> por especialidades
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.rrhh.index') }}">
                     <i class="fas fa-cog"></i>  RRHH

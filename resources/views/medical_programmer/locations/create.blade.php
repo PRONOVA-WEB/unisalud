@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="mb-3">Nueva Locación</h3>
+    <h3 class="mb-3">Crear Box</h3>
 
     <form method="POST" class="form-horizontal" action="{{ route('medical_programmer.locations.store') }}">
         @csrf

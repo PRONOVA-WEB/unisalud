@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'agenda')
+@section('title', 'Gestionar Agenda')
 
 @section('content')
 
-
+<h3 class="mb-3">Gestionar Agenda</h3>
 <!-- form especialidad, funcionario, fecha,buscar-->
 <form method="GET" id="form" class="form-horizontal" action="{{ route('some.agenda') }}">
   <!-- <div class="form-row mt-3"  >

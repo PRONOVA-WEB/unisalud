@@ -25,6 +25,8 @@ class AddHourOfOperation extends Component
             'fri'=>'Viernes',
             'sat'=>'Sábado',
             'sun'=>'Domingo',
+            'MonToFri'=>'Lunes a Viernes',
+            'allDays'=>'Toda la semana',
         ];
         $this->showList = 'd-none';
     }
