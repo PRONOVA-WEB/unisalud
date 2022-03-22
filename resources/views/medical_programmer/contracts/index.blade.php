@@ -3,6 +3,7 @@
 @section('content')
 
 <h3> Listado de Contratos</h3>
+<hr>
 <a class="btn btn-primary mb-2" href="{{ route('medical_programmer.contracts.create') }}">
     <i class="fas fa-plus"></i> Agregar nuevo
 </a>

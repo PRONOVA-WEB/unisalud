@@ -15,16 +15,17 @@ class CreateHoursOfOperationTable extends Migration
     {
         Schema::create('hours_of_operation', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hours_of_operation_id')->nullable();
-            $table->foreignId('location_id')->nullable();
+            // $table->foreignId('hours_of_operation_id')->nullable();
+            // $table->foreignId('location_id')->nullable();
             $table->enum('daysOfWeek', ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun',
             ])->nullable();
-            $table->boolean('allDay')->nullable();
+            $table->boolean('allDay')->default(0)->nullable();
             $table->time('openingTime')->nullable();
             $table->time('closingTime')->nullable();
+            $table->timestamps();
 
-            $table->foreign('hours_of_operation_id')->references('id')->on('hours_of_operation');
-            $table->foreign('location_id')->references('id')->on('locations');
+            // $table->foreign('hours_of_operation_id')->references('id')->on('hours_of_operation');
+            // $table->foreign('location_id')->references('id')->on('locations');
 
         });
     }

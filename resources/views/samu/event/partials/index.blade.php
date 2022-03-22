@@ -38,9 +38,12 @@
                 <td>{{ $event->counter }} </td>
                 <td>{{ optional($event->departure_at)->format('H:i') }} </td>
                 <td>
-                    @foreach($event->calls as $call)
-                        <a href="{{ route('samu.call.edit',$call) }}">{{ $call->id }}</a>,
-                    @endforeach
+                    @if($event->call)
+                        <a href="{{ route('samu.call.edit', $event->call) }}">{{ $event->call->id }}</a>,
+                        @foreach($event->call->associatedCalls as $associatedCall)
+                            <a href="{{ route('samu.call.edit', $associatedCall) }}">{{ $associatedCall->id }}</a>,
+                        @endforeach
+                    @endif
                 </td>
                 <td nowrap>
                     {{ optional($event->mobile)->code }} 
@@ -51,23 +54,24 @@
                 <td>{{ optional($event->returnKey)->key }} - {{ optional($event->returnKey)->name }}</td>
                 <td>{{ $event->observation }}</td>
                 <td>
-                    @can('SAMU administrador')
-                        @if($event->status AND !$event->trashed())
-                        <form method="POST" action="{{ route('samu.event.destroy', $event) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                        </form>
-                        @endif
-                    @endcan
+                    @if($btnDuplicate)
+                    <a href="{{ route('samu.event.duplicate', $event) }}" title="Duplicar cometido" class="btn btn-sm btn-success">
+                        <i class="far fa-copy"></i> Duplicar
+                    </a>
+                    @endif
                 </td>
             </tr>
             <tr class="table-{{ $event->color }}">
                 <td class="text-center"><i class="fas fa-phone"></i></td>
                 <td colspan="9">
-                    @foreach($event->calls as $call)
-                    <li>{{ $call->sex_abbr }} {{ $call->age_format }} {{ $call->information }}</li>
-                    @endforeach
+                    @if($event->call)
+                        <li>{{ $event->call->sex_abbr }} {{ $event->call->age_format }} {{ $event->call->information }}</li>
+                        @foreach($event->call->associatedCalls as $associatedCall)
+                            <li>{{ $associatedCall->sex_abbr }} {{ $associatedCall->age_format }} {{ $associatedCall->information }}</li>
+                        @endforeach
+                    @else
+                        <li>No hay llamadas asociadas</li>
+                    @endif
                 </td>
             </tr>
             <tr>

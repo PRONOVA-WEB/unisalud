@@ -3,7 +3,7 @@
 @section('content')
 
 <h3 class="mb-3">Funcionarios pendientes</h3>
-
+<hr>
 <!-- <form method="GET" id="form" class="form-horizontal" action="{{ route('medical_programmer.programming_proposal.consolidated_programmings') }}">
     <div class="form-row">
       <fieldset class="form-group col col-md-4">

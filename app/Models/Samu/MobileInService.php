@@ -44,12 +44,14 @@ class MobileInService extends Model implements Auditable
     */
     protected $dates = [
         'lunch_start_at',
+        'lunch_break_start_at',
+        'lunch_break_end_at',
         'lunch_end_at',
     ];
 
     public function shift()
     {
-        return $this->BelongsTo(Shift::class);
+        return $this->belongsTo(Shift::class);
     }
 
     public function mobile()
@@ -86,6 +88,22 @@ class MobileInService extends Model implements Auditable
         return $this->hasMany(Event::class);
     }
 
+    public function getTotalMinutesAttribute()
+    {
+        $total = 0;
+        if($this->lunch_start_at && $this->lunch_break_start_at && $this->lunch_break_end_at && $this->lunch_end_at)
+        {
+            $firstBreak = intval($this->lunch_start_at->diff($this->lunch_break_start_at)->format('%I'));
+            $secondBreak = intval($this->lunch_break_end_at->diff($this->lunch_end_at)->format('%I'));
+            $total = $firstBreak + $secondBreak;
+        }
+        elseif($this->lunch_start_at && $this->lunch_end_at)
+        {
+            $total = intval($this->lunch_start_at->diff($this->lunch_end_at)->format('%I'));
+        }
+        return $total;
+    }
+    
     public function getLastEventAttribute()
     {
         return $this->events->where('status', true)->last();
@@ -113,6 +131,27 @@ class MobileInService extends Model implements Auditable
         else
         {
             return "Inactivo";
+        }
+    }
+
+    public function isHavingLunch()
+    {
+        return $this->lunch_start_at != null && $this->lunch_end_at == null;
+    }
+
+    public static function reorder(Shift $shift)
+    {
+        $mobilesInService = MobileInService::query()
+            ->whereShiftId($shift->id)
+            ->orderBy('status', 'DESC')
+            ->orderBy('position', 'ASC')
+            ->get();
+
+        foreach($mobilesInService as $index => $mis)
+        {
+            $mis->update([
+                'position' => $index + 1
+            ]);
         }
     }
 }

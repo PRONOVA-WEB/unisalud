@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             CongregationSeeder::class,
             UserSeeder::class,
             CodConObservationCategorySeeder::class,
+            CodingsSeeder::class,
+            CodConPhysicalTypes::class,
+            HoursOfOperationSeeder::class,
             // PractitionerSeeder::class,
             // // HmRrhhTableSeeder::class,
         // HmMotherActivityTableSeeder::class,
@@ -60,6 +63,7 @@ class DatabaseSeeder extends Seeder
 
             //necesita Organization por eso se debe ejecutar despues
             LocationSeeder::class,
+            LocationHourOfOperationSeeder::class,
 
             /* SAMU */
             SamuMobileSeeder::class,
@@ -86,6 +90,12 @@ class DatabaseSeeder extends Seeder
                 MpUserSpecialtiesTableSeeder::class,
                 MpUserProfessionsTableSeeder::class,
                 UsersTestSeeder::class,
+                MpContractsTableSeeder::class,
+                MpProgrammingProposalsTableSeeder::class,
+                MpProgrammingProposalsSignatureFlowTableSeeder::class,
+                MpProgrammingProposalsDetailTableSeeder::class,
+                AppointmentsTableSeeder::class,
+                AppointablesTableSeeder::class,
             ]);
         }
     }

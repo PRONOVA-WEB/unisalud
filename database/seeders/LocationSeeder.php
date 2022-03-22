@@ -29,5 +29,59 @@ class LocationSeeder extends Seeder
             'mode' => 'Instance', //The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).
             'organization_id' => 1,
         ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box General 1',
+        'alias' => 'Box General',
+        'description' => 'Box General',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '1'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box General 2',
+        'alias' => 'Box General',
+        'description' => 'Box General',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '1'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box de Cardiología 1',
+        'alias' => 'Box de Cardiología',
+        'description' => 'Box de Cardiología',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '4'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box de Cardiología 2',
+        'alias' => 'Box de Cardiología',
+        'description' => 'Box de Cardiología',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '4'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box de Ginecología 1',
+        'alias' => 'Box de Ginecología',
+        'description' => 'Box de Ginecología',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '2'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Box de Ginecología 2',
+        'alias' => 'Box de Ginecología',
+        'description' => 'Box de Ginecología',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '2'
+        ]);
     }
 }

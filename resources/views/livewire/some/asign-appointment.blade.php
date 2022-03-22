@@ -1,6 +1,8 @@
+@section('title', 'Asignar cita')
 <div>
+    <h3 class="mb-3">Asignar cita</h3>
+    <hr/>
     <div class="form-row mt-3">
-
         <div class="form-group col-6 col-md-4">
             <label for="inputrut">RUT</label>
             <input type="text" class="form-control" placeholder="Ingrese el rut" wire:model.lazy="run"

@@ -129,9 +129,6 @@ class UserSeeder extends Seeder
         $address->country_id = 42;
         $address->save();
 
-
-
-
         $user = new User();
         $user->active = 1;
         $user->given = 'German';

@@ -55,13 +55,13 @@
     </li>
     @endcan
     
-    @canany(['SAMU administrador','SAMU despachador','SAMU regulador'])
+    @canany(['SAMU administrador','SAMU regulador'])
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle {{ active(['samu.event.filter','samu.calls.search']) }}" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
             <i class="fas fa-search"></i> </a>
         <div class="dropdown-menu">
 
-            <a class="nav-link {{ active('samu.event.filter') }}" 
+            <a class="dropdown-item {{ active('samu.event.filter') }}" 
             href=" {{ route('samu.event.filter') }}"><i class="fas fa-car-crash"></i> Eventos </a>
 
             <a class="dropdown-item {{ active('samu.calls.search') }}"
@@ -89,9 +89,26 @@
             <a class="dropdown-item {{ active('samu.establishment.*') }}"
             href=" {{ route('samu.establishment.index') }}"><i class="fas fa-building"></i> Establecimientos</a>
 
+            <a class="dropdown-item {{ active('samu.commune.*') }}"
+            href=" {{ route('samu.commune.index') }}"><i class="fas fa-map"></i> Comunas</a>
+
             <a class="dropdown-item {{ active('user.*') }}"
             href=" {{ route('user.index') }}"><i class="fas fa-user"></i> Usuarios</a>
         </div>
+    </li>
+    @endcan
+
+    @canany(['SAMU administrador','SAMU despachador','SAMU regulador','SAMU operador'])
+    <li class="nav-item">
+        <a class="nav-link {{ active('samu.map') }}" 
+        href="{{ route('samu.map') }}" targe="_blank"><i class="fas fa-map"></i> Mapa</a>
+    </li>
+    @endcan
+
+    @can('SAMU conductor')
+    <li class="nav-item">
+        <a class="nav-link {{ active('samu.mobiles.mobile_selector') }}" 
+        href="{{ route('samu.mobiles.mobile_selector') }}"><i class="fas fa-th-large"></i> Conductor</a>
     </li>
     @endcan
     

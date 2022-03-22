@@ -69,7 +69,7 @@ class OperatingRoomProgrammingController extends Controller
 
       $monday = Carbon::parse($date)->startOfWeek();
       $sunday = Carbon::parse($date)->endOfWeek();
-
+dd('s');
         return view('medical_programmer.management.medical_ward_programmer', compact('request','operatingRooms','specialties','professions','date','operatingRoomProgrammings'));
     }
 

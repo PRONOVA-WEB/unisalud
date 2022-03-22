@@ -22,30 +22,53 @@
             <thead>
                 <tr>
                     <th style="width: 50px;">Hora</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
                     <th>Solicitante</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
                     <th>OPT</th>
                     <th>OP ID</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($event->calls as $call)
+                @if($event->call)
+                    <tr>
+                        <td class="center">{{ $event->call->hour->format('H:i') }}</td>
+                        <td>{{ $event->call->applicant }}</td>
+                        <td>{{ $event->call->address }} {{ optional($event->call->commune)->name }}</td>
+                        <td class="right">{{ $event->call->telephone }}</td>
+                        <td class="center">{{ $event->call->classification }}</td>
+                        <td class="center">{{ $event->call->receptor_id }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">{{ $event->call->sex_abbr }} {{ $event->call->age_format }} {{ $event->call->information }}</td>
+                    </tr>
+                    @foreach($event->call->associatedCalls as $associatedCall)
+                    <tr>
+                        <td colspan="6" style="border-left-style: hidden;border-right-style: hidden;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="center">{{ $associatedCall->hour->format('H:i') }}</td>
+                        <td>{{ $associatedCall->applicant }}</td>
+                        <td>{{ $associatedCall->address }} {{ optional($associatedCall->commune)->name }}</td>
+                        <td class="right">{{ $associatedCall->telephone }}</td>
+                        <td class="center">{{ $associatedCall->classification }}</td>
+                        <td class="center">{{ $associatedCall->receptor_id }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">{{ $associatedCall->sex_abbr }} {{ $associatedCall->age_format }} {{ $associatedCall->information }}</td>
+                    </tr>
+                    @endforeach
+                @else
                 <tr>
-                    <td class="center">{{ $call->hour->format('H:i') }}</td>
-                    <td>{{ $call->telephone }}</td>
-                    <td>{{ $call->address }}</td>
-                    <td>{{ $call->applicant }}</td>
-                    <td class="center">{{ $call->classification }}</td>
-                    <td class="center">{{ $call->receptor_id }}</td>
+                    <td class="center" colspan="6">
+                        No hay llamadas
+                    </td>
                 </tr>
-                <tr>
-                    <td colspan="6">{{ $call->sex_abbr }} {{ $call->age_format }} {{ $call->information }}</td>
-                </tr>
-                @if(!$loop->last)
-                    <tr><td colspan="6" style="border-left: 1px solid white; border-right: 1px solid white;">&nbsp;</td></tr>
                 @endif
-                @endforeach
+                {{-- @if(!$loop->last)
+                    <tr><td colspan="6" style="border-left: 1px solid white; border-right: 1px solid white;">&nbsp;</td></tr>
+                    @endif 
+                --}}
             </tbody>
         </table>
 
@@ -96,8 +119,22 @@
                     <td class="center">{{ $event->key->key }}</td>
                     <td class="center">{{ optional($event->returnKey)->key }}</td>
                     <td class="center">{{ $event->counter }}</td>
-                    <td class="center">{{ optional($event->mobileInService)->mobile_id }}</td>
-                    <td class="center">{{ optional($event->mobileInService)->type }}</td>
+                    <td class="center">
+                        @if($event->mobileInService)
+                            {{ optional($event->mobileInService)->mobile->code }} - 
+                            {{ optional($event->mobileInService)->mobile->name }}
+                        @else
+                            {{ optional($event->mobile)->code }} -
+                            {{ optional($event->mobile)->name }}
+                        @endif
+                    </td>
+                    <td class="center">
+                        @if($event->mobileInService)
+                            {{ optional($event->mobileInService)->type }}
+                        @else
+                            {{ optional($event->mobile)->type }}
+                        @endif
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -121,7 +158,7 @@
                     <th>Frecuencia respiratoria</th>
                     <th>Presión arterial</th>
                     <th>Presión arterial media</th>
-                    <th>Grasgow</th>
+                    <th>Glasgow</th>
                     <th>% Saturacion Oxig/Ambi</th>
                     <th>% Saturacion Oxig/Apoyo</th>
                     <th>HGT mg/dl</th>
@@ -156,12 +193,15 @@
                 <th>Establecimiento o lugar</th>
                 <th>Quien recepciona</th>
                 <th>Registro Atención Urgencia</th>
-
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="center">{{ optional($event->establishment)->name }} {{ optional($event->receptionPlace)->name}}</td>
+                <td class="center">
+                    {{ optional($event->establishment)->name }} 
+                    {{ optional($event->receptionPlace)->name }} 
+                    {{ $event->establishment_details }}
+                </td>
                 <td class="center">{{ $event->reception_person }}</td>
                 <td class="center">{{ $event->rau }}&nbsp;</td>
             </tr>
@@ -188,7 +228,7 @@
         </tbody>
     </table>
     @else
-        <p>No hay móvil en servicio asociado</p>
+        {{ $event->external_crew }}
     @endif
 
 
