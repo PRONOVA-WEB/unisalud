@@ -63,7 +63,7 @@ use Spatie\Permission\Contracts\Role;
 
 use App\Http\Controllers\Epi\SuspectCaseController;
 use App\Http\Controllers\CoordinateController;
-
+use App\Http\Controllers\MedicalProgrammer\ChartsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,9 +83,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/hours_by_specialty', function () {
-    return view('charts');
-});
+Route::get('/hours_by_specialty', [ChartsController::class,'HoursBySpecialty']);
 
 //Auth::routes();
 
