@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
-use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,8 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $charts->register([
-            \App\Charts\SampleChart::class,
-            \App\Charts\HourBySpecialtyChart::class
+            \App\Charts\HoursBySpecialtyChart::class
         ]);
     }
 }
