@@ -2,8 +2,7 @@
 
 @section('title', 'Ver Agenda')
 @section('content')
-
-    <h3 class="mb-3">{{ $schedule->location->name }} - Fecha: {{ \Carbon\Carbon::parse($schedule->date)->format('l, d-m-Y') }}</h3>
+    <h3 class="mb-3">{{ $schedule->location->name }} - Fecha: {{ dayToSpanish(\Carbon\Carbon::parse($schedule->date)->format('l')) }}, {{ \Carbon\Carbon::parse($schedule->date)->format('d-m-Y') }}</h3>
     <h6>De: {{  $schedule->from.':00' }} a {{ $schedule->to.':00' }}</h6>
     @if ($errors->any())
         <div class="alert alert-danger col-md-12">
