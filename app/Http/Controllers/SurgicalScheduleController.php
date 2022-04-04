@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use App\Models\SurgicalSchedule\LocationSchedule;
 use App\Models\SurgicalSchedule\SurgicalSchedule;
+use App\Models\SurgicalSchedule\SurgicalScheduleEvent;
 use App\Models\SurgicalSchedule\SurgicalScheduleTeam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -67,6 +68,18 @@ class SurgicalScheduleController extends Controller
 
     public function edit(SurgicalSchedule $location){
         $schedule = $location;
+        return view('surgical_schedule.show',compact('schedule'));
+    }
+
+    public function update(Request $request){
+        SurgicalScheduleEvent::create([
+            'observations' => $request->event_observations,
+            'surgical_schedule_id' => $request->schedule,
+            'user_id' => Auth()->user()->id
+        ]);
+        $schedule = SurgicalSchedule::find($request->schedule);
+        $schedule->status = $request->status;
+        $schedule->save();
         return view('surgical_schedule.show',compact('schedule'));
     }
 
@@ -136,6 +149,7 @@ class SurgicalScheduleController extends Controller
         'pacient_id'=>$request->pacient,
         'observations'=>$request->observations,
         'surgery'=>$request->surgery,
+        'preoperative_diagnosis'=>$request->preoperative_diagnosis
         ]);
 
         if(!empty($request->practitioner_id))
@@ -152,10 +166,11 @@ class SurgicalScheduleController extends Controller
             foreach($request->personal as $items)
             {
                 foreach (json_decode($items) as $item) {
+
                     SurgicalScheduleTeam::create([
                         'surgical_schedule_id'=>$surgicalschedule->id,
                         'practitioner_id'=>$item->practitioners,
-                        'specialty_id'=>$item->specialty_id,
+                        'specialty_id'=>$item->specialties,
                         'type'=>$item->type
                     ]);
                 }

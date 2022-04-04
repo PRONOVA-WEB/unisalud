@@ -86,28 +86,18 @@
 
                                             $textTh =
                                                 count($agendado) > 0
-                                                    ? '<table class="table" style="color:black;">
-                                                            <thead>
-                                                                    <th>Paciente</th>
-                                                                    <th>RUT</th>
-                                                                    <th>Cirugía</th>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <th>' .
+                                                    ? '<span style:"color:black">
+                                                        <i class="fas fa-user"></i> '.
                                                         $agendado->first()->patient->official_full_name .
-                                                        '</th>
-                                                                        <th>' .
+                                                        '<br>RUN: '.
                                                         $agendado->first()->patient->identifier_run->value .
                                                         '-' .
                                                         $agendado->first()->patient->identifier_run->dv .
-                                                        '</th>
-                                                                        <th>' .
-                                                        $agendado->first()->surgery .
-                                                        '</th>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>'
+                                                        '<br><i class="fa fa-plus-square"></i> ' .
+                                                        $agendado->first()->surgery.
+                                                        '<br><i class="fa fa-history"></i> '.
+                                                        strtoupper($agendado->first()->status).
+                                                        '</span>'
                                                     : '--';
 
                                             $routeTh = count($agendado) ? 'surgical_schedule.edit_schedule' : 'surgical_schedule.asign_pavilions';

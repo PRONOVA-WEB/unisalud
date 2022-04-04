@@ -18,7 +18,9 @@ class SurgicalSchedule extends Model
         'to',
         'pacient_id',
         'observations',
-        'surgery'
+        'surgery',
+        'preoperative_diagnosis',
+        'status'
     ];
 
     public function location()
@@ -31,8 +33,12 @@ class SurgicalSchedule extends Model
         return $this->belongsTo(User::class, 'pacient_id');
     }
 
-    public function surgical_schedule() {
+    public function surgical_schedule_team() {
         return $this->hasMany(SurgicalScheduleTeam::class,'surgical_schedule_id');
+    }
+
+    public function events() {
+        return $this->hasMany(SurgicalScheduleEvent::class,'surgical_schedule_id');
     }
 
     protected $table = 'surgical_schedule';

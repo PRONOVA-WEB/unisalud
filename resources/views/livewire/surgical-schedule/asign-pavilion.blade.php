@@ -1,10 +1,10 @@
 <div class="mt-4">
-    <h6 class="mb-3">Datos de Paciente</h6>
+    <h6 class="mb-3">Datos del Paciente</h6>
     <hr/>
     <div class="form-row mt-3">
         <div class="form-group col-6 col-md-4">
             <label for="inputrut">RUT</label>
-            <input type="text" class="form-control" placeholder="Ingrese el rut" wire:model.lazy="run"
+            <input type="text" class="form-control" required placeholder="Ingrese el rut" wire:model.lazy="run"
                    wire:change="setDv()">
 
         </div>
@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <h6>Personal</h6>
+    <h6>Staff</h6>
 
     <div class="form-row">
         <div class="form-group col-md-4">

@@ -90,7 +90,8 @@ Route::prefix('surgical_schedule')->name('surgical_schedule.')->middleware('auth
 	Route::match(['get','post'],'/', [SurgicalScheduleController::class,'index'])->name('schedule');
 	Route::get('/asign_pavilions', [SurgicalScheduleController::class,'asignPavilions'])->name('asign_pavilions');
 	Route::post('/asign_pavilions_store', [SurgicalScheduleController::class,'storeAsignPavilions'])->name('asign_pavilions_store');
-	Route::get('/edit_schedule/{location}', [SurgicalScheduleController::class,'edit'])->name('edit_schedule');
+	Route::get('/edit/{location}', [SurgicalScheduleController::class,'edit'])->name('edit_schedule');
+	Route::post('/update', [SurgicalScheduleController::class,'update'])->name('update_schedule');
 });
 
 Route::get('/hours_by_specialty', [ChartsController::class,'HoursBySpecialty']);

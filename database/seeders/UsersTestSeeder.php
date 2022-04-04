@@ -117,7 +117,7 @@ class UsersTestSeeder extends Seeder
             $practitioner->active = 1;
             $practitioner->user_id = 8;
             $practitioner->organization_id = 4;
-            $practitioner->specialty_id = 1;
+            $practitioner->specialty_id = 44;
             $practitioner->profession_id = 12;
             $practitioner->save();
             //paciente test

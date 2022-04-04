@@ -20,8 +20,12 @@
         <input type="hidden" name="date" value="{{ $date }}">
         @livewire('surgical-schedule.asign-pavilion')
         <div class="form-row ">
-            <div class="form-group col-md-12">
-                <label for="for_observations">Cirugía</label>
+            <div class="form-group col-md-6">
+                <label for="for_observations">Diagnóstico Preoperatorio</label>
+                <input type="text" name="preoperative_diagnosis" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="for_observations">Cirugía Principal / Procedimiento</label>
                 <select class="form-control" name="surgery">
                     <option>Cirugía mayor</option>
                     <option>Cirugía menor</option>
