@@ -14,11 +14,6 @@
             <input type="text" class="form-control" placeholder="-" wire:model="dv" readonly>
         </div>
 
-        {{--        <div class="form-group col-md-4">--}}
-        {{--            <label for="inputnombre">Nombre</label>--}}
-        {{--            <input type="text" class="form-control" placeholder="Ingrese Nombre" wire:model.lazy="name">--}}
-        {{--        </div>--}}
-
         <div class="form-group col-2 col-md-2">
             <label for="inputEmail4">&nbsp;</label>
             <button type="button" class="btn btn-primary form-control" wire:click="searchUser()"> <i class="fa fa-search" aria-hidden="true"></i> Buscar</button>

@@ -60,6 +60,7 @@ use App\Http\Controllers\RayenWs\SoapController;
 use App\Http\Controllers\SettingController;
 use Spatie\Permission\Contracts\Role;
 
+use App\Http\Controllers\SurgicalScheduleController;
 
 use App\Http\Controllers\Epi\SuspectCaseController;
 use App\Http\Controllers\CoordinateController;
@@ -81,6 +82,15 @@ use App\Http\Controllers\MedicalProgrammer\ChartsController;
 
 Route::get('/', function () {
     return redirect()->route('login');
+});
+
+Route::prefix('surgical_schedule')->name('surgical_schedule.')->middleware('auth')->group(function(){
+	Route::get('/pavilions', [SurgicalScheduleController::class,'listPavilions'])->name('pavilions');
+	Route::post('/open_pavilions', [SurgicalScheduleController::class,'openPavilion'])->name('open_pavilions');
+	Route::match(['get','post'],'/', [SurgicalScheduleController::class,'index'])->name('schedule');
+	Route::get('/asign_pavilions', [SurgicalScheduleController::class,'asignPavilions'])->name('asign_pavilions');
+	Route::post('/asign_pavilions_store', [SurgicalScheduleController::class,'storeAsignPavilions'])->name('asign_pavilions_store');
+	Route::get('/edit_schedule/{location}', [SurgicalScheduleController::class,'edit'])->name('edit_schedule');
 });
 
 Route::get('/hours_by_specialty', [ChartsController::class,'HoursBySpecialty']);

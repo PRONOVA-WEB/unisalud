@@ -28,6 +28,12 @@ class HourOfOperation extends Model
             case 'fri':
                 $day = 'Viernes';
                 break;
+            case 'sat':
+                $day = 'Sábado';
+                break;
+            case 'sun':
+                $day = 'Domingo';
+                break;
             // case 'MonToFri':
             //     $day = 'Lunes a Viernes';
             //     break;
