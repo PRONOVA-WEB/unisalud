@@ -160,6 +160,45 @@ class UsersTestSeeder extends Seeder
             $address->region_id = 13;
             $address->country_id = 90;
             $address->save();
+
+            $user = new User();
+            $user->active = 1;
+            $user->given = 'Alexander';
+            $user->fathers_family = 'Díaz';
+            $user->mothers_family = '';
+            $user->claveunica = 0;
+            $user->birthday = '1985-01-01';
+            $user->gender = 'male';
+            $user->nationality_id = 41;
+            $user->password = bcrypt('admin');
+            $user->save();
+
+            $humanName = new HumanName();
+            $humanName->use = 'official';
+            $humanName->given = 'Alexander';
+            $humanName->fathers_family = 'Díaz';
+            $humanName->mothers_family = '';
+            $humanName->user_id = $user->id;
+            $humanName->save();
+
+            $identifier = new Identifier();
+            $identifier->use = 'official';
+            $identifier->cod_con_identifier_type_id = 1; // RUN
+            $identifier->value = 27005646;
+            $identifier->dv = 6;
+            $identifier->user_id = $user->id;
+            $identifier->save();
+
+            $address = new Address();
+            $address->user_id = $user->id;
+            $address->type = 'physical';
+            $address->text = 'Oste';
+            $address->line = 122;
+            $address->city = 'Santiago';
+            $address->commune_id = 90;
+            $address->region_id = 13;
+            $address->country_id = 90;
+            $address->save();
         }
     }
 }

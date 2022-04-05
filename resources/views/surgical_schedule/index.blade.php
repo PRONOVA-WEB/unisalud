@@ -71,18 +71,14 @@
                                             });
                                             $RangeHour = \Carbon\Carbon::parse($dayOfWeek->openingTime)->format('H:i:s') <= \Carbon\Carbon::parse($hour)->format('H:i:s') && \Carbon\Carbon::parse($dayOfWeek->closingTime)->format('H:i:s') >= \Carbon\Carbon::parse($hour)->format('H:i:s');
                                             $styleTh = $RangeHour ? 'cursor:pointer; background-color: #f6c23e !important;' : '';
-                                            //\Carbon\Carbon::create()->hour(10)->format('H:i:s')
-                                            // $agendado = $locationScheduleArray[$i]->surgical_schedule
-                                            //     ->where('date', $date)
-                                            //     ->where('from', '<=', \Carbon\Carbon::parse($hour)->format('H'))
-                                            //     ->where('to', '>=', \Carbon\Carbon::parse($hour)->format('H'))
-                                            //     ->all();
 
                                             $agendado = $locationScheduleArray[$i]->surgical_schedule->filter(function ($value, $key) use ($date, $hour) {
                                                 return $value->date == $date && $value->from <= \Carbon\Carbon::parse($hour)->format('H') && $value->to >= \Carbon\Carbon::parse($hour)->format('H');
                                             });
 
                                             $styleTh = count($agendado) > 0 ? 'cursor:pointer; background-color: #36b9cc !important;' : $styleTh;
+
+                                            $staffTh = [];
 
                                             $textTh =
                                                 count($agendado) > 0
@@ -97,7 +93,7 @@
                                                         $agendado->first()->surgery.
                                                         '<br><i class="fa fa-history"></i> '.
                                                         strtoupper($agendado->first()->status).
-                                                        '</span>'
+                                                        '<br></span>'
                                                     : '--';
 
                                             $routeTh = count($agendado) ? 'surgical_schedule.edit_schedule' : 'surgical_schedule.asign_pavilions';
@@ -118,6 +114,11 @@
                                                 @if ($RangeHour) onclick="location.href='{{ route($routeTh, ['location' => $routeLocationValur, 'hour' => intval($hour), 'date' => $date]) }}'" @endif
                                                 class="bg-gray-200 text-center">
                                                 {!! $textTh !!}
+                                                @if (count($agendado) > 0)
+                                                @foreach ( $agendado->first()->surgical_schedule_team as $staff )
+                                                        {{ App\Models\MedicalProgrammer\Specialty::find($staff->specialty_id)->specialty_name.': '.App\Models\Practitioner::find($staff->practitioner_id)->user->OfficialFullName }}<br>
+                                                @endforeach
+                                                @endif
                                             </td>
                                         @endif
                                     @endfor
