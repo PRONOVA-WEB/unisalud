@@ -81,21 +81,10 @@
             </div>
         </div>
     </div>
-
+    <hr>
     <h6>Staff</h6>
-
     <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="for_type">Tipo</label>
-            <select id="for_type" name="type" class="form-control" wire:model.lazy="type"
-                    wire:change="getPractitioners()">
-                <option></option>
-                <option>Médico</option>
-                <option>No médico</option>
-            </select>
-        </div>
-
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-5">
             @if($specialties != null)
                 <label for="for_specialty_id">Especialidad</label>
                 <select id="for_specialty_id" name="specialty_id" class="form-control" wire:model.lazy="specialty_id"
@@ -128,7 +117,7 @@
 
         </div>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label for="for_practitioner_id">Especialista</label>
             <select id="for_practitioner_id" name="practitioner_id" class="form-control"
                     wire:model.lazy="practitioner_id">
@@ -145,30 +134,26 @@
             <label>&nbsp;</label><br>
             <button type="button" class="btn btn-success" wire:click.prevent="add()"><i class="fas fa-plus"></i>  </button>
         </div>
-        @if ($errors->any())
-        <div class="alert alert-danger col-md-12">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     </div>
+    @error('practitioner_id')
+    <div class="alert alert-danger col-md-12">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @enderror
     <div class="form-row {{ $showList }}">
         <fieldset class="form-group col-12 col-md-12">
             <input type="hidden" value="{{ json_encode($personal) }}" name="personal[]">
             <table class="table">
                 <tr>
-                    <th>Tipo</th>
-                    <th>Especialidad / Profesión</th>
+                    <th>Especialidad</th>
                     <th>Nombre y Apellido</th>
                 </tr>
                 @forelse ($personal as $key => $item)
                     <tr>
-                        <td>
-                            {{ $item['type'] }}
-                        </td>
                         <td>
                             <label class="form-check-label">
                                 {{ \App\Models\MedicalProgrammer\Specialty::find($item['specialties'])->specialty_name }}
@@ -192,13 +177,92 @@
             </table>
         </fieldset>
     </div>
-    @livewire('some.search-user-modal')
+    <hr>
 
-    <hr class="mt-3">
+    <h6>Equipamiento</h6>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="for_device_id">Equipo</label>
+            <select id="for_device_id" name="device_id" class="form-control"
+                    wire:model.lazy="device_id">
+                <option></option>
+                @if($devices != null)
+                    @foreach($devices as $device)
+                        <option value="{{ $device->id }}">{{ $device->device_name }}</option>
+                    @endforeach
+                @endif
+            </select>
+        </div>
 
-    <div wire:loading>
-        Cargando...
+        <div class="form-group col-md-1">
+            <label>&nbsp;</label><br>
+            <button type="button" class="btn btn-success" wire:click.prevent="addDevice({{ $date }})"><i class="fas fa-plus"></i>  </button>
+        </div>
     </div>
+    @error('device_id')
+    <div class="alert alert-danger col-md-12">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @enderror
+    @if (session()->has('message'))
+        <div class="alert alert-warning col-md-12">
+            {{ session('message') }}
+        </div>
+    @endif
+    <div class="form-row {{ $showListDevice }}">
+        <fieldset class="form-group col-12 col-md-12">
+            <input type="hidden" value="{{ json_encode($equipos) }}" name="devices[]">
+            <table class="table">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Fabricante</th>
+                    <th>Serial</th>
+                </tr>
+                @forelse ($equipos as $key => $item)
+                    @php
+                        $device = \App\Models\Device::find($item['device']);
+                    @endphp
+                    <tr>
+                        <td>
+                            <label class="form-check-label">
+                                {{ $device->identifier }}
+                            </label>
+                        </td>
+                        <td>
+                            <label class="form-check-label">
+                                {{ $device->device_name }}
+                            </label>
+                        </td>
+                        <td>
+                            <label class="form-check-label">
+                                {{ $device->manufacturer }}
+                            </label>
+                        </td>
+                        <td>
+                            <label class="form-check-label">
+                                {{ $device->serial_number }}
+                            </label>
+                        </td>
+                        <td>
+                            <fieldset class="form-group col-lg-2">
+                                <button class="btn btn-danger"
+                                    wire:click.prevent="removeDevice({{ $key }})"><i class="fas fa-times"></i></button>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    @empty
+                    {{ 'Nada cargado' }}
+                    @endforelse
+            </table>
+        </fieldset>
+    </div>
+
+    @livewire('some.search-user-modal')
 
 </div>
 

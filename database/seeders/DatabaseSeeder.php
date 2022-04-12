@@ -66,11 +66,12 @@ class DatabaseSeeder extends Seeder
             LocationHourOfOperationSeeder::class,
 
             /* SAMU */
-            SamuMobileSeeder::class,
-            SamuJobTypeSeeder::class,
-            SamuKeySeeder::class,
-            SamuReceptionPlaceSeeder::class,
-            SamuEstablishmentSeeder::class,
+            // SamuMobileSeeder::class,
+            // SamuJobTypeSeeder::class,
+            // SamuKeySeeder::class,
+            // SamuReceptionPlaceSeeder::class,
+            // SamuEstablishmentSeeder::class,
+
             SettingSeeder::class,
 
         ]);

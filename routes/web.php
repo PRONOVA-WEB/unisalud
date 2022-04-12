@@ -20,7 +20,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Fq\CysticFibrosisRequest;
 use App\Http\Controllers\Fq\ContactUserController;
 use App\Http\Controllers\Fq\FqRequestController;
-use App\Http\Controllers\MedicalProgrammer\LocationController as MpLocationController;
+use App\Http\Controllers\LocationController as MpLocationController;
 use App\Http\Controllers\Surveys\TeleconsultationSurveyController;
 
 use App\Http\Controllers\MedicalProgrammer\OperatingRoomProgrammingController;
@@ -65,6 +65,8 @@ use App\Http\Controllers\SurgicalScheduleController;
 use App\Http\Controllers\Epi\SuspectCaseController;
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\MedicalProgrammer\ChartsController;
+
+use App\Http\Controllers\DevicesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -219,15 +221,6 @@ Route::prefix('surveys')->as('surveys.')->middleware('auth')->group(function(){
 
 Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('auth')->group(function(){
 
-    Route::prefix('locations')->name('locations.')->group(function(){
-		Route::get('/', [MpLocationController::class, 'index'])->name('index');
-		Route::post('/', [MpLocationController::class, 'store'])->name('store');
-		Route::get('/create', [MpLocationController::class, 'create'])->name('create');
-		Route::get('/{location}', [MpLocationController::class, 'show'])->name('show');
-		Route::put('/{location}', [MpLocationController::class, 'update'])->name('update');
-		Route::delete('/{location}', [MpLocationController::class, 'destroy'])->name('destroy');
-		Route::get('/{location}/edit', [MpLocationController::class, 'edit'])->name('edit');
-    });
 	Route::prefix('operating_room_programming')->name('operating_room_programming.')->group(function(){
 		Route::post('saveMyEvent', [OperatingRoomProgrammingController::class, 'saveMyEvent'])->name('saveMyEvent');
 		Route::post('updateMyEvent', [OperatingRoomProgrammingController::class, 'updateMyEvent'])->name('updateMyEvent');
@@ -669,6 +662,25 @@ Route::prefix('vista')->name('vista.')->group(function () {
 	Route::view('/control', 'vista.control')->name('control');
 });
 
+Route::prefix('locations')->name('locations.')->group(function(){
+    Route::get('/', [MpLocationController::class, 'index'])->name('index');
+    Route::post('/', [MpLocationController::class, 'store'])->name('store');
+    Route::get('/create', [MpLocationController::class, 'create'])->name('create');
+    Route::get('/{location}', [MpLocationController::class, 'show'])->name('show');
+    Route::put('/{location}', [MpLocationController::class, 'update'])->name('update');
+    Route::delete('/{location}', [MpLocationController::class, 'destroy'])->name('destroy');
+    Route::get('/{location}/edit', [MpLocationController::class, 'edit'])->name('edit');
+});
+
+Route::prefix('devices')->name('devices.')->group(function(){
+    Route::get('/', [DevicesController::class, 'index'])->name('index');
+    Route::post('/', [DevicesController::class, 'store'])->name('store');
+    Route::get('/create', [DevicesController::class, 'create'])->name('create');
+    Route::get('/{device}', [DevicesController::class, 'show'])->name('show');
+    Route::put('/{device}', [DevicesController::class, 'update'])->name('update');
+    Route::delete('/{device}', [DevicesController::class, 'destroy'])->name('destroy');
+    Route::get('/{device}/edit', [DevicesController::class, 'edit'])->name('edit');
+});
 
 //Rutas control-attention
 Route::prefix('vista')->name('vista.')->group(function () {

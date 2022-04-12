@@ -37,6 +37,10 @@ class SurgicalSchedule extends Model
         return $this->hasMany(SurgicalScheduleTeam::class,'surgical_schedule_id');
     }
 
+    public function surgical_schedule_device() {
+        return $this->hasMany(SurgicalScheduleDevice::class,'surgical_schedule_id');
+    }
+
     public function events() {
         return $this->hasMany(SurgicalScheduleEvent::class,'surgical_schedule_id');
     }

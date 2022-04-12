@@ -3,7 +3,7 @@
 @section('title', 'Agendar Pabellón')
 @section('content')
 
-    <h3 class="mb-3">Agendar {{ $location->name }} - Fecha: {{ \Carbon\Carbon::parse($date)->format('l, d-m-Y') }}</h3>
+    <h3 class="mb-3">Agendar {{ $location->name }} - Fecha: {{ dayToSpanish(\Carbon\Carbon::parse($date)->format('l')).', '.\Carbon\Carbon::parse($date)->format('d-m-Y') }}</h3>
     @if ($errors->any())
         <div class="alert alert-danger col-md-12">
             <ul>
@@ -13,12 +13,11 @@
             </ul>
         </div>
     @endif
-    <hr>
     <form method="post" action="{{ route('surgical_schedule.asign_pavilions_store') }}">
         @csrf
         <input type="hidden" name="location_id" value="{{ $location->id }}">
         <input type="hidden" name="date" value="{{ $date }}">
-        @livewire('surgical-schedule.asign-pavilion')
+        @livewire('surgical-schedule.asign-pavilion',['date'=>$date,'hour'=>$hour])
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <label for="for_observations">Diagnóstico Preoperatorio</label>

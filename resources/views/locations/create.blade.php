@@ -1,9 +1,19 @@
 @extends('layouts.app')
 
-@section('content')
-    <h3 class="mb-3">Crear Box</h3>
+@section('title','Crear Locación')
 
-    <form method="POST" class="form-horizontal" action="{{ route('medical_programmer.locations.store') }}">
+@section('content')
+    <h3 class="mb-3">Crear Locación</h3>
+    @if ($errors->any())
+    <div class="alert alert-danger col-md-12">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <form method="POST" class="form-horizontal" action="{{ route('locations.store') }}">
         @csrf
         @method('POST')
 
@@ -21,7 +31,7 @@
             <fieldset class="form-group col-6 col-md-6">
                 <label for="for_alias">Tipo*</label>
                 <select class="form-control" name="cod_con_physical_type_id">
-                    @foreach ($cod_con_physical_types as $cod_con_physical_type)
+                    @foreach ($cod_con_physical_types->sortByDesc('id') as $cod_con_physical_type)
                         <option value="{{ $cod_con_physical_type->id }}">{{ $cod_con_physical_type->text }}</option>
                     @endforeach
                 </select>

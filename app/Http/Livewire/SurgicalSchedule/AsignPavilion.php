@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\SurgicalSchedule;
 
 use App\Models\Location;
-use App\Models\MedicalProgrammer\Profession;
+use App\Models\Device;
 use App\Models\MedicalProgrammer\Specialty;
 use App\Models\Practitioner;
-use App\Models\Some\Appointment;
-use App\Models\Some\Sic;
 use App\Models\User;
+use App\Models\SurgicalSchedule\SurgicalSchedule;
+use App\Models\SurgicalSchedule\SurgicalScheduleDevice;
 use Carbon\Carbon;
 use Livewire\Component;
 
@@ -36,41 +36,101 @@ class AsignPavilion extends Component
     public $patientInstruction;
     public $interconsultationId;
     public $showList;
+    public $showListDevice;
     public $list = [];
+    public $listDevice = [];
+    public $devices;
+    public $device_id;
+    public $date;
+    public $hour;
 
     protected $listeners = [
         'userSelected' => 'setUser',
     ];
 
-    public function mount($appointmentId = null, $pendingPractitionerId = null, $from = null, $to = null, $interconsultationId = null)
+    public function mount()
     {
         $this->showList = 'd-none';
+        $this->showListDevice = 'd-none';
+        $this->devices  = Device::active()->get();
+        $this->specialties = Specialty::orderBy('specialty_name', 'ASC')->get();
+
     }
 
     public function add()
     {
         $this->validate([
-            'type'  => 'required',
             'specialty_id' => 'required',
             'practitioner_id' => 'required',
         ],[
-            'type.required'  => 'Seleccione un tipo',
             'specialty_id.required' => 'Seleccione una especialidad / profesión',
             'practitioner_id.required' => 'Seleccione un especialista',
         ]);
-        $current  = [
-            'type'  => $this->type,
-            'specialties' => $this->specialty_id ?? $this->profession_id,
-            'practitioners' => $this->practitioner_id,
-        ];
-        array_push($this->list, $current);
-        $this->reset(['type','profession_id','specialty_id','practitioner_id']);
+
+        if(array_search($this->practitioner_id, array_column($this->list, 'practitioners')) === false)
+        {
+            $current  = [
+                'specialties' => $this->specialty_id ,
+                'practitioners' => $this->practitioner_id,
+            ];
+            array_push($this->list, $current);
+
+        }
+        else
+        {
+            $this->addError('practitioner_id', 'El especialista ya está en el staff.');
+        }
+        $this->reset(['profession_id','specialty_id','practitioner_id']);
+
+    }
+
+    public function addDevice()
+    {
+        $this->validate([
+            'device_id' => 'required',
+        ],[
+            'device_id.required' => 'Seleccione un equipo de la lista',
+        ]);
+
+        //valido que el equipo esté disponible
+        $date = $this->date;
+        $hour = $this->hour;
+        $surgicalScheduleDevice = SurgicalScheduleDevice::whereHas('surgical_schedule', function($q) use($date){
+                                    $q->where('date',$date);
+                                })
+                                ->first();
+        if ($surgicalScheduleDevice->count() > 0)
+        {
+            session()->flash('message', 'El equipo se encuentra asignado para el '.$surgicalScheduleDevice->surgical_schedule->location->name.' de '.$surgicalScheduleDevice->surgical_schedule->from.' a '.$surgicalScheduleDevice->surgical_schedule->to);
+        }
+
+        if(array_search($this->device_id, array_column($this->listDevice, 'device')) === false)
+        {
+            $current  = [
+                'device' => $this->device_id
+            ];
+
+            array_push($this->listDevice, $current);
+
+        }
+        else
+        {
+            $this->addError('device_id', 'El equipo ya se encuentra en la lista.');
+
+        }
+        $this->reset(['device_id']);
 
     }
 
     public function remove($i)
     {
         unset($this->list[$i]);
+
+    }
+
+    public function removeDevice($i)
+    {
+        unset($this->listDevice[$i]);
 
     }
 
@@ -118,15 +178,9 @@ class AsignPavilion extends Component
 
     public function getPractitioners()
     {
-        $this->specialties = null;
-        $this->professions = null;
-        if ($this->type != null) {
-            if ($this->type == "Médico") {
-                $this->specialties = Specialty::orderBy('specialty_name', 'ASC')->get();
-            } else {
-                $this->professions = Profession::orderBy('profession_name', 'ASC')->get();
-            }
-        }
+        // $this->specialties = null;
+        // $this->professions = null;
+        // $this->specialties = Specialty::orderBy('specialty_name', 'ASC')->get();
 
         $this->practitioners = null;
         if ($this->specialty_id != null) {
@@ -153,8 +207,10 @@ class AsignPavilion extends Component
     public function render()
     {
         $this->showList = (!empty($this->list)) ? '' : 'd-none';
+        $this->showListDevice = (!empty($this->listDevice)) ? '' : 'd-none';
         return view('livewire.surgical-schedule.asign-pavilion', [
-            'personal' => $this->list
+            'personal' => $this->list,
+            'equipos' => $this->listDevice,
         ]);
     }
 }

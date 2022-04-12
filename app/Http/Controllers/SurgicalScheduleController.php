@@ -7,6 +7,7 @@ use App\Models\SurgicalSchedule\LocationSchedule;
 use App\Models\SurgicalSchedule\SurgicalSchedule;
 use App\Models\SurgicalSchedule\SurgicalScheduleEvent;
 use App\Models\SurgicalSchedule\SurgicalScheduleTeam;
+use App\Models\SurgicalSchedule\SurgicalScheduleDevice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -158,7 +159,7 @@ class SurgicalScheduleController extends Controller
                 'surgical_schedule_id'=>$surgicalschedule->id,
                 'practitioner_id'=>$request->practitioner_id,
                 'specialty_id'=>$request->specialty_id,
-                'type'=>$request->type
+                'type'=>'Medico'
             ]);
         }
         if($request->personal)
@@ -171,11 +172,33 @@ class SurgicalScheduleController extends Controller
                         'surgical_schedule_id'=>$surgicalschedule->id,
                         'practitioner_id'=>$item->practitioners,
                         'specialty_id'=>$item->specialties,
-                        'type'=>$item->type
+                        'type'=>'Medico'
                     ]);
                 }
             }
         }
+    //equipamiento
+        if(!empty($request->device_id))
+        {
+            SurgicalScheduleDevice::create([
+                'surgical_schedule_id'=>$surgicalschedule->id,
+                'device_id'=>$request->device_id,
+            ]);
+        }
+        if($request->devices)
+        {
+            foreach($request->devices as $items)
+            {
+                foreach (json_decode($items) as $item) {
+
+                    SurgicalScheduleDevice::create([
+                        'surgical_schedule_id'=>$surgicalschedule->id,
+                        'device_id'=>$item->device,
+                    ]);
+                }
+            }
+        }
+
         return redirect()->route('surgical_schedule.schedule')->with('success','Pabellón agendado exitosamente');
     }
 }
