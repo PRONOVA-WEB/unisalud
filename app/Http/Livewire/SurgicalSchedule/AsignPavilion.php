@@ -95,11 +95,13 @@ class AsignPavilion extends Component
         //valido que el equipo esté disponible
         $date = $this->date;
         $hour = $this->hour;
-        $surgicalScheduleDevice = SurgicalScheduleDevice::whereHas('surgical_schedule', function($q) use($date){
-                                    $q->where('date',$date);
+        $surgicalScheduleDevice = SurgicalScheduleDevice::whereHas('surgical_schedule', function($q) use($date, $hour){
+                                    $q->where('date',$date)
+                                    ->where('from','<=',$hour)
+                                    ->where('to','>=',$hour);
                                 })
                                 ->first();
-        if ($surgicalScheduleDevice->count() > 0)
+        if ($surgicalScheduleDevice && $surgicalScheduleDevice->count() > 0)
         {
             session()->flash('message', 'El equipo se encuentra asignado para el '.$surgicalScheduleDevice->surgical_schedule->location->name.' de '.$surgicalScheduleDevice->surgical_schedule->from.' a '.$surgicalScheduleDevice->surgical_schedule->to);
         }
