@@ -3,7 +3,7 @@
 @section('title', 'Ver Agenda')
 @section('content')
     <h3 class="mb-3">{{ $schedule->location->name }} - Fecha: {{ dayToSpanish(\Carbon\Carbon::parse($schedule->date)->format('l')) }}, {{ \Carbon\Carbon::parse($schedule->date)->format('d-m-Y') }}</h3>
-    <h6>De: {{  $schedule->from.':00' }} a {{ $schedule->to.':00' }}</h6>
+    <h6>{!! $schedule->estatus !!} De {{  $schedule->from.':00' }} a {{ $schedule->to.':00' }} <i class="fas fa-clock"></i></h6>
     @if ($errors->any())
         <div class="alert alert-danger col-md-12">
             <ul>
@@ -153,6 +153,7 @@
                 </table>
             </div>
         @endif
+        @if($schedule->status != 'cancelado')
         <form method="post" action="{{ route('surgical_schedule.update_schedule') }}">
         @csrf
         <div class="form-row">
@@ -177,6 +178,7 @@
             </div>
         </div>
         </form>
+        @endif
 @endsection
 
 @section('custom_js')

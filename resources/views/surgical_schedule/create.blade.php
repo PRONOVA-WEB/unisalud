@@ -42,7 +42,7 @@
         <div class="form-row">
             <div class="col-md-3">
                 <label for="start">Hora de Inicio</label>
-                <input type="number" name="start" min="{{ $hour }}" value="{{ intval($hour) }}" class="datetime form-control" readonly>
+                <input type="number" name="start" min="{{ $hour }}" value="{{ (intval($maxEndTime) == intval($hour)) ? intval($hour) - 1 : intval($hour) }}" class="datetime form-control" readonly>
             </div>
             <div class="col-md-3">
                 <label for="end">Hora de Finalización</label>

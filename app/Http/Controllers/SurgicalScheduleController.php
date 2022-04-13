@@ -61,15 +61,43 @@ class SurgicalScheduleController extends Controller
                 }
             }
         }
-
-
         $hours = $this->hours;
-        return view('surgical_schedule.index',compact('locationScheduleArray','hours','date'));
+
+        //cancelaciones
+        $canceled = SurgicalSchedule::where('status','cancelado')
+                                ->where('date',$date)
+                                ->with('location')
+                                ->get();
+
+        return view('surgical_schedule.index',compact('locationScheduleArray','hours','date','canceled'));
     }
 
     public function edit(SurgicalSchedule $location){
         $schedule = $location;
-        return view('surgical_schedule.show',compact('schedule'));
+        $scheduleDayHours = [];
+        $day = Carbon::parse(date($schedule->date))->format('l');
+
+        foreach ($schedule->location->hours_of_operation as $hours) {
+            if($hours->daysOfWeek == strtolower(substr($day,0,3))) {
+                $scheduleDayHours[] = $hours;
+            }
+        }
+        $arr = [];
+        for ($i=intval($hours->openingTime); $i <= intval($hours->closingTime); $i++) {
+            $arr[] = $i;
+        }
+        foreach ($arr as $key => $hora) {
+            if ($schedule->from == $hora)
+            {
+                unset($arr[$key]);
+            }
+            if ($schedule->to == $hora)
+            {
+                unset($arr[$key]);
+            }
+        }
+        //dd($arr);
+        return view('surgical_schedule.show',compact('schedule','scheduleDayHours'));
     }
 
     public function update(Request $request){
@@ -141,7 +169,17 @@ class SurgicalScheduleController extends Controller
     }
 
     public function storeAsignPavilions(Request $request)
-    {//dd($request->all());
+    {
+        $request->validate([
+            'pacient' => 'required',
+            'start' => 'required',
+            'end' => 'required|gt:start',
+            'practitioner_id' => 'required',
+        ],[
+            'pacient.required' => 'Seleccione un paciente(previa búsqueda)',
+            'end.after'    => 'La hora de finalización debe ser mayor a la de inicio',
+            'practitioner_id.required' => 'Seleccione staff',
+        ]);
         $surgicalschedule = SurgicalSchedule::create([
         'location_id' => $request->location_id,
         'date'=>$request->date,

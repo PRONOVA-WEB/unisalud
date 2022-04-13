@@ -209,9 +209,9 @@
     </div>
     @enderror
     @if (session()->has('message'))
-        <div class="alert alert-warning col-md-12">
-            {{ session('message') }}
-        </div>
+    <div class="alert alert-warning col-md-12">
+        {{ session('message') }}
+    </div>
     @endif
     <div class="form-row {{ $showListDevice }}">
         <fieldset class="form-group col-12 col-md-12">
