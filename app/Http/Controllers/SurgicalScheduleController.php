@@ -174,11 +174,9 @@ class SurgicalScheduleController extends Controller
             'pacient' => 'required',
             'start' => 'required',
             'end' => 'required|gt:start',
-            'practitioner_id' => 'required',
         ],[
             'pacient.required' => 'Seleccione un paciente(previa búsqueda)',
             'end.after'    => 'La hora de finalización debe ser mayor a la de inicio',
-            'practitioner_id.required' => 'Seleccione staff',
         ]);
         $surgicalschedule = SurgicalSchedule::create([
         'location_id' => $request->location_id,
