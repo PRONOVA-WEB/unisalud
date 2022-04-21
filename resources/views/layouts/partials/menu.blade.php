@@ -40,6 +40,25 @@
         </div>
     </li>
     @endcan
+    @canany(['Developer', 'Administrator'])
+    <li class="nav-item {{ active(['surgical_schedule.*']) }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurgical"
+            aria-expanded="true" aria-controls="collapseSurgical">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Agenda Quirúrgica</span>
+        </a>
+        <div id="collapseSurgical" class="collapse" aria-labelledby="headingSurgical" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('surgical_schedule.pavilions') }}">
+                    <i class="fas fa-clinic-medical"></i> Apertura de Pabellón
+                </a>
+                <a class="collapse-item" href="{{ route('surgical_schedule.schedule') }}">
+                    <i class="fas fa-clock"></i> Agendamientos
+                </a>
+            </div>
+        </div>
+    </li>
+    @endcan
     @can('Some: user')
     <li class="nav-item {{ active(['some.*']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSome"

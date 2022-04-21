@@ -440,21 +440,21 @@ class ProgrammingProposalController extends Controller
                 foreach ($programmed_day as $key => $value) {
                   // especialidades
                   if ($value['data']->programmingProposal->specialty) {
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] = 0;
 
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = 0;
                   }
                   // profesiones
                   if ($value['data']->programmingProposal->profession) {
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->profession->id_profession . ' - ' . $value['data']->programmingProposal->profession->profession_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] = 0;
 
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->profession->id_profession . ' - ' . $value['data']->programmingProposal->profession->profession_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = 0;
                   }
@@ -465,11 +465,11 @@ class ProgrammingProposalController extends Controller
                   if ($value['data']->programmingProposal->specialty) {
                     $start = Carbon::parse($value['start_date']);
                     $end = Carbon::parse($value['end_date']);
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] += $start->diffInMinutes($end)/60;
 
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = $value['data']->activity->specialties->where('id',$value['data']->programmingProposal->specialty_id)->first()->pivot->performance;
                   }
@@ -477,18 +477,18 @@ class ProgrammingProposalController extends Controller
                   if ($value['data']->programmingProposal->profession) {
                     $start = Carbon::parse($value['start_date']);
                     $end = Carbon::parse($value['end_date']);
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->profession->id_profession . ' - ' . $value['data']->programmingProposal->profession->profession_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] += $start->diffInMinutes($end)/60;
 
-                    $array_medic_programmings[$value['data']->programmingProposal->user->OfficialFullName][$value['data']->programmingProposal->contract->contract_id]
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
                                             [$value['data']->programmingProposal->profession->id_profession . ' - ' . $value['data']->programmingProposal->profession->profession_name]
                                             [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = $value['data']->activity->professions->where('id',$value['data']->programmingProposal->profession_id)->first()->pivot->performance;
                   }
                 }
               }
       }
-
+//dd($array_medic_programmings);
       return view('medical_programmer.management.reports.consolidated_programmings',compact('array_medic_programmings'));
     }
 }

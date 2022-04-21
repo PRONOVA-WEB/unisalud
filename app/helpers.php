@@ -134,3 +134,18 @@ function generateAge($year, $month) {
 
     return $age;
 }
+
+function dayToSpanish($day)
+{
+    $days = [
+        'Monday' => 'Lunes',
+        'Tuesday' => 'Martes',
+        'Wednesday' => 'Miércoles',
+        'Thursday' => 'Jueves',
+        'Friday' => 'Viernes',
+        'Saturday' => 'Sábado',
+        'Sunday' => 'Domingo',
+    ];
+
+    return $days[$day];
+}

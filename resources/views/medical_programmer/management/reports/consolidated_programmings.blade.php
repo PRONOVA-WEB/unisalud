@@ -22,7 +22,8 @@
 <table class="table table-sm table-bordered text-center table-striped small">
   <thead>
     <tr class="text-center">
-      <th>Rut</th>
+      <th>Especialista</th>
+      <th>RUN</th>
       <th>Contrato</th>
       <th>Especialidad</th>
       <th>Actividad</th>
@@ -39,8 +40,12 @@
         @foreach ($array_medic_programming as $key2 => $contracts)
           @foreach ($contracts as $key3 => $specialties)
             @foreach ($specialties as $key4 => $activities)
+            @php
+                $user = App\Models\User::find($key1);
+            @endphp
               <tr>
-                  <td>{{$key1}}</td>
+                  <td>{{$user->OfficialFullName}}</td>
+                  <td>{{ $user->IdentifierRun->value.'-'.$user->IdentifierRun->dv }}</td>
                   <td>{{$key2}}</td>
                   <td>{{$key3}}</td>
                   <td>{{$key4}}</td>

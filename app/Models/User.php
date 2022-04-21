@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Samu\Shift;
 use App\Models\Some\Appointment;
+use App\Models\SurgicalSchedule\SurgicalSchedule;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -18,7 +19,7 @@ class User extends Authenticatable implements Auditable
 {
     use HasFactory, Notifiable, HasRoles;
     use SoftDeletes;
-    
+
     use \OwenIt\Auditing\Auditable;
 
 
@@ -244,7 +245,7 @@ class User extends Authenticatable implements Auditable
     public function getOfficialPhoneAttribute()
     {
         $phone = $this->getOfficialContactPointPhoneAttribute();
-        return ($phone) ? $phone->value : ''; 
+        return ($phone) ? $phone->value : '';
     }
 
     public function getOfficialContactPointPhoneAttribute()
@@ -253,7 +254,7 @@ class User extends Authenticatable implements Auditable
             ->where('system', 'phone')
             ->latest()
             ->first();
-        
+
     }
 
     public function getOfficialEmailAttribute()
@@ -489,7 +490,12 @@ class User extends Authenticatable implements Auditable
             return $subquery->where('name', $permissionName);
         });
     }
-    
+
+    public function surgical_schedule()
+    {
+        return $this->hasMany(SurgicalSchedule::class, 'pacient_id');
+    }
+
     /**
      * Perform any actions required after the model boots.
      *

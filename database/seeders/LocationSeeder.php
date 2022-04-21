@@ -14,6 +14,34 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
+        Location::Create(['status' => 'active',
+        'name' => 'Pabellón Quirúrgico 1',
+        'alias' => 'Pabellón Quirúrgico 1',
+        'description' => 'Pabellón Quirúrgico 1',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '5'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Pabellón Quirúrgico 2',
+        'alias' => 'Pabellón Quirúrgico 2',
+        'description' => 'Pabellón Quirúrgico 2',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '5'
+        ]);
+
+        Location::Create(['status' => 'active',
+        'name' => 'Pabellón General',
+        'alias' => 'Pabellón General',
+        'description' => 'Pabellón General',
+        'mode' => 'Instance',
+        'organization_id' => 1,
+        'cod_con_physical_type_id' => '5'
+        ]);
+
+
         Location::Create(['status' => 'inactive',
             'name' => 'Pasillo Verde',
             'alias' => 'Pasillo Verde',
