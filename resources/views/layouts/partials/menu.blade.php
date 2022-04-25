@@ -41,7 +41,7 @@
     </li>
     @endcan
     @canany(['Developer', 'Administrator'])
-    <li class="nav-item {{ active(['surgical_schedule.*']) }}">
+    <li class="nav-item {{ active(['surgical_schedule.*','medical_programmer.locations.index']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurgical"
             aria-expanded="true" aria-controls="collapseSurgical">
             <i class="fas fa-clipboard-list"></i>
@@ -50,10 +50,16 @@
         <div id="collapseSurgical" class="collapse" aria-labelledby="headingSurgical" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('surgical_schedule.pavilions') }}">
-                    <i class="fas fa-clinic-medical"></i> Apertura de Pabellón
+                    <i class="fas fa-business-time"></i> Apertura de Pabellón
                 </a>
                 <a class="collapse-item" href="{{ route('surgical_schedule.schedule') }}">
                     <i class="fas fa-clock"></i> Agendamientos
+                </a>
+                <a class="collapse-item" href="{{ route('locations.index') }}">
+                    <i class="fas fa-clinic-medical"></i> Pabellones
+                </a>
+                <a class="collapse-item" href="{{ route('devices.index') }}">
+                    <i class="fas fa-cart-plus"></i> Equipamiento
                 </a>
             </div>
         </div>
@@ -150,18 +156,15 @@
                 <a class="collapse-item" href="{{ route('parameter.organization.index','Todas las Organizaciones' ) }}">
                     <i class="fas fa-cog"></i> Organizaciones
                 </a>
-                <a class="collapse-item" href="{{ route('medical_programmer.locations.index') }}">
-                    <i class="fas fa-cog"></i> Box
-                </a>
+                {{-- <a class="collapse-item" href="{{ route('medical_programmer.locations.index') }}">
+                    <i class="fas fa-cog"></i> Locaciones
+                </a> --}}
                 <a class="collapse-item" href="{{ route('medical_programmer.specialties.locations') }}">
                     <i class="fas fa-cog"></i> Box <br> por especialidades
                 </a>
                 <a class="collapse-item" href="{{ route('medical_programmer.rrhh.index') }}">
                     <i class="fas fa-cog"></i>  RRHH
                 </a>
-                {{-- <a class="collapse-item" href="{{ route('medical_programmer.operating_rooms.index') }}">
-                    <i class="fas fa-cog"></i>  Pabellones
-                </a> --}}
                 <a class="collapse-item" href="{{ route('medical_programmer.mother_activities.index') }}">
                     <i class="fas fa-cog"></i>  Actividades Madre
                 </a>

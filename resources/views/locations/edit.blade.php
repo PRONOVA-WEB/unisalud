@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
 @section('title', 'Editar Box')
 
-<h3 class="mb-3">Editar Box</h3>
+@section('content')
+<h3 class="mb-3">Editar Locación</h3>
 
-<form method="POST" class="form-horizontal" action="{{ route('medical_programmer.locations.update', $location) }}">
+<form method="POST" class="form-horizontal" action="{{ route('locations.update', $location) }}">
     @csrf
     @method('PUT')
 

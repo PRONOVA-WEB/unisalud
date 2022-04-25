@@ -300,7 +300,7 @@ class AsignAppointment extends Component
         }
     }
 
-    public function createPatient($interconsultationId){
+    public function createPatient($interconsultationId = null){
         return redirect()->route('patient.create_from_sic', compact('interconsultationId'));
     }
 

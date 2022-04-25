@@ -14,7 +14,7 @@
             </ul>
         </div>
     @endif
-    <hr />
+    <hr/>
     <form method="post" action="{{ route('surgical_schedule.schedule') }}">
         @csrf
         <div class="form-row">
@@ -65,14 +65,13 @@
                                     <td class="text-center">{{ $hour }}</td>
                                     @for ($i = 0; $i < count($locationScheduleArray); $i++)
                                         @php
-
                                             $dayOfWeek = $locationScheduleArray[$i]->hours_of_operation->first(function ($value, $key) use ($date) {
                                                 return $value->daysOfWeek == strtolower(substr(\Carbon\Carbon::parse(date($date))->format('l'), 0, 3));
                                             });
                                             $RangeHour = \Carbon\Carbon::parse($dayOfWeek->openingTime)->format('H:i:s') <= \Carbon\Carbon::parse($hour)->format('H:i:s') && \Carbon\Carbon::parse($dayOfWeek->closingTime)->format('H:i:s') >= \Carbon\Carbon::parse($hour)->format('H:i:s');
                                             $styleTh = $RangeHour ? 'cursor:pointer; background-color: #f6c23e !important;' : '';
 
-                                            $agendado = $locationScheduleArray[$i]->surgical_schedule->filter(function ($value, $key) use ($date, $hour) {
+                                            $agendado = $locationScheduleArray[$i]->surgical_schedule->where('status','!=','cancelado')->filter(function ($value, $key) use ($date, $hour) {
                                                 return $value->date == $date && $value->from <= \Carbon\Carbon::parse($hour)->format('H') && $value->to >= \Carbon\Carbon::parse($hour)->format('H');
                                             });
 
@@ -83,16 +82,16 @@
                                             $textTh =
                                                 count($agendado) > 0
                                                     ? '<span style:"color:black">
-                                                        <i class="fas fa-user"></i> '.
+                                                            <i class="fas fa-user"></i> ' .
                                                         $agendado->first()->patient->official_full_name .
-                                                        '<br>RUN: '.
+                                                        '<br>RUN: ' .
                                                         $agendado->first()->patient->identifier_run->value .
                                                         '-' .
                                                         $agendado->first()->patient->identifier_run->dv .
                                                         '<br><i class="fa fa-plus-square"></i> ' .
-                                                        $agendado->first()->surgery.
-                                                        '<br><i class="fa fa-history"></i> '.
-                                                        strtoupper($agendado->first()->status).
+                                                        $agendado->first()->surgery .
+                                                        '<br><i class="fa fa-history"></i> ' .
+                                                        strtoupper($agendado->first()->status) .
                                                         '<br></span>'
                                                     : '--';
 
@@ -103,10 +102,7 @@
                                             $titleTh = count($agendado) ? 'Ver Detalles' : 'Agendar ' . $locationScheduleArray[$i]->name . ' a las ' . $hour;
 
                                             //Rowspan
-                                            $rowSpan = count($agendado) ?
-                                                        ($agendado->first()->from == \Carbon\Carbon::parse($hour)->format('H') ?
-                                                            'rowspan=' . $agendado->first()->to - $agendado->first()->from + 1 : 'hide')
-                                                        : '';
+                                            $rowSpan = count($agendado) ? ($agendado->first()->from == \Carbon\Carbon::parse($hour)->format('H') ? 'rowspan=' . $agendado->first()->to - $agendado->first()->from + 1 : 'hide') : '';
                                         @endphp
                                         @if ($rowSpan != 'hide')
                                             <td title="{{ $titleTh }}" {{ $rowSpan }}
@@ -115,9 +111,9 @@
                                                 class="bg-gray-200 text-center">
                                                 {!! $textTh !!}
                                                 @if (count($agendado) > 0)
-                                                @foreach ( $agendado->first()->surgical_schedule_team as $staff )
-                                                        {{ App\Models\MedicalProgrammer\Specialty::find($staff->specialty_id)->specialty_name.': '.App\Models\Practitioner::find($staff->practitioner_id)->user->OfficialFullName }}<br>
-                                                @endforeach
+                                                    @foreach ($agendado->first()->surgical_schedule_team as $staff)
+                                                        {{ App\Models\MedicalProgrammer\Specialty::find($staff->specialty_id)->specialty_name .': ' .App\Models\Practitioner::find($staff->practitioner_id)->user->OfficialFullName }}<br>
+                                                    @endforeach
                                                 @endif
                                             </td>
                                         @endif
@@ -129,6 +125,30 @@
                 </div>
             </fieldset>
         </div>
+    @endif
+    @if (count($canceled) > 0)
+    <hr>
+    <div class="form-row">
+        <h3>Cancelaciones</h3>
+        <table class="table">
+            <thead>
+                <th>Pabellón</th>
+                <th>Hora Agendada</th>
+                <th>Observación</th>
+                <th>Detalle</th>
+            </thead>
+            <tbody>
+            @foreach ($canceled as $cancelado)
+            <tr>
+                <td>{{ $cancelado->location->name }}</td>
+                <td>{{ $cancelado->from .' - '. $cancelado->to }}</td>
+                <td>{{ $cancelado->events->last()->observations }}</td>
+                <td><a href="{{ route('surgical_schedule.edit_schedule',$cancelado->id) }}">Ver</a></td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     @endif
 @endsection
 @section('custom_js')

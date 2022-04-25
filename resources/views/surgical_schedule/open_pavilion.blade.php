@@ -36,7 +36,7 @@
                                     </div>
                                     <br>
                                     {{ $location->description }}
-                                    <a href="{{ route('medical_programmer.locations.edit', $location->id) }}">Configurar</a>
+                                    <a href="{{ route('locations.edit', $location->id) }}">Configurar</a>
                                     <br>
                                     @if($location->pavilion_schedule->count())
                                     <h6> Apertura: {{ \Carbon\Carbon::parse($location->pavilion_schedule->first()->from)->format('d-m-Y').' a '.\Carbon\Carbon::parse($location->pavilion_schedule->first()->to)->format('d-m-Y')}}</h6>

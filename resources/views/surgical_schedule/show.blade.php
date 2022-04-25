@@ -3,7 +3,7 @@
 @section('title', 'Ver Agenda')
 @section('content')
     <h3 class="mb-3">{{ $schedule->location->name }} - Fecha: {{ dayToSpanish(\Carbon\Carbon::parse($schedule->date)->format('l')) }}, {{ \Carbon\Carbon::parse($schedule->date)->format('d-m-Y') }}</h3>
-    <h6>De: {{  $schedule->from.':00' }} a {{ $schedule->to.':00' }}</h6>
+    <h6>{!! $schedule->estatus !!} De {{  $schedule->from.':00' }} a {{ $schedule->to.':00' }} <i class="fas fa-clock"></i></h6>
     @if ($errors->any())
         <div class="alert alert-danger col-md-12">
             <ul>
@@ -67,16 +67,43 @@
                 <table class="table table-sm table-hover">
                     <thead class="table-info">
                     <tr>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Especialidad / Profesión</th>
+                        <th scope="col">Especialidad</th>
                         <th scope="col">Nombre y Apellido</th>
                     </thead>
                     <tbody>
                     @foreach ($schedule->surgical_schedule_team as $personal)
                     <tr>
-                        <td scope="row">{{ $personal->type }}</td>
                         <td scope="row">{{ App\Models\MedicalProgrammer\Specialty::find($personal->specialty_id)->specialty_name }}</td>
                         <td scope="row">{{ App\Models\Practitioner::find($personal->practitioner_id)->user->OfficialFullName }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            @endif
+            <hr>
+            @if (count($schedule->surgical_schedule_device) > 0)
+            <h6 class="mb-3">Datos Equipamiento</h6>
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fabricante</th>
+                        <th scope="col">Serial</th>
+                    </thead>
+                    <tbody>
+                    @foreach ($schedule->surgical_schedule_device as $item)
+                    @php
+                    $device = App\Models\Device::find($item->device_id);
+                    @endphp
+                    <tr>
+                        <td scope="row">{{ $device->identifier }}</td>
+                        <td scope="row">{{  $device->device_name  }}</td>
+                        <td scope="row">{{ $device->manufacturer }}</td>
+                        <td scope="row">{{ $device->serial_number }}</td>
                     </tr>
                     @endforeach
                     </tbody>
@@ -126,6 +153,7 @@
                 </table>
             </div>
         @endif
+        @if($schedule->status != 'cancelado')
         <form method="post" action="{{ route('surgical_schedule.update_schedule') }}">
         @csrf
         <div class="form-row">
@@ -150,6 +178,7 @@
             </div>
         </div>
         </form>
+        @endif
 @endsection
 
 @section('custom_js')

@@ -21,3 +21,4 @@ artisan
 /config-git-crypt.key
 docker-compose.yml
 .htaccess
+.vscode

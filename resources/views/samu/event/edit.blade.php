@@ -5,7 +5,7 @@
 @include('samu.nav')
 
 <div class="row">
-    <div class="col">
+    <div class="col-12 col-md-10">
         <h3 class="mb-3">
             <i class="fas fa-car-crash"></i> Editar cometido {{ $event->id }}
             @if($event->call)
@@ -15,8 +15,8 @@
             @endif
         </h3>
     </div>
-    <div class="col text-right">
-        @can('SAMU administrador')
+    <div class="col-12 col-md-2 text-right">
+        @can('SAMU administrador','SAMU regulador')
             @if($event->status AND !$event->trashed())
             <form method="POST" action="{{ route('samu.event.destroy', $event) }}">
                 @csrf
@@ -29,6 +29,8 @@
         @endcan
     </div>
 </div>
+
+@include('samu.call.partials.associated-calls', ['call' => $event->call])
 
 @if($event->status)
 <form method="post" action="{{ route('samu.event.update', $event) }}">
@@ -59,9 +61,9 @@
             <a class="btn btn-secondary" target="_blank"  href="{{ route('samu.event.report',$event) }}">
                 <i class="fas fa-print"></i> Imprimir
             </a>
-            @if( $event->created_at->gt(now()->subDays(30)) )
+            @if( $event->created_at->gt(now()->subDays(90)) )
             <a class="btn btn-warning float-right" href="{{ route('samu.event.reopen',$event) }}">
-                <i class="fas fa-lock-open"></i> Reabrir < 30 días
+                <i class="fas fa-lock-open"></i> Reabrir < 90 días
             </a>
             @endif
         @endcan
@@ -73,19 +75,13 @@
 </form>
 @endif
 
-<br>
+<hr>
 
-@include('samu.call.partials.associated-calls', ['call' => $event->call])
-
-<!-- fin de registro de llamadas-->
 
 @canany(['SAMU'])
-<div>
     @include('partials.short_audit', ['audits' => $event->audits] )
-</div>
 @endcanany
 
-<br>
 
 @endsection
 

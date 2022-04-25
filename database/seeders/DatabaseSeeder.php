@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CodConAppointmentType;
-use App\Models\Organization;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionSeeder::class,
             CodConIdentifiersTypesSeeder::class,
-           // IdentifierTypeSeeder::class,
             CountrySeeder::class,
             RegionSeeder::class,
             CodConMaritalSeeder::class,
@@ -52,27 +49,34 @@ class DatabaseSeeder extends Seeder
         // ExtMedicineSeeder::class,
             CodConAppointmentTypesSeeder::class,
             SicStatusesSeeder::class,
+            SexSeeder::class,
+            GenderSeeder::class,
 
-
-
-            //Organizacion
+            //Organización
             OrganizationTypeSeeder::class,
             OrganizationDependencySeeder::class,
             OrganizationServiceSeeder::class,
             OrganizationSeeder::class,
 
-            //necesita Organization por eso se debe ejecutar despues
+            //necesita Organization por eso se debe ejecutar después
             LocationSeeder::class,
             LocationHourOfOperationSeeder::class,
 
             /* SAMU */
+            // SamuMobileSeeder::class,
+            // SamuJobTypeSeeder::class,
+            // SamuKeySeeder::class,
+            // SamuReceptionPlaceSeeder::class,
+            // SamuEstablishmentSeeder::class,
+
+            SettingSeeder::class,
+
+            SamuMobileTypeSeeder::class,
             SamuMobileSeeder::class,
             SamuJobTypeSeeder::class,
             SamuKeySeeder::class,
             SamuReceptionPlaceSeeder::class,
             SamuEstablishmentSeeder::class,
-            SettingSeeder::class,
-
         ]);
 
         if (\App::environment(['local', 'testing'])) {
