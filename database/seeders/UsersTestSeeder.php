@@ -65,7 +65,7 @@ class UsersTestSeeder extends Seeder
             $practitioner = new Practitioner();
             $practitioner->active = 1;
             $practitioner->user_id = 7;
-            $practitioner->organization_id = 4;
+            $practitioner->organization_id = 1;
             $practitioner->specialty_id = 7;
             $practitioner->profession_id = 12;
             $practitioner->save();
@@ -116,7 +116,7 @@ class UsersTestSeeder extends Seeder
             $practitioner = new Practitioner();
             $practitioner->active = 1;
             $practitioner->user_id = 8;
-            $practitioner->organization_id = 4;
+            $practitioner->organization_id = 1;
             $practitioner->specialty_id = 44;
             $practitioner->profession_id = 12;
             $practitioner->save();

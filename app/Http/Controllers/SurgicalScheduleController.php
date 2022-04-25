@@ -7,6 +7,7 @@ use App\Models\SurgicalSchedule\LocationSchedule;
 use App\Models\SurgicalSchedule\SurgicalSchedule;
 use App\Models\SurgicalSchedule\SurgicalScheduleEvent;
 use App\Models\SurgicalSchedule\SurgicalScheduleTeam;
+use App\Models\SurgicalSchedule\SurgicalScheduleDevice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -60,15 +61,43 @@ class SurgicalScheduleController extends Controller
                 }
             }
         }
-
-
         $hours = $this->hours;
-        return view('surgical_schedule.index',compact('locationScheduleArray','hours','date'));
+
+        //cancelaciones
+        $canceled = SurgicalSchedule::where('status','cancelado')
+                                ->where('date',$date)
+                                ->with('location')
+                                ->get();
+
+        return view('surgical_schedule.index',compact('locationScheduleArray','hours','date','canceled'));
     }
 
     public function edit(SurgicalSchedule $location){
         $schedule = $location;
-        return view('surgical_schedule.show',compact('schedule'));
+        $scheduleDayHours = [];
+        $day = Carbon::parse(date($schedule->date))->format('l');
+
+        foreach ($schedule->location->hours_of_operation as $hours) {
+            if($hours->daysOfWeek == strtolower(substr($day,0,3))) {
+                $scheduleDayHours[] = $hours;
+            }
+        }
+        $arr = [];
+        for ($i=intval($hours->openingTime); $i <= intval($hours->closingTime); $i++) {
+            $arr[] = $i;
+        }
+        foreach ($arr as $key => $hora) {
+            if ($schedule->from == $hora)
+            {
+                unset($arr[$key]);
+            }
+            if ($schedule->to == $hora)
+            {
+                unset($arr[$key]);
+            }
+        }
+        //dd($arr);
+        return view('surgical_schedule.show',compact('schedule','scheduleDayHours'));
     }
 
     public function update(Request $request){
@@ -140,7 +169,15 @@ class SurgicalScheduleController extends Controller
     }
 
     public function storeAsignPavilions(Request $request)
-    {//dd($request->all());
+    {
+        $request->validate([
+            'pacient' => 'required',
+            'start' => 'required',
+            'end' => 'required|gt:start',
+        ],[
+            'pacient.required' => 'Seleccione un paciente(previa búsqueda)',
+            'end.after'    => 'La hora de finalización debe ser mayor a la de inicio',
+        ]);
         $surgicalschedule = SurgicalSchedule::create([
         'location_id' => $request->location_id,
         'date'=>$request->date,
@@ -158,7 +195,7 @@ class SurgicalScheduleController extends Controller
                 'surgical_schedule_id'=>$surgicalschedule->id,
                 'practitioner_id'=>$request->practitioner_id,
                 'specialty_id'=>$request->specialty_id,
-                'type'=>$request->type
+                'type'=>'Medico'
             ]);
         }
         if($request->personal)
@@ -171,11 +208,33 @@ class SurgicalScheduleController extends Controller
                         'surgical_schedule_id'=>$surgicalschedule->id,
                         'practitioner_id'=>$item->practitioners,
                         'specialty_id'=>$item->specialties,
-                        'type'=>$item->type
+                        'type'=>'Medico'
                     ]);
                 }
             }
         }
+    //equipamiento
+        if(!empty($request->device_id))
+        {
+            SurgicalScheduleDevice::create([
+                'surgical_schedule_id'=>$surgicalschedule->id,
+                'device_id'=>$request->device_id,
+            ]);
+        }
+        if($request->devices)
+        {
+            foreach($request->devices as $items)
+            {
+                foreach (json_decode($items) as $item) {
+
+                    SurgicalScheduleDevice::create([
+                        'surgical_schedule_id'=>$surgicalschedule->id,
+                        'device_id'=>$item->device,
+                    ]);
+                }
+            }
+        }
+
         return redirect()->route('surgical_schedule.schedule')->with('success','Pabellón agendado exitosamente');
     }
 }

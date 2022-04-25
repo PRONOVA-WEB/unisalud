@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MedicalProgrammer;
+namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\Organization;
@@ -21,7 +21,7 @@ class LocationController extends Controller
     {
         $locations = Location::all();
 
-        return view('medical_programmer.locations.index', compact('locations'));
+        return view('locations.index', compact('locations'));
     }
 
 
@@ -37,7 +37,7 @@ class LocationController extends Controller
         $cod_con_physical_types = CodConPhysicalType::all();
         $hours_of_operation = HourOfOperation::all();
 
-        return view('medical_programmer.locations.create', compact('organization', 'locations', 'cod_con_physical_types', 'hours_of_operation'));
+        return view('locations.create', compact('organization', 'locations', 'cod_con_physical_types', 'hours_of_operation'));
     }
 
     /**
@@ -68,7 +68,7 @@ class LocationController extends Controller
                             );
                             $location->hours_of_operation()->attach($hour_of_operation->id);
                         }
-                        return redirect()->route('medical_programmer.locations.index');
+                        return redirect()->route('locations.index');
                     } elseif ($hours->daysOfWeek == 'allDays') //toda la semana
                     {
                         $location->hours_of_operation()->detach();
@@ -83,7 +83,7 @@ class LocationController extends Controller
                             );
                             $location->hours_of_operation()->attach($hour_of_operation->id);
                         }
-                        return redirect()->route('medical_programmer.locations.index');
+                        return redirect()->route('locations.index');
                     } else {
                         $hour_of_operation = HourOfOperation::create(
                             [
@@ -97,7 +97,7 @@ class LocationController extends Controller
                 }
             }
         }
-        return redirect()->route('medical_programmer.locations.index');
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -121,7 +121,7 @@ class LocationController extends Controller
     {
         $organization = Organization::all();
         $cod_con_physical_types = CodConPhysicalType::all();
-        return view('medical_programmer.locations.edit', compact('organization', 'location', 'cod_con_physical_types'));
+        return view('locations.edit', compact('organization', 'location', 'cod_con_physical_types'));
     }
 
     /**
@@ -155,7 +155,7 @@ class LocationController extends Controller
                             );
                             $location->hours_of_operation()->attach($hour_of_operation->id);
                         }
-                        return redirect()->route('medical_programmer.locations.index');
+                        return redirect()->route('locations.index');
                     } elseif ($hours->daysOfWeek == 'allDays') //toda la semana
                     {
                         $location->hours_of_operation()->detach();
@@ -170,7 +170,7 @@ class LocationController extends Controller
                             );
                             $location->hours_of_operation()->attach($hour_of_operation->id);
                         }
-                        return redirect()->route('medical_programmer.locations.index');
+                        return redirect()->route('locations.index');
                     } else {
                         $hour_of_operation = HourOfOperation::create(
                             [
@@ -186,7 +186,7 @@ class LocationController extends Controller
         }
 
         session()->flash('info', 'La locación ia sido editada.');
-        return redirect()->route('medical_programmer.locations.index');
+        return redirect()->route('locations.index');
     }
 
     /**
@@ -201,6 +201,6 @@ class LocationController extends Controller
         $location->hours_of_operation()->detach();
         $location->delete();
         session()->flash('success', 'La locación ha sido eliminada');
-        return redirect()->route('medical_programmer.locations.index');
+        return redirect()->route('locations.index');
     }
 }

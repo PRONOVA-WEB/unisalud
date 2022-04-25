@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h3 class="mb-3">Listado de box</h3>
+<h3 class="mb-3">Listado de Locaciones</h3>
 <hr/>
-<a class="btn btn-primary mb-3" href="{{ route('medical_programmer.locations.create') }}">
-    <i class="fas fa-plus"></i> Agregar nueva Locación
+<a class="btn btn-primary mb-3" href="{{ route('locations.create') }}">
+    <i class="fas fa-plus"></i> Agregar Nueva Locación
 </a>
 
 <table class="table table-sm table-borderer table-responsive-xl mb-5">
@@ -31,11 +31,11 @@
             <td>{{ $location->description ?? ''}}</td>
             <td>{{ $location->organization->name ?? ''}}</td>
             <td>
-      				<a href="{{ route('medical_programmer.locations.edit', $location) }}"
+      				<a href="{{ route('locations.edit', $location) }}"
       					class="btn btn-sm btn-outline-secondary">
       					<span class="fas fa-edit" aria-hidden="true"></span>
       				</a>
-      				<form method="POST" action="{{ route('medical_programmer.locations.destroy', $location) }}" class="d-inline">
+      				<form method="POST" action="{{ route('locations.destroy', $location) }}" class="d-inline">
       					@csrf
       					@method('DELETE')
       					<button type="submit" class="btn btn-outline-secondary btn-sm" onclick="return confirm('¿Está seguro de eliminar la información?');">

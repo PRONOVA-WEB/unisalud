@@ -21,8 +21,8 @@ class CreateSurgicalScheduleTable extends Migration
             $table->integer('to');
             $table->string('surgery');
             $table->foreignId('pacient_id');
-            $table->text('observations');
-            $table->string('preoperative_diagnosis');
+            $table->text('observations')->nullable();
+            $table->string('preoperative_diagnosis')->nullable();
             $table->string('status')->default('agendado');
             $table->foreign('pacient_id')->references('id')->on('users');
             $table->foreign('location_id')->references('id')->on('locations');
