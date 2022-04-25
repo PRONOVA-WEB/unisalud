@@ -148,6 +148,7 @@ function dayToSpanish($day)
     ];
 
     return $days[$day];
+}
 function translateMonth($month) {
     switch ($month) {
         case 'January':

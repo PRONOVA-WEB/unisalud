@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
             CongregationSeeder::class,
             UserSeeder::class,
             CodConObservationCategorySeeder::class,
-<<<<<<< HEAD
             CodingsSeeder::class,
             CodConPhysicalTypes::class,
             HoursOfOperationSeeder::class,
@@ -48,8 +47,6 @@ class DatabaseSeeder extends Seeder
             // HmOperatingRoomProgrammingTableSeeder::class,
             //PractitionerSeeder::class,
         // ExtMedicineSeeder::class,
-=======
->>>>>>> a022a96b1cadcff4ab0681a5545a636d10ad4311
             CodConAppointmentTypesSeeder::class,
             SicStatusesSeeder::class,
             SexSeeder::class,
@@ -66,7 +63,6 @@ class DatabaseSeeder extends Seeder
             LocationHourOfOperationSeeder::class,
 
             /* SAMU */
-<<<<<<< HEAD
             // SamuMobileSeeder::class,
             // SamuJobTypeSeeder::class,
             // SamuKeySeeder::class,
@@ -75,14 +71,12 @@ class DatabaseSeeder extends Seeder
 
             SettingSeeder::class,
 
-=======
             SamuMobileTypeSeeder::class,
             SamuMobileSeeder::class,
             SamuJobTypeSeeder::class,
             SamuKeySeeder::class,
             SamuReceptionPlaceSeeder::class,
             SamuEstablishmentSeeder::class,
->>>>>>> a022a96b1cadcff4ab0681a5545a636d10ad4311
         ]);
 
         if (\App::environment(['local', 'testing'])) {
