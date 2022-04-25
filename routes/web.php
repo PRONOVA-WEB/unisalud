@@ -65,6 +65,7 @@ use App\Http\Controllers\SurgicalScheduleController;
 use App\Http\Controllers\Epi\SuspectCaseController;
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\MedicalProgrammer\ChartsController;
+use App\Http\Livewire\Samu\Dashboard\DashboardIndex;
 
 use App\Http\Controllers\DevicesController;
 /*
@@ -99,8 +100,6 @@ Route::prefix('surgical_schedule')->name('surgical_schedule.')->middleware('auth
 Route::get('/hours_by_specialty', [ChartsController::class,'HoursBySpecialty']);
 
 //Auth::routes();
-
-
 
 Route::get('/claveunica', [ClaveUnicaController::class,'autenticar'])->name('claveunica');
 Route::get('/claveunica/redirect/{redirect}', [ClaveUnicaController::class,'autenticar'])->name('claveunica.redirect');
@@ -151,7 +150,7 @@ Route::prefix('patient')->name('patient.')->middleware('auth')->group(function()
     Route::get('/', [PatientController::class, 'index'])->name('index');
     Route::post('/', [PatientController::class, 'store'])->name('store');
     Route::get('/create', [PatientController::class, 'create'])->name('create');
-    Route::get('/create-from-sic/{interconsultationId}', [PatientController::class, 'create'])->name('create_from_sic');
+    Route::get('/create-from-sic/{interconsultationId?}', [PatientController::class, 'create'])->name('create_from_sic');
     Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
     Route::post('/{patient}', [PatientController::class, 'update'])->name('update');
     Route::delete('/{patient}', [PatientController::class, 'destroy'])->name('destroy');
@@ -479,16 +478,26 @@ use App\Http\Controllers\Samu\NoveltieController;
 use App\Http\Controllers\Samu\EstablishmentController;
 use App\Http\Controllers\Samu\GpsController;
 use App\Http\Controllers\Samu\CommuneController;
+use App\Http\Livewire\Samu\Coordinate\CoordinateIndex;
 use App\Http\Livewire\Samu\FindEvent;
 use App\Http\Livewire\Samu\MobileSelector;
 use App\Http\Livewire\Samu\TimestampsAndLocation;
 use App\Http\Livewire\Samu\GetLocation;
 use App\Http\Livewire\Samu\SearchCalls;
+use App\Http\Livewire\Samu\Procedures;
+use App\Http\Livewire\Samu\Supplies;
+use App\Http\Livewire\Samu\Stadistic;
+use App\Http\Livewire\Samu\Shift\ShiftSearcher;
 
 Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 
+	Route::get('/procedures', Procedures::class)->name('procedures');
+	Route::get('/supplies', Supplies::class)->name('supplies');
+	//Route::get('/stadistic', Stadistic::class)->name('stadistic');
+
     Route::view('/', 'samu.welcome')->name('welcome');
 	Route::get('/map', [CallController::class, 'maps'])->name('map');
+	Route::get('/dashboard', DashboardIndex::class)->name('dashboard');
 
 	Route::prefix('shifts')->name('shift.')
 	->middleware('permission:SAMU administrador|SAMU regulador|SAMU despachador')
@@ -496,6 +505,7 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 		Route::get('/',				[ShiftController::class, 'index'])->name('index');
 		Route::get('/create',		[ShiftController::class, 'create'])->name('create');
 		Route::post('/store',		[ShiftController::class, 'store'])->name('store');
+		Route::get('/searcher',		ShiftSearcher::class)->name('searcher');
 		Route::get('/edit/{shift}',	[ShiftController::class, 'edit'])->name('edit');
 		Route::put('/{shift}',		[ShiftController::class, 'update'])->name('update');
 		Route::delete('/{shift}', 	[ShiftController::class, 'destroy'])->name('destroy');
@@ -610,14 +620,14 @@ Route::prefix('samu')->name('samu.')->middleware('auth')->group(function () {
 
 	Route::prefix('coordinates')->name('coordinate.')
 	->group(function () {
-		Route::get('/', [CoordinateController::class, 'index'])->name('index');
+		Route::get('/', CoordinateIndex::class)->name('index');
 		Route::get('/search', [CoordinateController::class, 'search'])->name('search');
 		Route::post('/', [CoordinateController::class, 'store'])->name('store');
 	});
 });
 
 Route::get('/miubicacion', [CoordinateController::class, 'create'])->name('coordinate.create');
-Route::post('/miubicacion', [CoordinateController::class, 'store'])->name('coordinate.store');
+Route::post('/miubicacion', [CoordinateController::class, 'store'])->name('coordinate.store')->middleware('throttle:2');
 
 //fin rutas samu
 

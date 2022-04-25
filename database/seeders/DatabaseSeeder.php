@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CodConAppointmentType;
-use App\Models\Organization;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionSeeder::class,
             CodConIdentifiersTypesSeeder::class,
-           // IdentifierTypeSeeder::class,
             CountrySeeder::class,
             RegionSeeder::class,
             CodConMaritalSeeder::class,
@@ -26,6 +23,7 @@ class DatabaseSeeder extends Seeder
             CongregationSeeder::class,
             UserSeeder::class,
             CodConObservationCategorySeeder::class,
+<<<<<<< HEAD
             CodingsSeeder::class,
             CodConPhysicalTypes::class,
             HoursOfOperationSeeder::class,
@@ -50,22 +48,25 @@ class DatabaseSeeder extends Seeder
             // HmOperatingRoomProgrammingTableSeeder::class,
             //PractitionerSeeder::class,
         // ExtMedicineSeeder::class,
+=======
+>>>>>>> a022a96b1cadcff4ab0681a5545a636d10ad4311
             CodConAppointmentTypesSeeder::class,
             SicStatusesSeeder::class,
+            SexSeeder::class,
+            GenderSeeder::class,
 
-
-
-            //Organizacion
+            //Organización
             OrganizationTypeSeeder::class,
             OrganizationDependencySeeder::class,
             OrganizationServiceSeeder::class,
             OrganizationSeeder::class,
 
-            //necesita Organization por eso se debe ejecutar despues
+            //necesita Organization por eso se debe ejecutar después
             LocationSeeder::class,
             LocationHourOfOperationSeeder::class,
 
             /* SAMU */
+<<<<<<< HEAD
             // SamuMobileSeeder::class,
             // SamuJobTypeSeeder::class,
             // SamuKeySeeder::class,
@@ -74,6 +75,14 @@ class DatabaseSeeder extends Seeder
 
             SettingSeeder::class,
 
+=======
+            SamuMobileTypeSeeder::class,
+            SamuMobileSeeder::class,
+            SamuJobTypeSeeder::class,
+            SamuKeySeeder::class,
+            SamuReceptionPlaceSeeder::class,
+            SamuEstablishmentSeeder::class,
+>>>>>>> a022a96b1cadcff4ab0681a5545a636d10ad4311
         ]);
 
         if (\App::environment(['local', 'testing'])) {

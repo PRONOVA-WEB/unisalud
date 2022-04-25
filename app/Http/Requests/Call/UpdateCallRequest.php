@@ -28,7 +28,7 @@ class UpdateCallRequest extends FormRequest
         return [
             'applicant'         => 'nullable|string|min:0|max:255',
             'year'              => 'nullable|integer|min:0|max:150',
-            'month'             => 'nullable|integer|min:0|max:12',
+            'month'             => 'nullable|integer|min:0|max:11',
             'telephone'         => 'nullable|string',
             'reason'            => 'nullable|string|min:0|max:255',
             'police_intervention'=> 'nullable|boolean',
@@ -39,9 +39,11 @@ class UpdateCallRequest extends FormRequest
                 new CallRegulation($this->route('call')->call_id, $this->classification, $this->key_id)
             ],
             'address'           => 'nullable|string|min:0|max:255',
+            'address_reference' => 'nullable|string|min:0|max:255',
             'latitude'          => 'nullable|numeric',
             'longitude'         => 'nullable|numeric',
             'regulation'        => 'nullable|string|min:3|max:5000',
+            'bls'               => 'nullable|date_format:H:i:s',
             'sex' => [
                 'nullable',
                 Rule::in(['MALE', 'FEMALE', 'UNKNOWN', 'OTHER']),
