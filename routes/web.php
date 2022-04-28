@@ -345,8 +345,6 @@ Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('au
 		Route::get('/{motherActivity}/edit', [MotherActivityController::class, 'edit'])->name('edit');
 	});
 
-
-
 	Route::prefix('services')->name('services.')->group(function(){
 		Route::get('/', [ServiceController::class, 'index'])->name('index');
 		Route::post('/', [ServiceController::class, 'store'])->name('store');
@@ -368,6 +366,11 @@ Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('au
 		Route::put('/{specialty}', [SpecialtyController::class, 'update'])->name('update');
 		Route::delete('/{specialty}', [SpecialtyController::class, 'destroy'])->name('destroy');
 		Route::get('/{specialty}/edit', [SpecialtyController::class, 'edit'])->name('edit');
+
+        //ralación locales de trackera
+        Route::get('/local/{specialty}/asign', [SpecialtyController::class, 'asign_local'])->name('asign_local');
+        Route::post('/local/{specialty}/asign', [SpecialtyController::class, 'asign_local_store'])->name('asign_local_store');
+
 	});
 
 	Route::prefix('professions')->name('professions.')->group(function(){

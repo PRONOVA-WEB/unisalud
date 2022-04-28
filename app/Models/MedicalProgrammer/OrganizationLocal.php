@@ -11,6 +11,8 @@ class OrganizationLocal extends Model
 
     public function Specialty()
     {
-        return $this->belongsTo(Specialty::class);
+        return $this->belongsToMany(Specialty::class,'mp_organization_local_specialty','organization_local_id','specialty_id');
     }
+
+    protected $table = 'mp_organization_local';
 }

@@ -9,14 +9,15 @@
 
 @section('content')
 
-<h3 class="mb-3">Asignar box a especialidades</h3>
+<h3 class="mb-3">Gestión de especialidades</h3>
 <hr>
 <table class="table table-sm table-bordered datatable">
     <thead>
         <tr>
             <th>Id</th>
             <th>Especialidad</th>
-            <th>Asignar Locación</th>
+            <th>Asignar Box</th>
+            <th>Asignar local para agenda (PM)</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
             <td>
                 <a href="{{ route('medical_programmer.specialties.asign_location', $specialty) }}" class="btn btn-sm btn-outline-secondary">
                     <span class="fas fa-hospital" aria-hidden="true"></span>
+                </a>
+            </td>
+            <td>
+                <a href="{{ route('medical_programmer.specialties.asign_local', $specialty) }}" class="btn btn-sm btn-outline-secondary">
+                    <span class="fas fa-book-medical" aria-hidden="true"></span>
                 </a>
             </td>
         </tr>
