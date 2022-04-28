@@ -9,6 +9,8 @@ class OrganizationLocal extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['code','description'];
+
     public function Specialty()
     {
         return $this->belongsToMany(Specialty::class,'mp_organization_local_specialty','organization_local_id','specialty_id');
