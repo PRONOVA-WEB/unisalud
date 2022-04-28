@@ -7,6 +7,7 @@ use App\Models\MedicalProgrammer\SpecialtyActivity;
 use App\Models\MedicalProgrammer\Activity;
 use App\Models\Location;
 use App\Models\CodConPhysicalType;
+use App\Models\MedicalProgrammer\OrganizationLocal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +157,19 @@ class SpecialtyController extends Controller
         //dd($specialty, $request->all());
         $specialty->locations()->sync($request->locations);
         session()->flash('success', 'La(s) locaciones han sido asignadas exitosamente');
+        return redirect()->route('medical_programmer.specialties.locations');
+    }
+
+    public function asign_local(Specialty $specialty)
+    {
+        $locales = OrganizationLocal::all();
+        return view('medical_programmer.specialties.localSpecialty', compact('specialty','locales'));
+    }
+
+    public function asign_local_store(Specialty $specialty, Request $request)
+    {
+        $specialty->organization_local()->sync($request->locales);
+        session()->flash('success', 'Los locales han sido asignadas exitosamente');
         return redirect()->route('medical_programmer.specialties.locations');
     }
 }

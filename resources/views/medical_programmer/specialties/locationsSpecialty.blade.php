@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="mb-3">Asignar Box a Especialidad: {{ $specialty->specialty_name }}</h3>
+    <h3 class="mb-3">Asignar Locales a Especialidad: {{ $specialty->specialty_name }}</h3>
     <hr/>
     <form action="{{ route('medical_programmer.specialties.asign_location_store', $specialty->id) }}" method="POST">
         @csrf
