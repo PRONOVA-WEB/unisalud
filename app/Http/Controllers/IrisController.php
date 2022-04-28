@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Iris\TcAppointment;
+use App\Models\MedicalProgrammer\OrganizationLocal;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,8 @@ class IrisController extends Controller
             'identificator_specialist' => 'required',
             'organization_local_code' => 'required',
             'date' => 'required',
+            'duration' => 'required',
+            'type' => 'required',
             'status' => 'required',
             'iris_key' => 'required',
         ]);
@@ -24,6 +27,12 @@ class IrisController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->messages()], 200);
         }
+
+        //chequeo que exista el local
+        $local = OrganizationLocal::firstOrNew(['code' =>  $request->organization_local_code]);
+        $local->description     = $request->organization_local_description;
+        $local->organization_id = 1;
+        $local->save();
 
         $cita = TcAppointment::updateOrCreate(
             [
