@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Samu\MobileController;
 use App\Http\Controllers\MedicalProgrammer\SubActivityController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\Some\AppointmentController;
+use App\Http\Controllers\IrisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +45,9 @@ Route::prefix('patient')->name('patient.')->middleware('client')->group(function
     Route::get('/by-id/{id}', [PatientController::class, 'getById']);
 });
 /** FIN RUTAS API HETG **/
+
+/*RUTAS DE API INTEGRACIONES TRAKCARE*/
+Route::prefix('iris')->name('iris.')->middleware('iris')->group(function (){
+    Route::post('tc_appointment',[IrisController::class,'tc_appointment']);
+});
+/*FIN RUTAS DE API INTEGRACIONES TRAKCARE*/

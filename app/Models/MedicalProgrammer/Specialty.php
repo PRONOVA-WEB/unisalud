@@ -70,6 +70,11 @@ class Specialty extends Model implements Auditable
         return $this->hasMany(ProgrammingProposal::class);
     }
 
+    public function organization_local()
+    {
+        return $this->hasMany(OrganizationLocal::class);
+    }
+
     use SoftDeletes;
     /**
      * The attributes that should be mutated to dates.

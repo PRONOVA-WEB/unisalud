@@ -100,6 +100,7 @@ class DatabaseSeeder extends Seeder
                 MpProgrammingProposalsDetailTableSeeder::class,
                 AppointmentsTableSeeder::class,
                 AppointablesTableSeeder::class,
+                OrganizationLocalSeeder::class,
             ]);
         }
     }
