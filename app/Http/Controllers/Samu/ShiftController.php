@@ -43,11 +43,11 @@ class ShiftController extends Controller
      */
     public function store(Request $request)
     {
-        Gate::allowIf( auth()->user()->cannot('SAMU auditor') 
+        Gate::allowIf( auth()->user()->cannot('SAMU auditor')
             ? Response::allow()
-            : Response::deny('Acción no autorizada para "SAMU auditor".') 
+            : Response::deny('Acción no autorizada para "SAMU auditor".')
         );
-    
+
         $shift = Shift::where('status', true)->first();
 
         if(!$shift) {
@@ -58,7 +58,7 @@ class ShiftController extends Controller
             return redirect()->route('samu.shift.index');
         }
         else {
-            $request->session()->flash('danger', 'No se pudo crear el turno, 
+            $request->session()->flash('danger', 'No se pudo crear el turno,
                 ya existe un turno abierto, verifique cerrar todos los turnos antes de crear uno nuevo.');
             return redirect()->back()->withInput();
         }
@@ -98,9 +98,9 @@ class ShiftController extends Controller
      */
     public function update(Request $request, Shift $shift)
     {
-        Gate::allowIf( auth()->user()->cannot('SAMU auditor') 
+        Gate::allowIf( auth()->user()->cannot('SAMU auditor')
             ? Response::allow()
-            : Response::deny('Acción no autorizada para "SAMU auditor".') 
+            : Response::deny('Acción no autorizada para "SAMU auditor".')
         );
 
         $shift->fill($request->all());
@@ -118,9 +118,9 @@ class ShiftController extends Controller
      */
     public function destroy(Shift $shift)
     {
-        Gate::allowIf( auth()->user()->cannot('SAMU auditor') 
+        Gate::allowIf( auth()->user()->cannot('SAMU auditor')
             ? Response::allow()
-            : Response::deny('Acción no autorizada para "SAMU auditor".') 
+            : Response::deny('Acción no autorizada para "SAMU auditor".')
         );
 
         $shift->delete();

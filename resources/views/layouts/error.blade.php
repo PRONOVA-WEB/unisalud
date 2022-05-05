@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <!-- CSRF Token -->
          <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Salud Iquique') }}</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -38,12 +38,12 @@
                             <h1 class="display-5 text-uppercase">Error @yield('code')</h1>
                         </div>
 
-                        <table class="justify-content-center align-items-center">
+                        {{-- <table class="justify-content-center align-items-center">
                             <tr class="">
                                 <td style="background-color: #491152;" width="300" height="5"></td>
                                 <td style="background-color: #006cb7;" width="300" height="5"></td>
                             </tr>
-                        </table>
+                        </table> --}}
 
                         <h2 class="pt-4 text-uppercase">@yield('title')</h4>
                         <p class="text-muted">@yield('message')</p>
@@ -52,7 +52,7 @@
                             <i class="fa fa-arrow-left"></i> IR AL INICIO
                         </a>
                         <div class="my-5">
-                            <small>Servicio de Salud Iquique - {{ now()->format('Y') }}</small>
+                            <small> {{ now()->format('Y') }}</small>
                         </div>
                     </div>
                 </div>
