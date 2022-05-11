@@ -16,6 +16,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Some\ObservationController;
 
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ClinicalProfileController;
 
 use App\Http\Controllers\Fq\CysticFibrosisRequest;
 use App\Http\Controllers\Fq\ContactUserController;
@@ -216,6 +217,15 @@ Route::prefix('surveys')->as('surveys.')->middleware('auth')->group(function(){
         Route::get('/my_survey', [TeleconsultationSurveyController::class, 'my_survey'])->name('my_survey');
         Route::get('/show/{teleconsultationSurvey}', [TeleconsultationSurveyController::class, 'show'])->name('show');
     });
+});
+
+Route::prefix('clinical_profile')->as('clinical_profile.')->middleware('auth')->group(function(){
+	Route::get('/', [ClinicalProfileController::class, 'index'])->name('index');
+	// Route::get('/own_index', [TeleconsultationSurveyController::class, 'own_index'])->name('own_index');
+	// Route::get('/create', [TeleconsultationSurveyController::class, 'create'])->name('create');
+	// Route::post('/store', [TeleconsultationSurveyController::class, 'store'])->name('store');
+	// Route::get('/my_survey', [TeleconsultationSurveyController::class, 'my_survey'])->name('my_survey');
+	// Route::get('/show/{teleconsultationSurvey}', [TeleconsultationSurveyController::class, 'show'])->name('show');
 });
 
 Route::prefix('medical_programmer')->name('medical_programmer.')->middleware('auth')->group(function(){
