@@ -535,7 +535,10 @@
                 <tr>
                     <td><a href="#" class="toggle" data-target="details-5">Signos vitales</a><br>
                         <i class="fas fa-plus" style="color:black"></i> Nuevo <br>
-                        <i class="fas fa-chart-line" style="color:black"></i> Signos vitales estándar
+                        <a href="#" data-toggle="modal" data-target="#exampleModal3">
+                            <i class="fas fa-chart-line" style="color:black"></i> Signos vitales estándar
+                        </a><br>
+                        
                     </td>
 
                     <!-- 06/05/2022 -->
@@ -844,6 +847,7 @@
     </div>
     </div>
 
+    <!-- modal2 -->
     <div class="modal fade bd-example-modal-xl" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -1031,6 +1035,43 @@
     </div>
     </div>
 
+    <!-- modal3 -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+                <b>Signos vitales estándar</b>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            
+            <!-- body -->
+            <div class="chart" id="curve_chart" ></div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <style>
+
+        .chart {
+        align-content: center;
+        display: flex;
+        justify-content: center;
+        }
+
+    </style>
+
+    <!-- <div class="chart" id="curve_chart" ></div> -->
+
 @endsection
 
 @section('custom_js')
@@ -1045,5 +1086,42 @@
     });
     });
 </script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Día');
+      data.addColumn('number', 'Frecuencia cardiaca Ipm');
+      data.addColumn('number', 'Presion Arterial Sistólica mmHg');
+      data.addColumn('number', 'Presión Arterial Diastólica mmHg');
+      data.addColumn('number', 'Presión Arterial Media');
+      data.addColumn('number', 'Saturación O2 %');
+      
+
+      data.addRows([
+        [new Date(2022, 5, 6), 80,  120, 120, 83.3, 0],
+        [new Date(2022, 5, 7), 67,  120, 86, 97.3, 99],
+        [new Date(2022, 5, 7), 0,  0, 0, 0, 0]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Cantidad de cada signo vital',
+          subtitle: 'cantidad'
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('curve_chart'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+    </script>
 
 @endsection
