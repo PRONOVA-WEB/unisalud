@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ settings('site.title') }} | @yield('title')</title>
+    <title>{{ settings('site.title') }} | Sanatorio Alemán</title>
     <meta content="Pronova" name="author" />
     <!-- Scripts -->
 
