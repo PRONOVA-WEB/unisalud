@@ -65,7 +65,7 @@
         </div>
     </li>
     @endcan
-    @can('Some: user')
+    {{-- @can('Some: user')
     <li class="nav-item {{ active(['some.*']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSome"
             aria-expanded="true" aria-controls="collapseSome">
@@ -136,14 +136,14 @@
             </div>
         </div>
     </li>
-    @endcan
-    @canany(['SAMU'])
+    @endcan --}}
+    {{-- @canany(['SAMU'])
     <li class="nav-item {{ active('samu.*') }}">
         <a class="nav-link " href="{{ route('samu.welcome') }}">
             <i class="fas fa-ambulance"></i> <span>SAMU</span>
         </a>
     </li>
-    @endcanany
+    @endcanany --}}
     @canany(['Mp: mantenedores'])
     <li class="nav-item {{ active(['parameter.*','medical_programmer.*']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMantenedor"

@@ -136,7 +136,7 @@ class AppointmentController extends Controller
 
                             //asociar en tabla appointables
                             $user = User::find($request->user_id);
-                            $practitioner = $user->practitioners()->where('organization_id', 4)->where('specialty_id', $request->specialty_id)->first();
+                            $practitioner = $user->practitioners()->where('organization_id', 1)->where('specialty_id', $request->specialty_id)->first();
                             $newAppointment->practitioners()->save($practitioner, ['required' => 'required', 'status' => 'tentative']);
                         }
                     }
@@ -153,7 +153,7 @@ class AppointmentController extends Controller
 
                     //asociar en tabla appointables
                     $user = User::find($request->user_id);
-                    $practitioner = $user->practitioners()->where('organization_id', 4)->where('specialty_id', $request->specialty_id)->first();
+                    $practitioner = $user->practitioners()->where('organization_id', 1)->where('specialty_id', $request->specialty_id)->first();
                     $newAppointment->practitioners()->save($practitioner, ['required' => 'required', 'status' => 'tentative']);
                 }
 
@@ -173,7 +173,7 @@ class AppointmentController extends Controller
         $user = User::find($user_id);
         if ($user != null) {
             if ($user->practitioners()->count() > 0) {
-                $practitioner = $user->practitioners()->where('organization_id', 4)
+                $practitioner = $user->practitioners()->where('organization_id', 1)
                     ->where('specialty_id', $request->specialty_id)
                     ->first();
 

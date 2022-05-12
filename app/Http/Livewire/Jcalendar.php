@@ -35,7 +35,7 @@ class Jcalendar extends Component
         // se obtienen appointments segun parametros enviados
         if ($user != null) {
           if ($user->practitioners()->count() > 0) {
-            $practitioner = $user->practitioners()->where('organization_id',4)
+            $practitioner = $user->practitioners()->where('organization_id',1)
                                                   ->when($specialty_id != null, function ($query) use ($specialty_id) {
                                                       $query->where('specialty_id',$specialty_id);
                                                   })

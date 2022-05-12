@@ -28,6 +28,7 @@
       <th>Especialidad</th>
       <th>Actividad</th>
       <th>Hrs. Asignadas</th>
+      <th>Producción</th>
       <th>Rdto/Hr</th>
       <th>Rdto/Diario</th>
       <th>Rdto/Semanal</th>
@@ -50,6 +51,7 @@
                   <td>{{$key3}}</td>
                   <td>{{$key4}}</td>
                   <td>{{$activities['hours']}}</td>
+                  <td></td>
                   <td>{{$activities['performance']}}</td>
 
                   @if($activities['performance'] != null)

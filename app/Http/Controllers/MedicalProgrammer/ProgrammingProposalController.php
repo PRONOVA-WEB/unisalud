@@ -12,7 +12,7 @@ use App\Models\MedicalProgrammer\ProgrammingProposal;
 use App\Models\MedicalProgrammer\ProgrammingProposalDetail;
 use App\Models\MedicalProgrammer\ProgrammingProposalSignatureFlow;
 // use App\Models\MedicalProgrammer\TheoreticalProgramming;
-
+use App\Models\Iris\TcAppointment;
 use App\Models\User;
 
 class ProgrammingProposalController extends Controller
@@ -440,13 +440,32 @@ class ProgrammingProposalController extends Controller
                 foreach ($programmed_day as $key => $value) {
                   // especialidades
                   if ($value['data']->programmingProposal->specialty) {
-                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
-                                            [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
-                                            [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] = 0;
+                    //producción por local asociado a la especialidad para el rango de fechas indicado
+                    $producction_total = 0;
+                    foreach($value['data']->programmingProposal->specialty->organization_local as $local)
+                    {
+                        $producctions = TcAppointment::select('duration')
+                                                     ->where('organization_local_code',$local->code)
+                                                     ->where('identificator_specialist', User::find($value['data']->programmingProposal->user_id)->identifiers->last()->value)
+                                                     ->whereBetween('date', [$request_start_date->format('Y-m-d'), $request_end_date->format('Y-m-d')])
+                                                     ->get();
 
-                    $array_medic_programmings[$value['data']->programmingProposal->user->id][$value['data']->programmingProposal->contract->contract_id]
-                                            [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
-                                            [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = 0;
+                        foreach($producctions as $producction)
+                        {
+                            $producction_total += $producction->duration;
+                        }
+                    }
+                    //dd(round($producction_total/60,2));
+
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id]
+                                                [$value['data']->programmingProposal->contract->contract_id]
+                                                    [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
+                                                        [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['hours'] = 0;
+
+                    $array_medic_programmings[$value['data']->programmingProposal->user->id]
+                                                [$value['data']->programmingProposal->contract->contract_id]
+                                                    [$value['data']->programmingProposal->specialty->id_specialty . ' - ' . $value['data']->programmingProposal->specialty->specialty_name]
+                                                        [$value['data']->activity->id_activity . ' - ' . $value['data']->activity->activity_name]['performance'] = 0;
                   }
                   // profesiones
                   if ($value['data']->programmingProposal->profession) {
@@ -488,7 +507,7 @@ class ProgrammingProposalController extends Controller
                 }
               }
       }
-//dd($array_medic_programmings);
-      return view('medical_programmer.management.reports.consolidated_programmings',compact('array_medic_programmings'));
+    //dd($array_medic_programmings);
+    return view('medical_programmer.management.reports.consolidated_programmings',compact('array_medic_programmings'));
     }
 }
