@@ -2,16 +2,17 @@
 
 @section('content')
 
-    <div class="container-fluid bg-dark text-white p-4">
+    <div class="container-fluid bg-dark text-white p-3">
+        <h6>Datos del paciente</h6>
         <div class="row">
             <div class="col col">
-                Pastor Maldonado
+                Alexander Díaz
             </div>
             <div class="col col">
                 Peso RUN
             </div>
             <div class="col col">
-                33333333-3
+                27005646-6
             </div>
         </div>
         <div class="row">
@@ -19,7 +20,7 @@
                 Hombre
             </div>
             <div class="col">
-                32A 4M 7D 03/01/1965 BMI Área de Superficie Coroporal (ASC)
+                37A 4M 7D 03/01/1965 BMI Área de Superficie Coroporal (ASC)
             </div>
             <div class="col col">
                 0 + Positivo T*ax/T°rect; FC:67; PAS:120; PAD:86; FR:; Sat(%):99<br>
