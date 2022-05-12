@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <div class="container-fluid bg-dark text-white">
+    <div class="container-fluid bg-dark text-white p-4">
         <div class="row">
             <div class="col col">
-                PETERSON JOYCE HOWARD
+                Pastor Maldonado
             </div>
             <div class="col col">
                 Peso RUN
             </div>
             <div class="col col">
-                6313247-8
+                33333333-3
             </div>
         </div>
         <div class="row">
@@ -19,7 +19,7 @@
                 Hombre
             </div>
             <div class="col">
-                57A 4M 7D 03/01/1965 BMI Área de Superficie Coroporal (ASC)
+                32A 4M 7D 03/01/1965 BMI Área de Superficie Coroporal (ASC)
             </div>
             <div class="col col">
                 0 + Positivo T*ax/T°rect; FC:67; PAS:120; PAD:86; FR:; Sat(%):99<br>
@@ -100,15 +100,21 @@
         <div class="form-row">
             <div class="form-group col-md-4 col-6">
                 <label>Fecha desde</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" value="2022-05-06">
             </div>
             <div class="form-group col-md-3 col-6">
                 <label>Fecha hasta</label>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" value="2022-05-08">
             </div>
             <div class="form-group col-md-3 col-6">
                 <label>Intervalo</label>
-                <input type="number" class="form-control">
+                <select class="form-control" >
+                    <option>2hrs</option>
+                    <option selected>4hrs</option>
+                    <option>8hrs</option>
+                    <option>12hrs</option>
+                    <option>24hrs</option>
+                </select>
             </div>
             <div class="form-group col-md-2 col-6">
                 <label>&nbsp;</label>
@@ -173,7 +179,7 @@
         </div>
 
         <div id="listing">
-        <table class="table table-sm table-striped table-bordered">
+        <table class="table table-sm table-striped table-bordered table-responsive">
             <thead >
                 <tr>
                     <th scope="col"></th>
@@ -243,7 +249,7 @@
                 </tr>
                 <tr class="details">
                     <td class="details-1">
-                        <input type="checkbox"> Aseo de cavidad bucal, 
+                        <input type="checkbox"> Aseo de cavidad bucal,
                         <p class="text-info">TRES VECES, 1 DÍA.</p>
                     </td>
 
@@ -281,7 +287,7 @@
                 </tr>
                 <tr class="details">
                     <td class="details-1">
-                        <input type="checkbox"> Cambio de posición c/6 HRS, 
+                        <input type="checkbox"> Cambio de posición c/6 HRS,
                         <p class="text-info">TRES VECES, 1 DÍA.</p>
                         <i class="fas fa-exclamation-triangle" style="color:black"></i> Estimular</p>
                     </td> <!--style="display: none" -->
@@ -326,7 +332,7 @@
                 <!-- examenes de laboratorio -->
                 <tr>
                     <td><a href="#" class="toggle" data-target="details-2">Exámenes de laboratorio</a></td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -353,13 +359,13 @@
                 </tr>
                 <tr class="details">
                     <td class="details-2">
-                        <input type="checkbox"> Hemograma 
+                        <input type="checkbox"> Hemograma
                         <p class="text-info">
                             TRES VECES, 1 DÍA.(incluye recuento de leucocitos y eritocitos, hemoglobina, hematrocrito, formula leucotitaria, caracteristicas de los elementos figurados y velocidad de eritrosedimentación)
                         </p>
                         <i class="fas fa-exclamation-triangle" style="color:black"></i> Tubo tapa lisa</p>
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -388,7 +394,7 @@
                 <!-- farmacos -->
                 <tr>
                     <td><a href="#" class="toggle" data-target="details-3">Farmacos</a></td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -415,7 +421,7 @@
                 </tr>
                 <tr class="details">
                     <td class="details-3">
-                        <input type="checkbox"> Paracetamol 
+                        <input type="checkbox"> Paracetamol
                         <p class="text-info">
                         PARACETAMOL 500MG CM/CM REC 500 MG Comprimido - <a>Dosis Variable</a> - Oral, cada 8 Hora(s), por 1 Día(s).
                         </p>
@@ -423,7 +429,7 @@
                         <i class="fas fa-pills" style="color:black"></i>
                         <i class="fas fa-calculator" style="color:black"></i>
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -468,7 +474,7 @@
                 <!-- imageneología -->
                 <tr>
                     <td><a href="#" class="toggle" data-target="details-4">Imageneología</a></td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -495,10 +501,10 @@
                 </tr>
                 <tr class="details">
                     <td class="details-4">
-                        <input type="checkbox"> TAC Abdomen (40 cortes 8-10 Mm). 
+                        <input type="checkbox"> TAC Abdomen (40 cortes 8-10 Mm).
                         <i class="fas fa-newspaper" style="color:black"></i>
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -530,7 +536,7 @@
                         <i class="fas fa-plus" style="color:black"></i> Nuevo <br>
                         <i class="fas fa-chart-line" style="color:black"></i> Signos vitales estándar
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -571,7 +577,7 @@
                     <td class="details-5">
                         <input type="checkbox"> Frecuencia cardiaca Ipm
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td>80</td>
                     <td></td>
@@ -600,7 +606,7 @@
                     <td class="details-5">
                         <input type="checkbox"> Presion Arterial Sistólica mmHg
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td>120</td>
                     <td></td>
@@ -629,7 +635,7 @@
                     <td class="details-5">
                         <input type="checkbox"> Presión Arterial Diastólica mmHg
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td>120</td>
                     <td></td>
@@ -658,7 +664,7 @@
                     <td class="details-5">
                         <input type="checkbox"> Presión Arterial Media
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td>83.3</td>
                     <td></td>
@@ -687,7 +693,7 @@
                     <td class="details-5">
                         <input type="checkbox"> Saturación O2 %
                     </td>
-                    
+
                     <!-- 06/05/2022 -->
                     <td></td>
                     <td></td>
@@ -711,8 +717,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>    
-                
+                </tr>
+
             </tbody>
         </table>
         </div>
@@ -734,7 +740,7 @@
             </button>
         </div>
         <div class="modal-body">
-            
+
             <!-- body -->
 
             <table class="table table-sm table-striped">
@@ -850,23 +856,23 @@
             </button>
         </div>
         <div class="modal-body">
-            
+
             <!-- body -->
-            
+
 
             <div class="alert alert-success" role="alert">
                 <h6>Detalles de administración</h6>
             </div>
 
             <h6><b>Previous dose:</b> Adminsitrado/Ejecutado, 1 COMPRIMIDO 06/05/2022 16:00, Felipe Basualto Araya, 120 Minuto(s) early</h6>
-            
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col col-3">
                         Prioridad
                     </div>
                     <div class="col col-3">
-                        Normal                 
+                        Normal
                     </div>
                     <div class="col col-3">
                         Fecha planificada
@@ -881,7 +887,7 @@
                         Fecha y Hora de administración
                     </div>
                     <div class="col col-3">
-                        <input type="text" value="10/05/2022">                 
+                        <input type="text" value="10/05/2022">
                     </div>
                     <div class="col col-3">
                         <b>Administrado por:</b>
@@ -896,7 +902,7 @@
                         Hora de administración
                     </div>
                     <div class="col col-3">
-                        <input type="time" value="12:14">                 
+                        <input type="time" value="12:14">
                     </div>
                     <div class="col col-3">
                         <b>Estado de la administ.</b>
@@ -911,14 +917,14 @@
                     Cantidad administrada
                     </div>
                     <div class="col col-3">
-                        <input type="text" value="2" style="width:50%" disabled>    
-                        <input type="text" value="COMPRIMIDO" style="width:50%" disabled>                 
+                        <input type="text" value="2" style="width:50%" disabled>
+                        <input type="text" value="COMPRIMIDO" style="width:50%" disabled>
                     </div>
                     <div class="col col-3">
-                        
+
                     </div>
                     <div class="col col-3">
-                        
+
                     </div>
                 </div>
 
@@ -927,10 +933,10 @@
                         Sitio del cuerpo
                     </div>
                     <div class="col col-3">
-                        <input type="text">                 
+                        <input type="text">
                     </div>
                     <div class="col col-3">
-                    N°de Lote 
+                    N°de Lote
                     </div>
                     <div class="col col-3">
                         <input type="text" disabled>
@@ -938,7 +944,7 @@
                 </div>
 
                 <hr>
-                
+
             </div>
 
             <div class="alert alert-success" role="alert">
@@ -951,7 +957,7 @@
                         Segunda Firma usuario
                     </div>
                     <div class="col col-3">
-                        <input type="text">       
+                        <input type="text">
                     </div>
                     <div class="col col-3">
                         Registrado por
@@ -966,7 +972,7 @@
                         Segunda Firma PIN
                     </div>
                     <div class="col col-3">
-                        <input type="text">       
+                        <input type="text">
                     </div>
                     <div class="col col-3">
                         Contraseña
@@ -987,7 +993,7 @@
                         Notas de la Orden
                     </div>
                     <div class="col col-3">
-                        Nota de Procedimiento       
+                        Nota de Procedimiento
                     </div>
                     <div class="col col-3">
                         Indicación
@@ -1013,7 +1019,7 @@
                 </div>
 
             </div>
-            
+
 
             <button type="button" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
         </div>
