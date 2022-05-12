@@ -52,7 +52,7 @@
                         @can('Epi: Create')
                         <td>
                             <!-- <a href="{{ route('epi.chagas.create',$patient) }}"><i class="fas fa-viruses"></i></a> -->
-                            <a href="{{ route('clinical_profile.index') }}"><i class="fas fa-viruses"></i></a>
+                            <a href="{{ route('clinical_profile.index') }}"><i class="fas fa-first-aid"></i></a>
                         </td>
                         @endcan
                     </tr>
