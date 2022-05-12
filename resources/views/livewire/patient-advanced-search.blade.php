@@ -33,7 +33,7 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Selec.</th>
                     @can('Epi: Create')
-                    <th scope="col">Añadir Caso Sospecha</th>
+                    <th scope="col">Perfil clínico</th>
                     @endcan
 
             </thead>
@@ -51,7 +51,8 @@
                         <td><a class="btn-primary btn-sm" href="{{ route('patient.edit',$patient->id)}}" title="Editar"> <i class="fas fa-edit"></i> </a></td>
                         @can('Epi: Create')
                         <td>
-                            <a href="{{ route('epi.chagas.create',$patient) }}"><i class="fas fa-viruses"></i></a>
+                            <!-- <a href="{{ route('epi.chagas.create',$patient) }}"><i class="fas fa-viruses"></i></a> -->
+                            <a href="{{ route('clinical_profile.index') }}"><i class="fas fa-viruses"></i></a>
                         </td>
                         @endcan
                     </tr>
